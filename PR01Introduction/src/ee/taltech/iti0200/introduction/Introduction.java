@@ -17,7 +17,13 @@ public class Introduction {
      * @return The number of words in the given string.
      */
     public int camelCaseWordCounter(String string) {
-        return -1;
+        int answer = 1;
+        for (int i = 1; i < string.length(); i++) {
+            if (Character.isUpperCase(string.charAt(i))) {
+                answer += 1;
+            }
+        }
+        return answer;
     }
 
     /**
@@ -48,7 +54,7 @@ public class Introduction {
 
     public static void main(String[] args) {
         Introduction introduction = new Introduction();
-        System.out.println(introduction.camelCaseWordCounter("KO4K43")); // 3
+        System.out.println(introduction.camelCaseWordCounter("AswADsxaxsWEDxdcd")); // 3
 
         List<Integer> nums = new ArrayList<>(Arrays.asList(4, 7, 5, 2, 1, 2, -2, 0));
         System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]

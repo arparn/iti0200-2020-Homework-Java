@@ -10,4 +10,8 @@ public class Test {
         }
         return 0;
     }
+    public static void main(String[] args) {
+        Test introduction = new Test();
+        introduction.loop();
+    }
 }
