@@ -11,7 +11,7 @@ public class Introduction {
      * The first character of the string starts a new word, next words always start with a capital letter.
      * Words are not separated by whitespace.
      * Words (including the first character) can contain all kinds of symbols.
-     * The function should find and return x.
+     * The function should find and return  x.
      *
      * @param string Given string that contains x words.
      * @return The number of words in the given string.
