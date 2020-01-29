@@ -35,7 +35,13 @@ public class Introduction {
      * @return list of even numbers.
      */
     public List<Integer> findEvenNumbersList(List<Integer> numbers) {
-        return null;
+        List<Integer> answer = new ArrayList<Integer>();
+        for (Integer number : numbers) {
+            if (number % 2 == 0) {
+                answer.add(number);
+            }
+        }
+        return answer;
     }
 
     /**
@@ -56,7 +62,7 @@ public class Introduction {
         Introduction introduction = new Introduction();
         System.out.println(introduction.camelCaseWordCounter("AswADsxaxsWEDxdcd")); // 3
 
-        List<Integer> nums = new ArrayList<>(Arrays.asList(4, 7, 5, 2, 1, 2, -2, 0));
+        List<Integer> nums = new ArrayList<>(Arrays.asList(4, 8, 6, 2, 1, 2, -2, 0));
         System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]
 
         int[] array = {9, 0, 24, -6, 3};
