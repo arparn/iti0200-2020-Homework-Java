@@ -58,17 +58,29 @@ public class Introduction {
      * @return array of even numbers.
      */
     public int[] findEvenNumbersArray(int[] numbers) {
-        return null;
+        List<Integer> nums2 = new ArrayList<Integer>();
+        int index = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 2 == 0) {
+                nums2.add(numbers[i]);
+            }
+        }
+        int[] answer = new int[nums2.size()];
+        for (Integer number: nums2) {
+            answer[index] = number;
+            index += 1;
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
         Introduction introduction = new Introduction();
-        System.out.println(introduction.camelCaseWordCounter("")); // 3
+        System.out.println(introduction.camelCaseWordCounter("AsDgvhGasd")); // 3
 
         List<Integer> nums = new ArrayList<>(Arrays.asList(4, 8, 6, 2, 1, 2, -2, 0));
-        System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]
+        System.out.println(introduction.findEvenNumbersList(nums)); // [4, 8, 6, 2, 2, -2, 0]
 
-        int[] array = {9, 0, 24, -6, 3};
-        System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6]
+        int[] array = {9, 0, 24, -6, 3, 4};
+        System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6, 4]
     }
 }
