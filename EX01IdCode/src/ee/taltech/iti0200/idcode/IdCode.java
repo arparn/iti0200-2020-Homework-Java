@@ -26,6 +26,9 @@ public class IdCode {
     }
 
     public Gender getGender() {
+        if (!isGenderNumberCorrect()) {
+            return null;
+        }
         String idCode = getIdCodeValue();
         char genderChar = idCode.charAt(0);
         int genderNumber = Character.getNumericValue(genderChar);
@@ -37,16 +40,13 @@ public class IdCode {
     }
 
     public String getBirthPlace() {
+        if (!isQueueNumberCorrect()) {
+            return "Wrong input!";
+        }
         int identificator = 999;
         String answer = null;
         String idCode = getIdCodeValue();
         String queue = idCode.substring(7, 10);
-        for (int index = 0; index < queue.length(); index ++) {
-            char letter = queue.charAt(index);
-            if (!Character.isDigit(letter)) {
-                return "Wrong input!";
-            }
-        }
         int queueNumber = Integer.parseInt(queue);
         if (0 > queueNumber || queueNumber > 999) {
             return "Wrong input!";
@@ -80,6 +80,9 @@ public class IdCode {
     }
 
     public int getFullYear() {
+        if (!isYearNumberCorrect()) {
+            return -1;
+        }
         String idCode = getIdCodeValue();
         char genderChar = idCode.charAt(0);
         int genderNumber = Character.getNumericValue(genderChar);
@@ -101,6 +104,9 @@ public class IdCode {
     private boolean isGenderNumberCorrect() {
         String idCode = getIdCodeValue();
         char genderChar = idCode.charAt(0);
+        if (!Character.isDigit(genderChar)) {
+            return false;
+        }
         int genderNumber = Character.getNumericValue(genderChar);
         return 1 <= genderNumber && genderNumber <= 6;
     }
@@ -108,6 +114,12 @@ public class IdCode {
     private boolean isYearNumberCorrect() {
         String idCode = getIdCodeValue();
         String year = idCode.substring(1, 3);
+        for (int index = 0; index < year.length(); index ++) {
+            char letter = year.charAt(index);
+            if (!Character.isDigit(letter)) {
+                return false;
+            }
+        }
         int yearOfBirth = Integer.parseInt(year);
         return 0 <= yearOfBirth && yearOfBirth <= 99;
     }
@@ -115,8 +127,13 @@ public class IdCode {
     private boolean isMonthNumberCorrect() {
         String idCode = getIdCodeValue();
         String monthNumber = idCode.substring(3, 5);
+        for (int index = 0; index < monthNumber.length(); index ++) {
+            char letter = monthNumber.charAt(index);
+            if (!Character.isDigit(letter)) {
+                return false;
+            }
+        }
         int month = Integer.parseInt(monthNumber);
-        System.out.println(month);
         return 1 <= month && month <= 12;
     }
 
@@ -125,6 +142,12 @@ public class IdCode {
         String month = idCode.substring(3, 5);
         int monthNumber = Integer.parseInt(month);
         String day = idCode.substring(5, 7);
+        for (int index = 0; index < day.length(); index ++) {
+            char letter = day.charAt(index);
+            if (!Character.isDigit(letter)) {
+                return false;
+            }
+        }
         int dayNumber = Integer.parseInt(day);
         int year = getFullYear();
         return (monthNumber == 2 && isLeapYear(year) && (1 <= dayNumber && dayNumber <= 29))
@@ -139,6 +162,12 @@ public class IdCode {
     private boolean isQueueNumberCorrect() {
         String idCode = getIdCodeValue();
         String queue = idCode.substring(7, 10);
+        for (int index = 0; index < queue.length(); index ++) {
+            char letter = queue.charAt(index);
+            if (!Character.isDigit(letter)) {
+                return false;
+            }
+        }
         int queueNumber = Integer.parseInt(queue);
         return 0 <= queueNumber && queueNumber <= 999;
     }
@@ -146,6 +175,9 @@ public class IdCode {
     private boolean isControlNumberCorrect() {
         String idCode = getIdCodeValue();
         char lastChar = idCode.charAt(idCode.length() - 1);
+        if (!Character.isDigit(lastChar)) {
+            return false;
+        }
         int lastNumber = Character.getNumericValue(lastChar);
         int integer = 1;
         int integer2 = 3;
@@ -180,12 +212,11 @@ public class IdCode {
     }
 
     private boolean isLeapYear(int fullYear) {
-        int year = getFullYear();
-        if (year % 400 == 0) {
+        if (fullYear % 400 == 0) {
             return true;
-        } else if (year % 100 == 0) {
+        } else if (fullYear % 100 == 0) {
             return false;
-        } else if (year % 4 == 0) {
+        } else if (fullYear % 4 == 0) {
             return true;
         } else {
            return false;
@@ -193,11 +224,11 @@ public class IdCode {
     }
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("3760503aaa9");
+        IdCode validMaleIdCode = new IdCode("52003103736");
         //System.out.println(validMaleIdCode.isCorrect());
         //System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
-        System.out.println(validMaleIdCode.getBirthPlace());
+        //System.out.println(validMaleIdCode.getBirthPlace());
         //System.out.println(validMaleIdCode.getFullYear());
         //System.out.println(validMaleIdCode.isGenderNumberCorrect());
         //System.out.println(validMaleIdCode.isYearNumberCorrect());
