@@ -19,7 +19,7 @@ public class IdCode {
     }
 
     public boolean isCorrect() {
-        String idCode = idCodeValue;
+        String idCode = getIdCodeValue();
         for (int index = 0; index < idCode.length(); index ++) {
             char letter = idCode.charAt(index);
             if (!Character.isDigit(letter)) {
@@ -220,7 +220,7 @@ public class IdCode {
                 int number = Character.getNumericValue(character);
                 sum2 += number * integer2;
                 if (integer2 == 9) {
-                    integer2 = 0;
+                    integer2 = 1;
                 }
                 integer2 += 1;
             }
@@ -245,9 +245,9 @@ public class IdCode {
     }
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("37605030299");
+        IdCode validMaleIdCode = new IdCode("47605037779");
         //System.out.println(validMaleIdCode.isCorrect());
-        System.out.println(validMaleIdCode.getInformation());
+        //System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
         //System.out.println(validMaleIdCode.getBirthPlace());
         //System.out.println(validMaleIdCode.getFullYear());
@@ -256,7 +256,7 @@ public class IdCode {
         //System.out.println(validMaleIdCode.isMonthNumberCorrect());
         //System.out.println(validMaleIdCode.isDayNumberCorrect());
         //System.out.println(validMaleIdCode.isQueueNumberCorrect());
-        //System.out.println(validMaleIdCode.isControlNumberCorrect());
+        System.out.println(validMaleIdCode.isControlNumberCorrect());
         //System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
     }
 
