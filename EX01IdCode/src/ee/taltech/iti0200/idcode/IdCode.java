@@ -1,4 +1,5 @@
 package ee.taltech.iti0200.idcode;
+import javax.swing.*;
 import java.util.Map;
 import java.util.HashMap;
 public class IdCode {
@@ -18,11 +19,32 @@ public class IdCode {
     }
 
     public boolean isCorrect() {
-        return false;
+        String idCode = idCodeValue;
+        for (int index = 0; index < idCode.length(); index ++) {
+            char letter = idCode.charAt(index);
+            if (!Character.isDigit(letter)) {
+                return false;
+            }
+        }
+        return idCode.length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect()
+                && isMonthNumberCorrect() && isDayNumberCorrect() && isQueueNumberCorrect()
+                && isControlNumberCorrect();
     }
 
     public String getInformation() {
-        return null;
+        if (isCorrect()) {
+            String idCode = getIdCodeValue();
+            Gender gender = getGender();
+            int yearInt = getFullYear();
+            String year = Integer.toString(yearInt);
+            String month = idCode.substring(3, 5);
+            String day = idCode.substring(5, 7);
+            String dateOfBirth = day + "." + month + "." + year;
+            String city = getBirthPlace();
+            return "This is a " + gender + " born on " + dateOfBirth + " in " + city;
+        } else {
+            return "Given invalid ID code!";
+        }
     }
 
     public Gender getGender() {
@@ -69,7 +91,6 @@ public class IdCode {
             cityMap.put(710, "Võru");
             cityMap.put(999, null);
             for (Integer cityNumber : cityMap.keySet()) {
-                System.out.println(cityNumber);
                 if (queueNumber <= cityNumber && identificator >= cityNumber) {
                     identificator = cityNumber;
                     answer = cityMap.get(cityNumber);
@@ -224,9 +245,9 @@ public class IdCode {
     }
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("49812115320");
+        IdCode validMaleIdCode = new IdCode("37605030299");
         //System.out.println(validMaleIdCode.isCorrect());
-        //System.out.println(validMaleIdCode.getInformation());
+        System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
         //System.out.println(validMaleIdCode.getBirthPlace());
         //System.out.println(validMaleIdCode.getFullYear());
