@@ -41,10 +41,15 @@ public class IdCode {
         String answer = null;
         String idCode = getIdCodeValue();
         String queue = idCode.substring(7, 10);
+        for (int index = 0; index < queue.length(); index ++) {
+            char letter = queue.charAt(index);
+            if (!Character.isDigit(letter)) {
+                return "Wrong input!";
+            }
+        }
         int queueNumber = Integer.parseInt(queue);
-        System.out.println(queueNumber);
         if (0 > queueNumber || queueNumber > 999) {
-            return "wrong input!";
+            return "Wrong input!";
         } else if (queueNumber == 0) {
             return null;
         } else {
@@ -111,6 +116,7 @@ public class IdCode {
         String idCode = getIdCodeValue();
         String monthNumber = idCode.substring(3, 5);
         int month = Integer.parseInt(monthNumber);
+        System.out.println(month);
         return 1 <= month && month <= 12;
     }
 
@@ -187,7 +193,7 @@ public class IdCode {
     }
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("49808276014");
+        IdCode validMaleIdCode = new IdCode("3760503aaa9");
         //System.out.println(validMaleIdCode.isCorrect());
         //System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
