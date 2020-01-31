@@ -186,7 +186,7 @@ public class IdCode {
         for (int index = 0; index < 10; index++) {
             char character = idCode.charAt(index);
             int number = Character.getNumericValue(character);
-            sum1 = number * integer;
+            sum1 += number * integer;
             if (integer == 9) {
                 integer = 0;
             }
@@ -224,7 +224,7 @@ public class IdCode {
     }
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("52003103736");
+        IdCode validMaleIdCode = new IdCode("49812115320");
         //System.out.println(validMaleIdCode.isCorrect());
         //System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
