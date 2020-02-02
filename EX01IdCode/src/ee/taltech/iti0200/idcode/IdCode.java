@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class IdCode {
 
     private final String idCodeValue;
-    final static public int ID_CODE_LENGTH = 11;
+    static public int ID_CODE_LENGTH = 11;
 
     enum Gender {
         MALE, FEMALE
