@@ -2,7 +2,7 @@ package ee.taltech.iti0200.idcode;
 import java.util.Map;
 import java.util.HashMap;
 public class IdCode {
-    static int id_code_length = 11;
+    static int IDCODE = 11;
 
     private final String idCodeValue;
 
@@ -26,7 +26,7 @@ public class IdCode {
                 return false;
             }
         }
-        return idCode.length() == id_code_length && isGenderNumberCorrect() && isYearNumberCorrect()
+        return idCode.length() == IDCODE && isGenderNumberCorrect() && isYearNumberCorrect()
                 && isMonthNumberCorrect() && isDayNumberCorrect() && isQueueNumberCorrect()
                 && isControlNumberCorrect();
     }
