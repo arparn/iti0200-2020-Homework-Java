@@ -19,10 +19,18 @@ public class IdCode {
     public static final int YEAR1 = 1800;
     public static final int YEAR2 = 1900;
     public static final int YEAR3 = 2000;
-    public static final int CHAR7 = 7;
-    public static final int CHAR6 = 6;
+    public static final int INT7 = 7;
+    public static final int INT6 = 6;
     public static final int MAX_MONTH = 12;
-    public static final int CHAR8 = 8;
+    public static final int INT8 = 8;
+    public static final int DAYS1 = 29;
+    public static final int DAYS2 = 28;
+    public static final int DAYS3 = 30;
+    public static final int DAYS4 = 31;
+    public static final int INT9 = 9;
+    public static final int INT11 = 11;
+    public static final int INT400 = 400;
+
 
     private final String idCodeValue;
 
@@ -58,7 +66,7 @@ public class IdCode {
             int yearInt = getFullYear();
             String year = Integer.toString(yearInt);
             String month = idCode.substring(3, 5);
-            String day = idCode.substring(5, CHAR7);
+            String day = idCode.substring(5, INT7);
             String dateOfBirth = day + "." + month + "." + year;
             String city = getBirthPlace();
             return "This is a " + gender + " born on " + dateOfBirth + " in " + city;
@@ -88,7 +96,7 @@ public class IdCode {
         int identificator = IDENTIFICATOR;
         String answer = null;
         String idCode = getIdCodeValue();
-        String queue = idCode.substring(CHAR7, 10);
+        String queue = idCode.substring(INT7, 10);
         int queueNumber = Integer.parseInt(queue);
         if (queueNumber == 0) {
             return null;
@@ -130,7 +138,7 @@ public class IdCode {
             fullYear = YEAR1;
         } else if (genderNumber == 3 || genderNumber == 4) {
             fullYear = YEAR2;
-        } else if (genderNumber == 5 || genderNumber == CHAR6) {
+        } else if (genderNumber == 5 || genderNumber == INT6) {
             fullYear = YEAR3;
         } else {
             return -1;
@@ -148,7 +156,7 @@ public class IdCode {
             return false;
         }
         int genderNumber = Character.getNumericValue(genderChar);
-        return 1 <= genderNumber && genderNumber <= CHAR6;
+        return 1 <= genderNumber && genderNumber <= INT6;
     }
 
     private boolean isYearNumberCorrect() {
@@ -180,7 +188,7 @@ public class IdCode {
         String idCode = getIdCodeValue();
         String month = idCode.substring(3, 5);
         int monthNumber = Integer.parseInt(month);
-        String day = idCode.substring(5, CHAR7);
+        String day = idCode.substring(5, INT7);
         for (int index = 0; index < day.length(); index++) {
             char letter = day.charAt(index);
             if (!Character.isDigit(letter)) {
@@ -189,19 +197,19 @@ public class IdCode {
         }
         int dayNumber = Integer.parseInt(day);
         int year = getFullYear();
-        return (monthNumber == 2 && isLeapYear(year) && (1 <= dayNumber && dayNumber <= 29))
-                || (monthNumber == 2 && !isLeapYear(year) && (1 <= dayNumber && dayNumber <= 28))
-                || ((1 <= monthNumber && monthNumber <= CHAR7) && monthNumber != 2 && monthNumber % 2 == 0
-                && (1 <= dayNumber && dayNumber <= 30)) || ((1 <= monthNumber && monthNumber <= CHAR7)
-                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= 31))
-                || ((CHAR8 <= monthNumber && monthNumber <= 12) && monthNumber % 2 == 0
-                && (1 <= dayNumber && dayNumber <= 31)) || ((CHAR8 <= monthNumber && monthNumber <= MAX_MONTH)
-                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= 30));
+        return (monthNumber == 2 && isLeapYear(year) && (1 <= dayNumber && dayNumber <= DAYS1))
+                || (monthNumber == 2 && !isLeapYear(year) && (1 <= dayNumber && dayNumber <= DAYS2))
+                || ((1 <= monthNumber && monthNumber <= INT7) && monthNumber != 2 && monthNumber % 2 == 0
+                && (1 <= dayNumber && dayNumber <= DAYS3)) || ((1 <= monthNumber && monthNumber <= INT7)
+                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= DAYS4))
+                || ((INT8 <= monthNumber && monthNumber <= MAX_MONTH) && monthNumber % 2 == 0
+                && (1 <= dayNumber && dayNumber <= DAYS4)) || ((INT8 <= monthNumber && monthNumber <= MAX_MONTH)
+                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= DAYS3));
     }
 
     private boolean isQueueNumberCorrect() {
         String idCode = getIdCodeValue();
-        String queue = idCode.substring(CHAR7, 10);
+        String queue = idCode.substring(INT7, 10);
         for (int index = 0; index < queue.length(); index++) {
             char letter = queue.charAt(index);
             if (!Character.isDigit(letter)) {
@@ -227,23 +235,23 @@ public class IdCode {
             char character = idCode.charAt(index);
             int number = Character.getNumericValue(character);
             sum1 += number * integer;
-            if (integer == 9) {
+            if (integer == INT9) {
                 integer = 0;
             }
             integer += 1;
         }
-        int controlNumber = sum1 % 11;
+        int controlNumber = sum1 % INT11;
         if (controlNumber == 10) {
-            for (int index = 0; index < 11; index++) {
+            for (int index = 0; index < INT11; index++) {
                 char character = idCode.charAt(index);
                 int number = Character.getNumericValue(character);
                 sum2 += number * integer2;
-                if (integer2 == 9) {
+                if (integer2 == INT9) {
                     integer2 = 1;
                 }
                 integer2 += 1;
             }
-            controlNumber = sum2 % 11;
+            controlNumber = sum2 % INT11;
         }
         if (controlNumber == 10) {
             controlNumber = 0;
@@ -252,7 +260,7 @@ public class IdCode {
     }
 
     private boolean isLeapYear(int fullYear) {
-        if (fullYear % 400 == 0) {
+        if (fullYear % INT400 == 0) {
             return true;
         } else if (fullYear % 100 == 0) {
             return false;
