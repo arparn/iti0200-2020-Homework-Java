@@ -2,7 +2,7 @@ package ee.taltech.iti0200.idcode;
 import java.util.Map;
 import java.util.HashMap;
 public class IdCode {
-    final static int ID_CODE = 11;
+    static private int ID_CODE = 11;
 
     private final String idCodeValue;
 
