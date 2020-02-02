@@ -4,6 +4,7 @@ import java.util.HashMap;
 public class IdCode {
 
     private final String idCodeValue;
+    final static public int ID_CODE_LENGTH = 11;
 
     enum Gender {
         MALE, FEMALE
@@ -25,7 +26,7 @@ public class IdCode {
                 return false;
             }
         }
-        return idCode.length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect()
+        return idCode.length() == ID_CODE_LENGTH && isGenderNumberCorrect() && isYearNumberCorrect()
                 && isMonthNumberCorrect() && isDayNumberCorrect() && isQueueNumberCorrect()
                 && isControlNumberCorrect();
     }
