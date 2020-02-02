@@ -3,6 +3,22 @@ import java.util.Map;
 import java.util.HashMap;
 public class IdCode {
     public static final int ID_CODE_LENGTH = 11;
+    public static final int IDENTIFICATOR = 999;
+    public static final int CITY_MAP1 = 20;
+    public static final int CITY_MAP2 = 220;
+    public static final int CITY_MAP3 = 270;
+    public static final int CITY_MAP4 = 370;
+    public static final int CITY_MAP5 = 420;
+    public static final int CITY_MAP6 = 470;
+    public static final int CITY_MAP7 = 490;
+    public static final int CITY_MAP8 = 520;
+    public static final int CITY_MAP9 = 570;
+    public static final int CITY_MAP10 = 600;
+    public static final int CITY_MAP11 = 650;
+    public static final int CITY_MAP12 = 710;
+    public static final int YEAR1 = 1800;
+    public static final int YEAR2 = 1900;
+    public static final int YEAR3 = 2000;
 
     private final String idCodeValue;
 
@@ -65,31 +81,29 @@ public class IdCode {
         if (!isQueueNumberCorrect()) {
             return "Wrong input!";
         }
-        int identificator = 999;
+        int identificator = IDENTIFICATOR;
         String answer = null;
         String idCode = getIdCodeValue();
         String queue = idCode.substring(7, 10);
         int queueNumber = Integer.parseInt(queue);
-        if (0 > queueNumber || queueNumber > 999) {
-            return "Wrong input!";
-        } else if (queueNumber == 0) {
+        if (queueNumber == 0) {
             return null;
         } else {
             Map<Integer, String> cityMap = new HashMap<Integer, String>();
             cityMap.put(10, "Kuressaare");
-            cityMap.put(20, "Tartu");
-            cityMap.put(220, "Tallinn");
-            cityMap.put(270, "Kohtla-Järve");
-            cityMap.put(370, "Tartu");
-            cityMap.put(420, "Narva");
-            cityMap.put(470, "Pärnu");
-            cityMap.put(490, "Tallinn");
-            cityMap.put(520, "Paide");
-            cityMap.put(570, "Rakvere");
-            cityMap.put(600, "Valga");
-            cityMap.put(650, "Viljandi");
-            cityMap.put(710, "Võru");
-            cityMap.put(999, null);
+            cityMap.put(CITY_MAP1, "Tartu");
+            cityMap.put(CITY_MAP2, "Tallinn");
+            cityMap.put(CITY_MAP3, "Kohtla-Järve");
+            cityMap.put(CITY_MAP4, "Tartu");
+            cityMap.put(CITY_MAP5, "Narva");
+            cityMap.put(CITY_MAP6, "Pärnu");
+            cityMap.put(CITY_MAP7, "Tallinn");
+            cityMap.put(CITY_MAP8, "Paide");
+            cityMap.put(CITY_MAP9, "Rakvere");
+            cityMap.put(CITY_MAP10, "Valga");
+            cityMap.put(CITY_MAP11, "Viljandi");
+            cityMap.put(CITY_MAP12, "Võru");
+            cityMap.put(IDENTIFICATOR, null);
             for (Integer cityNumber : cityMap.keySet()) {
                 if (queueNumber <= cityNumber && identificator >= cityNumber) {
                     identificator = cityNumber;
@@ -109,11 +123,11 @@ public class IdCode {
         int genderNumber = Character.getNumericValue(genderChar);
         int fullYear;
         if (genderNumber == 1 || genderNumber == 2) {
-            fullYear = 1800;
+            fullYear = YEAR1;
         } else if ( genderNumber == 3 || genderNumber == 4) {
-            fullYear = 1900;
+            fullYear = YEAR2;
         } else if (genderNumber == 5 || genderNumber == 6) {
-            fullYear = 2000;
+            fullYear = YEAR3;
         } else {
             return -1;
         }
