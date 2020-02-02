@@ -206,7 +206,7 @@ public class IdCode {
             }
         }
         int queueNumber = Integer.parseInt(queue);
-        return 0 <= queueNumber && queueNumber <= 999;
+        return 0 <= queueNumber && queueNumber <= IDENTIFICATOR;
     }
 
     private boolean isControlNumberCorrect() {
@@ -253,17 +253,13 @@ public class IdCode {
             return true;
         } else if (fullYear % 100 == 0) {
             return false;
-        } else if (fullYear % 4 == 0) {
-            return true;
-        } else {
-           return false;
-        }
+        } else return fullYear % 4 == 0;
     }
 
     public static void main(String[] args) {
         IdCode validMaleIdCode = new IdCode("50003103736");
         //System.out.println(validMaleIdCode.isCorrect());
-        System.out.println(validMaleIdCode.getInformation());
+        //System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
         //System.out.println(validMaleIdCode.getBirthPlace());
         //System.out.println(validMaleIdCode.getFullYear());
@@ -273,7 +269,7 @@ public class IdCode {
         //System.out.println(validMaleIdCode.isDayNumberCorrect());
         //System.out.println(validMaleIdCode.isQueueNumberCorrect());
         //System.out.println(validMaleIdCode.isControlNumberCorrect());
-        //System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
+        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
     }
 
 }
