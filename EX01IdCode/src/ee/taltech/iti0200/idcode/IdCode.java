@@ -2,9 +2,9 @@ package ee.taltech.iti0200.idcode;
 import java.util.Map;
 import java.util.HashMap;
 public class IdCode {
+    final static public int ID_CODE_LENGTH = 11;
 
     private final String idCodeValue;
-    static public int ID_CODE_LENGTH = 11;
 
     enum Gender {
         MALE, FEMALE
