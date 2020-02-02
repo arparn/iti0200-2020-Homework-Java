@@ -25,8 +25,7 @@ public class IdCode {
                 return false;
             }
         }
-        int IDCODELENGTH = 11;
-        return idCode.length() == IDCODELENGTH && isGenderNumberCorrect() && isYearNumberCorrect()
+        return idCode.length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect()
                 && isMonthNumberCorrect() && isDayNumberCorrect() && isQueueNumberCorrect()
                 && isControlNumberCorrect();
     }
