@@ -1,5 +1,4 @@
 package ee.taltech.iti0200.idcode;
-import javax.swing.*;
 import java.util.Map;
 import java.util.HashMap;
 public class IdCode {
@@ -20,13 +19,14 @@ public class IdCode {
 
     public boolean isCorrect() {
         String idCode = getIdCodeValue();
-        for (int index = 0; index < idCode.length(); index ++) {
+        for (int index = 0; index < idCode.length(); index++) {
             char letter = idCode.charAt(index);
             if (!Character.isDigit(letter)) {
                 return false;
             }
         }
-        return idCode.length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect()
+        int idCodeLength = 11;
+        return idCode.length() == idCodeLength && isGenderNumberCorrect() && isYearNumberCorrect()
                 && isMonthNumberCorrect() && isDayNumberCorrect() && isQueueNumberCorrect()
                 && isControlNumberCorrect();
     }
@@ -245,9 +245,9 @@ public class IdCode {
     }
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("47605037779");
+        IdCode validMaleIdCode = new IdCode("50003103736");
         //System.out.println(validMaleIdCode.isCorrect());
-        //System.out.println(validMaleIdCode.getInformation());
+        System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
         //System.out.println(validMaleIdCode.getBirthPlace());
         //System.out.println(validMaleIdCode.getFullYear());
@@ -256,7 +256,7 @@ public class IdCode {
         //System.out.println(validMaleIdCode.isMonthNumberCorrect());
         //System.out.println(validMaleIdCode.isDayNumberCorrect());
         //System.out.println(validMaleIdCode.isQueueNumberCorrect());
-        System.out.println(validMaleIdCode.isControlNumberCorrect());
+        //System.out.println(validMaleIdCode.isControlNumberCorrect());
         //System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
     }
 
