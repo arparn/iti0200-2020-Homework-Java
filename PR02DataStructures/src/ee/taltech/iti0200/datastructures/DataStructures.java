@@ -103,20 +103,11 @@ public class DataStructures {
             String word = words.get(i);
             if (!mapOfWords.containsKey(word)) {
                 mapOfWords.put(word, 1);
-            } else if (mapOfWords.containsKey(word)) {
-                int amount = mapOfWords.get(word);
-                mapOfWords.put(word, amount + 1);
+            } else {
+                answer.add(word);
+                mapOfWords.remove(word);
             }
         }
-        for (Map.Entry mapElement : mapOfWords.entrySet()) {
-            int value = ((int)mapElement.getValue());
-            String key = ((String)mapElement.getKey());
-            int howMany = value / 2;
-            for (int z = 0; z < howMany; z++) {
-                    answer.add(key);
-            }
-        }
-        Collections.reverse(answer);
         return answer;
     }
 
