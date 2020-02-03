@@ -1,5 +1,6 @@
 
 package ee.taltech.iti0200.datastructures;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class DataStructures {
@@ -60,7 +61,28 @@ public class DataStructures {
      * @return List of book names located correctly
      */
     public static List<String> rearrangeTheShelf(List<String> books) {
-        return null;
+        LinkedList<String> bookList = new LinkedList<String>();
+        String bookName;
+        bookList.add("][");
+        for (int i = 0; i < books.size(); i++) {
+            String book = books.get(i);
+            for (int x = 0; x < book.length(); x++) {
+                Character firstChar = Character.toLowerCase(book.charAt(0));
+                Character secondChar = book.charAt(x);
+                if (x == 0) {
+                    continue;
+                } else if (secondChar.equals('-') && firstChar.equals(Character.toLowerCase(book.charAt(x + 1)))) {
+                    bookName = book.substring(0, x);
+                    bookList.addFirst(bookName);
+                    break;
+                } else if (secondChar.equals('-')) {
+                    bookName = book.substring(0, x);
+                    bookList.addLast(bookName);
+                    break;
+                }
+            }
+        }
+        return bookList;
     }
 
     /**
@@ -86,9 +108,9 @@ public class DataStructures {
 
 
         System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor"))); // [Raamat2, ][, Raamat1]
-        //System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor")).get(1));  // ][
-        //System.out.println(rearrangeTheShelf(Arrays.asList("seiklused metsas-Saimon", "Kodumaa-Karl Gustav ", "Raamat3-Tundmatu")));  //  [Kodumaa, seiklused metsas, ][, Raamat3]
-        //System.out.println(rearrangeTheShelf(Arrays.asList("Book-bob",  "raamat-Romeo", "story-teller", "teine-name", "name-nbook"))); // [name, raamat, Book, ][, story, teine]
+        System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor")).get(1));  // ][
+        System.out.println(rearrangeTheShelf(Arrays.asList("seiklused metsas-Saimon", "Kodumaa-Karl Gustav ", "Raamat3-Tundmatu")));  //  [Kodumaa, seiklused metsas, ][, Raamat3]
+        System.out.println(rearrangeTheShelf(Arrays.asList("Book-bob",  "raamat-Romeo", "story-teller", "teine-name", "name-nbook"))); // [name, raamat, Book, ][, story, teine]
 
         //System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
         //System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
