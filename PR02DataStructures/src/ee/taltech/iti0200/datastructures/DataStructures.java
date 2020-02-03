@@ -116,7 +116,6 @@ public class DataStructures {
                     answer.add(key);
             }
         }
-        Collections.sort(answer);
         return answer;
     }
 
