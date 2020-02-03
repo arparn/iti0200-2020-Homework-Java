@@ -98,7 +98,6 @@ public class DataStructures {
      */
     public static List<String> onlyEvenWords(List<String> words) {
         ArrayList<String> answer = new ArrayList<>();
-        ArrayList<String> answer2 = new ArrayList<>();
         Map<String, Integer> mapOfWords = new HashMap<>();
         for (int i = 0; i < words.size(); i++) {
             String word = words.get(i);
@@ -117,12 +116,8 @@ public class DataStructures {
                     answer.add(key);
             }
         }
-        for (String word : words) {
-            if (answer.contains(word) && !answer2.contains(word)) {
-                answer2.add(word);
-            }
-        }
-        return answer2;
+        Collections.reverse(answer);
+        return answer;
     }
 
 
