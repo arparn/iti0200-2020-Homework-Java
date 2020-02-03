@@ -111,8 +111,9 @@ public class DataStructures {
         for (Map.Entry mapElement : mapOfWords.entrySet()) {
             int value = ((int)mapElement.getValue());
             String key = ((String)mapElement.getKey());
-            if (value % 2 == 0) {
-                answer.add(key);
+            int howMany = value / 2;
+            for (int z = 0; z < howMany; z++) {
+                    answer.add(key);
             }
         }
         return answer;
@@ -132,7 +133,7 @@ public class DataStructures {
 
         System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
         System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
-        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM", "SPAM"))); // [SPAM]
+        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
     }
 
 
