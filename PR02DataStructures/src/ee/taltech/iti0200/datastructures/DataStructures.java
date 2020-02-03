@@ -21,7 +21,15 @@ public class DataStructures {
      * @return the longest String from input
      */
     public static String findLongestWord(String sentence) {
-        return null;
+        String theLongest = "";
+        String[] arrayOfWords = sentence.split(" ");
+        Arrays.sort(arrayOfWords);
+        for (String word : arrayOfWords) {
+            if (word.length() > theLongest.length()) {
+                theLongest = word;
+            }
+        }
+        return theLongest;
     }
 
 
@@ -72,19 +80,19 @@ public class DataStructures {
 
 
     public static void main(String args[]) {
-        System.out.println(findLongestWord("nimi on salastatud"));  // "salastatud"
-        System.out.println(findLongestWord("aaa bbbbb"));  // "bbbbb"
-        System.out.println(findLongestWord("hello ahllo")); // "ahllo"
+        //System.out.println(findLongestWord("nimi on salastatud"));  // "salastatud"
+        //System.out.println(findLongestWord("aaa bbbbb"));  // "bbbbb"
+        //System.out.println(findLongestWord("hello ahllo")); // "ahllo"
 
 
         System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor"))); // [Raamat2, ][, Raamat1]
-        System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor")).get(1));  // ][
-        System.out.println(rearrangeTheShelf(Arrays.asList("seiklused metsas-Saimon", "Kodumaa-Karl Gustav ", "Raamat3-Tundmatu")));  //  [Kodumaa, seiklused metsas, ][, Raamat3]
-        System.out.println(rearrangeTheShelf(Arrays.asList("Book-bob",  "raamat-Romeo", "story-teller", "teine-name", "name-nbook"))); // [name, raamat, Book, ][, story, teine]
+        //System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor")).get(1));  // ][
+        //System.out.println(rearrangeTheShelf(Arrays.asList("seiklused metsas-Saimon", "Kodumaa-Karl Gustav ", "Raamat3-Tundmatu")));  //  [Kodumaa, seiklused metsas, ][, Raamat3]
+        //System.out.println(rearrangeTheShelf(Arrays.asList("Book-bob",  "raamat-Romeo", "story-teller", "teine-name", "name-nbook"))); // [name, raamat, Book, ][, story, teine]
 
-        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
-        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
-        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
+        //System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
+        //System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
+        //System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
     }
 
 
