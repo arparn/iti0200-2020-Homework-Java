@@ -97,7 +97,25 @@ public class DataStructures {
      * @return list of strings matching criteria
      */
     public static List<String> onlyEvenWords(List<String> words) {
-        return null;
+        ArrayList<String> answer = new ArrayList<>();
+        Map<String, Integer> mapOfWords = new HashMap<>();
+        for (int i = 0; i < words.size(); i++) {
+            String word = words.get(i);
+            if (!mapOfWords.containsKey(word)) {
+                mapOfWords.put(word, 1);
+            } else if (mapOfWords.containsKey(word)) {
+                int amount = mapOfWords.get(word);
+                mapOfWords.replace(word, amount + 1);
+            }
+        }
+        for (Map.Entry mapElement : mapOfWords.entrySet()) {
+            int value = ((int)mapElement.getValue());
+            String key = ((String)mapElement.getKey());
+            if (value % 2 == 0) {
+                answer.add(key);
+            }
+        }
+        return answer;
     }
 
 
@@ -107,14 +125,14 @@ public class DataStructures {
         //System.out.println(findLongestWord("hello ahllo")); // "ahllo"
 
 
-        System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor"))); // [Raamat2, ][, Raamat1]
-        System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor")).get(1));  // ][
-        System.out.println(rearrangeTheShelf(Arrays.asList("seiklused metsas-Saimon", "Kodumaa-Karl Gustav ", "Raamat3-Tundmatu")));  //  [Kodumaa, seiklused metsas, ][, Raamat3]
-        System.out.println(rearrangeTheShelf(Arrays.asList("Book-bob",  "raamat-Romeo", "story-teller", "teine-name", "name-nbook"))); // [name, raamat, Book, ][, story, teine]
+        //System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor"))); // [Raamat2, ][, Raamat1]
+        //System.out.println(rearrangeTheShelf(Arrays.asList("Raamat1-Autor1", "Raamat2-Raamatu2Autor")).get(1));  // ][
+        //System.out.println(rearrangeTheShelf(Arrays.asList("seiklused metsas-Saimon", "Kodumaa-Karl Gustav ", "Raamat3-Tundmatu")));  //  [Kodumaa, seiklused metsas, ][, Raamat3]
+        //System.out.println(rearrangeTheShelf(Arrays.asList("Book-bob",  "raamat-Romeo", "story-teller", "teine-name", "name-nbook"))); // [name, raamat, Book, ][, story, teine]
 
-        //System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
-        //System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
-        //System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
+        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
+        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
+        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM", "SPAM"))); // [SPAM]
     }
 
 
