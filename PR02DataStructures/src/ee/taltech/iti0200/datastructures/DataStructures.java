@@ -105,7 +105,7 @@ public class DataStructures {
                 mapOfWords.put(word, 1);
             } else if (mapOfWords.containsKey(word)) {
                 int amount = mapOfWords.get(word);
-                mapOfWords.replace(word, amount + 1);
+                mapOfWords.put(word, amount + 1);
             }
         }
         for (Map.Entry mapElement : mapOfWords.entrySet()) {
