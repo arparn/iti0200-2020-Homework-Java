@@ -63,7 +63,7 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         history.add(url);
-        webPages.add(homePage);
+        webPages.add(url);
         trashHold.clear();
         if (!amountOfVisiting.containsKey(url)) {
             amountOfVisiting.put(url, 1);
@@ -162,6 +162,7 @@ public class WebBrowser {
         //webBrowserTest.homePage();
         webBrowserTest.goTo("youtube.com");
         webBrowserTest.back();
+        webBrowserTest.forward();
         System.out.println(webBrowserTest.getHistory());
 
     }
