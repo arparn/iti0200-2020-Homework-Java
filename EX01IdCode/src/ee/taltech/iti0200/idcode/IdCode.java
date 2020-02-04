@@ -270,7 +270,7 @@ public class IdCode {
 
     public static void main(String[] args) {
         IdCode validMaleIdCode = new IdCode("49812115320");
-        System.out.println(validMaleIdCode.isCorrect());
+        //System.out.println(validMaleIdCode.isCorrect());
         //System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
         //System.out.println(validMaleIdCode.getBirthPlace());
@@ -281,7 +281,7 @@ public class IdCode {
         System.out.println(validMaleIdCode.isDayNumberCorrect());
         System.out.println(validMaleIdCode.isQueueNumberCorrect());
         System.out.println(validMaleIdCode.isControlNumberCorrect());
-        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
+        //System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
     }
 
 }
