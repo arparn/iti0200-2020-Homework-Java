@@ -4,7 +4,7 @@ import java.util.*;
 public class WebBrowser {
     private String homePage = "google.com";
     private LinkedList<String> history = new LinkedList<>(Collections.singletonList("google.com"));
-    private Map<String, Integer> amountOfVisiting = new HashMap<>();
+    private Map<String, Integer> amountOfVisiting = new HashMap<>(Map.of("google.com", 1));
     private LinkedList<String> webPages = new LinkedList<>(Collections.singletonList("google.com"));
     private LinkedList<String> trashHold = new LinkedList<>();
     private LinkedList<String> bookmarks = new LinkedList<>();
@@ -71,7 +71,7 @@ public class WebBrowser {
             int amount = amountOfVisiting.get(url);
             amountOfVisiting.replace(url, amount + 1);
         }
-        System.out.println(url);
+        //System.out.println(url);
     }
 
     /**
@@ -156,4 +156,15 @@ public class WebBrowser {
         }
         return currentUrl;
     }
+
+    public static void main(String[] args) {
+        WebBrowser webBrowserTest = new WebBrowser();
+        //webBrowserTest.homePage();
+        webBrowserTest.goTo("youtube.com");
+        webBrowserTest.back();
+        System.out.println(webBrowserTest.getHistory());
+
+    }
 }
+
+
