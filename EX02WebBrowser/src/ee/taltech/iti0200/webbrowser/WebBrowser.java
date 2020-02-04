@@ -110,9 +110,17 @@ public class WebBrowser {
     public String getTop3VisitedPages() {
         HashMap<String, Integer> top3 = new HashMap<>();
         StringBuilder answer = new StringBuilder();
+        int identificationNumber;
         int topVisits = 0;
         String topWebsite = null;
-        for (int i = 0; i < 3; i++) {
+        if (amountOfVisiting.size() == 1) {
+            identificationNumber = 1;
+        } else if (amountOfVisiting.size() == 2){
+            identificationNumber = 2;
+        } else {
+            identificationNumber = 3;
+        }
+        for (int i = 0; i < identificationNumber; i++) {
             for (Map.Entry mapElement : amountOfVisiting.entrySet()) {
                 int amountOfVisits = ((int)mapElement.getValue());
                 String website = ((String)mapElement.getKey());
@@ -121,7 +129,11 @@ public class WebBrowser {
                     topWebsite = website;
                 }
             }
-            answer.append(topWebsite).append(" - ").append(topVisits).append("\n");
+            if (topVisits > 1) {
+                answer.append(topWebsite).append(" - ").append(topVisits).append(" visits\n");
+            } else {
+                answer.append(topWebsite).append(" - ").append(topVisits).append(" visit\n");
+            }
             top3.put(topWebsite, topVisits);
             topVisits = 0;
             topWebsite = "";
@@ -161,9 +173,9 @@ public class WebBrowser {
     public static void main(String[] args) {
         WebBrowser webBrowserTest = new WebBrowser();
         //webBrowserTest.homePage();
-        webBrowserTest.goTo("youtube.com");
-        webBrowserTest.back();
-        webBrowserTest.forward();
+        //webBrowserTest.goTo("youtube.com");
+        //webBrowserTest.back();
+        //webBrowserTest.forward();
         //System.out.println(webBrowserTest.getHistory());
         System.out.println(webBrowserTest.getTop3VisitedPages());
 
