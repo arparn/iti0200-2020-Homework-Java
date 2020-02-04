@@ -110,6 +110,7 @@ public class WebBrowser {
     public String getTop3VisitedPages() {
         HashMap<String, Integer> top3 = new HashMap<>();
         StringBuilder answer = new StringBuilder();
+        ArrayList<String> sortingList = new ArrayList<>();
         int identificationNumber;
         int topVisits = 0;
         String topWebsite = null;
@@ -134,9 +135,15 @@ public class WebBrowser {
             } else {
                 answer.append(topWebsite).append(" - ").append(topVisits).append(" visit\n");
             }
+            sortingList.add(answer.toString());
+            answer.replace(0, answer.length(), "");
             top3.put(topWebsite, topVisits);
             topVisits = 0;
             topWebsite = "";
+        }
+        Collections.sort(sortingList);
+        for (String answerString : sortingList) {
+            answer.append(answerString);
         }
         return answer.toString();
     }
@@ -173,10 +180,11 @@ public class WebBrowser {
     public static void main(String[] args) {
         WebBrowser webBrowserTest = new WebBrowser();
         //webBrowserTest.homePage();
-        //webBrowserTest.goTo("youtube.com");
+        webBrowserTest.goTo("twitter.com");
         //webBrowserTest.back();
         //webBrowserTest.forward();
-        //System.out.println(webBrowserTest.getHistory());
+        System.out.println(webBrowserTest.webPages);
+        System.out.println(webBrowserTest.amountOfVisiting);
         System.out.println(webBrowserTest.getTop3VisitedPages());
 
     }
