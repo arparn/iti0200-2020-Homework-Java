@@ -122,6 +122,7 @@ public class WebBrowser {
                 }
             }
             answer.append(topWebsite).append(" - ").append(topVisits).append("\n");
+            top3.put(topWebsite, topVisits);
             topVisits = 0;
             topWebsite = "";
         }
@@ -163,7 +164,8 @@ public class WebBrowser {
         webBrowserTest.goTo("youtube.com");
         webBrowserTest.back();
         webBrowserTest.forward();
-        System.out.println(webBrowserTest.getHistory());
+        //System.out.println(webBrowserTest.getHistory());
+        System.out.println(webBrowserTest.getTop3VisitedPages());
 
     }
 }
