@@ -3,33 +3,33 @@ import java.util.Map;
 import java.util.HashMap;
 public class IdCode {
     public static final int ID_CODE_LENGTH = 11;
-    public static final int IDENTIFICATOR = 999;
-    public static final int CITY_MAP1 = 20;
-    public static final int CITY_MAP2 = 220;
-    public static final int CITY_MAP3 = 270;
-    public static final int CITY_MAP4 = 370;
-    public static final int CITY_MAP5 = 420;
-    public static final int CITY_MAP6 = 470;
-    public static final int CITY_MAP7 = 490;
-    public static final int CITY_MAP8 = 520;
-    public static final int CITY_MAP9 = 570;
-    public static final int CITY_MAP10 = 600;
-    public static final int CITY_MAP11 = 650;
-    public static final int CITY_MAP12 = 710;
-    public static final int YEAR1 = 1800;
-    public static final int YEAR2 = 1900;
-    public static final int YEAR3 = 2000;
+    public static final int IDENTIFICATION_NUMBER = 999;
+    public static final int CITY_MAP_TARTU = 20;
+    public static final int CITY_MAP_TALLINN = 220;
+    public static final int CITY_MAP_KOHTLA_JARVE = 270;
+    public static final int CITY_MAP_TARTU2 = 370;
+    public static final int CITY_MAP_NARVA = 420;
+    public static final int CITY_MAP_PARNU = 470;
+    public static final int CITY_MAP_TALLINN2 = 490;
+    public static final int CITY_MAP_PAIDE = 520;
+    public static final int CITY_MAP_RAKVERE = 570;
+    public static final int CITY_MAP_VALGA = 600;
+    public static final int CITY_MAP_VILJANDI = 650;
+    public static final int CITY_MAP_VORU = 710;
+    public static final int CENTURY1 = 1800;
+    public static final int CENTURY2 = 1900;
+    public static final int CENTURY3 = 2000;
     public static final int INT7 = 7;
     public static final int INT6 = 6;
     public static final int MAX_MONTH = 12;
     public static final int INT8 = 8;
-    public static final int DAYS1 = 29;
-    public static final int DAYS2 = 28;
-    public static final int DAYS3 = 30;
-    public static final int DAYS4 = 31;
+    public static final int AMOUNT_OF_DAYS1 = 29;
+    public static final int AMOUNT_OF_DAYS2 = 28;
+    public static final int AMOUNT_OF_DAYS3 = 30;
+    public static final int AMOUNT_OF_DAYS4 = 31;
     public static final int INT9 = 9;
     public static final int INT11 = 11;
-    public static final int INT400 = 400;
+    public static final int LEAP_YEAR_CONTROL = 400;
 
 
     private final String idCodeValue;
@@ -93,7 +93,7 @@ public class IdCode {
         if (!isQueueNumberCorrect()) {
             return "Wrong input!";
         }
-        int identificator = IDENTIFICATOR;
+        int identificator = IDENTIFICATION_NUMBER;
         String answer = null;
         String idCode = getIdCodeValue();
         String queue = idCode.substring(INT7, 10);
@@ -103,19 +103,19 @@ public class IdCode {
         } else {
             Map<Integer, String> cityMap = new HashMap<Integer, String>();
             cityMap.put(10, "Kuressaare");
-            cityMap.put(CITY_MAP1, "Tartu");
-            cityMap.put(CITY_MAP2, "Tallinn");
-            cityMap.put(CITY_MAP3, "Kohtla-Järve");
-            cityMap.put(CITY_MAP4, "Tartu");
-            cityMap.put(CITY_MAP5, "Narva");
-            cityMap.put(CITY_MAP6, "Pärnu");
-            cityMap.put(CITY_MAP7, "Tallinn");
-            cityMap.put(CITY_MAP8, "Paide");
-            cityMap.put(CITY_MAP9, "Rakvere");
-            cityMap.put(CITY_MAP10, "Valga");
-            cityMap.put(CITY_MAP11, "Viljandi");
-            cityMap.put(CITY_MAP12, "Võru");
-            cityMap.put(IDENTIFICATOR, null);
+            cityMap.put(CITY_MAP_TARTU, "Tartu");
+            cityMap.put(CITY_MAP_TALLINN, "Tallinn");
+            cityMap.put(CITY_MAP_KOHTLA_JARVE, "Kohtla-Järve");
+            cityMap.put(CITY_MAP_TARTU2, "Tartu");
+            cityMap.put(CITY_MAP_NARVA, "Narva");
+            cityMap.put(CITY_MAP_PARNU, "Pärnu");
+            cityMap.put(CITY_MAP_TALLINN2, "Tallinn");
+            cityMap.put(CITY_MAP_PAIDE, "Paide");
+            cityMap.put(CITY_MAP_RAKVERE, "Rakvere");
+            cityMap.put(CITY_MAP_VALGA, "Valga");
+            cityMap.put(CITY_MAP_VILJANDI, "Viljandi");
+            cityMap.put(CITY_MAP_VORU, "Võru");
+            cityMap.put(IDENTIFICATION_NUMBER, null);
             for (Integer cityNumber : cityMap.keySet()) {
                 if (queueNumber <= cityNumber && identificator >= cityNumber) {
                     identificator = cityNumber;
@@ -135,11 +135,11 @@ public class IdCode {
         int genderNumber = Character.getNumericValue(genderChar);
         int fullYear;
         if (genderNumber == 1 || genderNumber == 2) {
-            fullYear = YEAR1;
+            fullYear = CENTURY1;
         } else if (genderNumber == 3 || genderNumber == 4) {
-            fullYear = YEAR2;
+            fullYear = CENTURY2;
         } else if (genderNumber == 5 || genderNumber == INT6) {
-            fullYear = YEAR3;
+            fullYear = CENTURY3;
         } else {
             return -1;
         }
@@ -197,14 +197,14 @@ public class IdCode {
         }
         int dayNumber = Integer.parseInt(day);
         int year = getFullYear();
-        return (monthNumber == 2 && isLeapYear(year) && (1 <= dayNumber && dayNumber <= DAYS1))
-                || (monthNumber == 2 && !isLeapYear(year) && (1 <= dayNumber && dayNumber <= DAYS2))
+        return (monthNumber == 2 && isLeapYear(year) && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS1))
+                || (monthNumber == 2 && !isLeapYear(year) && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS2))
                 || ((1 <= monthNumber && monthNumber <= INT7) && monthNumber != 2 && monthNumber % 2 == 0
-                && (1 <= dayNumber && dayNumber <= DAYS3)) || ((1 <= monthNumber && monthNumber <= INT7)
-                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= DAYS4))
+                && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS3)) || ((1 <= monthNumber && monthNumber <= INT7)
+                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS4))
                 || ((INT8 <= monthNumber && monthNumber <= MAX_MONTH) && monthNumber % 2 == 0
-                && (1 <= dayNumber && dayNumber <= DAYS4)) || ((INT8 <= monthNumber && monthNumber <= MAX_MONTH)
-                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= DAYS3));
+                && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS4)) || ((INT8 <= monthNumber && monthNumber <= MAX_MONTH)
+                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS3));
     }
 
     private boolean isQueueNumberCorrect() {
@@ -217,7 +217,7 @@ public class IdCode {
             }
         }
         int queueNumber = Integer.parseInt(queue);
-        return 0 <= queueNumber && queueNumber <= IDENTIFICATOR;
+        return 0 <= queueNumber && queueNumber <= IDENTIFICATION_NUMBER;
     }
 
     private boolean isControlNumberCorrect() {
@@ -260,7 +260,7 @@ public class IdCode {
     }
 
     private boolean isLeapYear(int fullYear) {
-        if (fullYear % INT400 == 0) {
+        if (fullYear % LEAP_YEAR_CONTROL == 0) {
             return true;
         } else if (fullYear % 100 == 0) {
             return false;
