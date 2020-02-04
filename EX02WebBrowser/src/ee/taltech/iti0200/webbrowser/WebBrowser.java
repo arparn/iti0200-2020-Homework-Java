@@ -30,7 +30,7 @@ public class WebBrowser {
      */
     public void back() {
         if (webPages.size() > 1) {
-            String lastPage = webPages.get(webPages.size() - 1);
+            String lastPage = webPages.get(webPages.size() - 2);
             String currentPage = webPages.getLast();
             history.add(lastPage);
             System.out.println(lastPage);
