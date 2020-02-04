@@ -203,8 +203,9 @@ public class IdCode {
                 && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS3)) || ((1 <= monthNumber && monthNumber <= INT7)
                 && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS4))
                 || ((INT8 <= monthNumber && monthNumber <= MAX_MONTH) && monthNumber % 2 == 0
-                && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS4)) || ((INT8 <= monthNumber && monthNumber <= MAX_MONTH)
-                && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS3));
+                && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS4)) || ((INT8 <= monthNumber
+                && monthNumber <= MAX_MONTH) && monthNumber % 2 != 0 && (1 <= dayNumber
+                && dayNumber <= AMOUNT_OF_DAYS3));
     }
 
     private boolean isQueueNumberCorrect() {
