@@ -110,7 +110,6 @@ public class WebBrowser {
     public String getTop3VisitedPages() {
         HashMap<String, Integer> top3 = new HashMap<>();
         StringBuilder answer = new StringBuilder();
-        ArrayList<String> sortingList = new ArrayList<>();
         int identificationNumber;
         int topVisits = 0;
         String topWebsite = null;
@@ -125,7 +124,7 @@ public class WebBrowser {
             for (Map.Entry mapElement : amountOfVisiting.entrySet()) {
                 int amountOfVisits = ((int)mapElement.getValue());
                 String website = ((String)mapElement.getKey());
-                if (!top3.containsKey(website) && amountOfVisits > topVisits) {
+                if (!top3.containsKey(website) && amountOfVisits > topVisits && i >= webPages.indexOf(website)) {
                     topVisits = amountOfVisits;
                     topWebsite = website;
                 }
@@ -135,15 +134,9 @@ public class WebBrowser {
             } else {
                 answer.append(topWebsite).append(" - ").append(topVisits).append(" visit\n");
             }
-            sortingList.add(answer.toString());
-            answer.replace(0, answer.length(), "");
             top3.put(topWebsite, topVisits);
             topVisits = 0;
             topWebsite = "";
-        }
-        Collections.sort(sortingList);
-        for (String answerString : sortingList) {
-            answer.append(answerString);
         }
         return answer.toString();
     }
