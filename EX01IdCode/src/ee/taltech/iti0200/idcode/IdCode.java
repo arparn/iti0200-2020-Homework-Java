@@ -19,16 +19,16 @@ public class IdCode {
     public static final int CENTURY1 = 1800;
     public static final int CENTURY2 = 1900;
     public static final int CENTURY3 = 2000;
-    public static final int INT7 = 7;
-    public static final int INT6 = 6;
+    public static final int DAY_INDEX7 = 7;
+    public static final int DAY_INDEX6 = 6;
     public static final int MAX_MONTH = 12;
-    public static final int INT8 = 8;
+    public static final int MONTH_INDEX8 = 8;
     public static final int AMOUNT_OF_DAYS1 = 29;
     public static final int AMOUNT_OF_DAYS2 = 28;
     public static final int AMOUNT_OF_DAYS3 = 30;
     public static final int AMOUNT_OF_DAYS4 = 31;
-    public static final int INT9 = 9;
-    public static final int INT11 = 11;
+    public static final int MONTH_INDEX9 = 9;
+    public static final int CONTROL_NUMBER11 = 11;
     public static final int LEAP_YEAR_CONTROL = 400;
 
 
@@ -66,7 +66,7 @@ public class IdCode {
             int yearInt = getFullYear();
             String year = Integer.toString(yearInt);
             String month = idCode.substring(3, 5);
-            String day = idCode.substring(5, INT7);
+            String day = idCode.substring(5, DAY_INDEX7);
             String dateOfBirth = day + "." + month + "." + year;
             String city = getBirthPlace();
             return "This is a " + gender + " born on " + dateOfBirth + " in " + city;
@@ -96,7 +96,7 @@ public class IdCode {
         int identificator = IDENTIFICATION_NUMBER;
         String answer = null;
         String idCode = getIdCodeValue();
-        String queue = idCode.substring(INT7, 10);
+        String queue = idCode.substring(DAY_INDEX7, 10);
         int queueNumber = Integer.parseInt(queue);
         if (queueNumber == 0) {
             return null;
@@ -138,7 +138,7 @@ public class IdCode {
             fullYear = CENTURY1;
         } else if (genderNumber == 3 || genderNumber == 4) {
             fullYear = CENTURY2;
-        } else if (genderNumber == 5 || genderNumber == INT6) {
+        } else if (genderNumber == 5 || genderNumber == DAY_INDEX6) {
             fullYear = CENTURY3;
         } else {
             return -1;
@@ -156,7 +156,7 @@ public class IdCode {
             return false;
         }
         int genderNumber = Character.getNumericValue(genderChar);
-        return 1 <= genderNumber && genderNumber <= INT6;
+        return 1 <= genderNumber && genderNumber <= DAY_INDEX6;
     }
 
     private boolean isYearNumberCorrect() {
@@ -188,7 +188,7 @@ public class IdCode {
         String idCode = getIdCodeValue();
         String month = idCode.substring(3, 5);
         int monthNumber = Integer.parseInt(month);
-        String day = idCode.substring(5, INT7);
+        String day = idCode.substring(5, DAY_INDEX7);
         for (int index = 0; index < day.length(); index++) {
             char letter = day.charAt(index);
             if (!Character.isDigit(letter)) {
@@ -199,18 +199,18 @@ public class IdCode {
         int year = getFullYear();
         return (monthNumber == 2 && isLeapYear(year) && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS1))
                 || (monthNumber == 2 && !isLeapYear(year) && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS2))
-                || ((1 <= monthNumber && monthNumber <= INT7) && monthNumber != 2 && monthNumber % 2 == 0
-                && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS3)) || ((1 <= monthNumber && monthNumber <= INT7)
+                || ((1 <= monthNumber && monthNumber <= DAY_INDEX7) && monthNumber != 2 && monthNumber % 2 == 0
+                && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS3)) || ((1 <= monthNumber && monthNumber <= DAY_INDEX7)
                 && monthNumber % 2 != 0 && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS4))
-                || ((INT8 <= monthNumber && monthNumber <= MAX_MONTH) && monthNumber % 2 == 0
-                && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS4)) || ((INT8 <= monthNumber
+                || ((MONTH_INDEX8 <= monthNumber && monthNumber <= MAX_MONTH) && monthNumber % 2 == 0
+                && (1 <= dayNumber && dayNumber <= AMOUNT_OF_DAYS4)) || ((MONTH_INDEX8 <= monthNumber
                 && monthNumber <= MAX_MONTH) && monthNumber % 2 != 0 && (1 <= dayNumber
                 && dayNumber <= AMOUNT_OF_DAYS3));
     }
 
     private boolean isQueueNumberCorrect() {
         String idCode = getIdCodeValue();
-        String queue = idCode.substring(INT7, 10);
+        String queue = idCode.substring(DAY_INDEX7, 10);
         for (int index = 0; index < queue.length(); index++) {
             char letter = queue.charAt(index);
             if (!Character.isDigit(letter)) {
@@ -236,23 +236,23 @@ public class IdCode {
             char character = idCode.charAt(index);
             int number = Character.getNumericValue(character);
             sum1 += number * integer;
-            if (integer == INT9) {
+            if (integer == MONTH_INDEX9) {
                 integer = 0;
             }
             integer += 1;
         }
-        int controlNumber = sum1 % INT11;
+        int controlNumber = sum1 % CONTROL_NUMBER11;
         if (controlNumber == 10) {
-            for (int index = 0; index < INT11; index++) {
+            for (int index = 0; index < CONTROL_NUMBER11; index++) {
                 char character = idCode.charAt(index);
                 int number = Character.getNumericValue(character);
                 sum2 += number * integer2;
-                if (integer2 == INT9) {
+                if (integer2 == MONTH_INDEX9) {
                     integer2 = 1;
                 }
                 integer2 += 1;
             }
-            controlNumber = sum2 % INT11;
+            controlNumber = sum2 % CONTROL_NUMBER11;
         }
         if (controlNumber == 10) {
             controlNumber = 0;
@@ -269,19 +269,19 @@ public class IdCode {
     }
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("50003103736");
-        //System.out.println(validMaleIdCode.isCorrect());
+        IdCode validMaleIdCode = new IdCode("49812115320");
+        System.out.println(validMaleIdCode.isCorrect());
         //System.out.println(validMaleIdCode.getInformation());
         //System.out.println(validMaleIdCode.getGender());
         //System.out.println(validMaleIdCode.getBirthPlace());
         //System.out.println(validMaleIdCode.getFullYear());
-        //System.out.println(validMaleIdCode.isGenderNumberCorrect());
-        //System.out.println(validMaleIdCode.isYearNumberCorrect());
-        //System.out.println(validMaleIdCode.isMonthNumberCorrect());
-        //System.out.println(validMaleIdCode.isDayNumberCorrect());
-        //System.out.println(validMaleIdCode.isQueueNumberCorrect());
-        //System.out.println(validMaleIdCode.isControlNumberCorrect());
-        //System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
+        System.out.println(validMaleIdCode.isGenderNumberCorrect());
+        System.out.println(validMaleIdCode.isYearNumberCorrect());
+        System.out.println(validMaleIdCode.isMonthNumberCorrect());
+        System.out.println(validMaleIdCode.isDayNumberCorrect());
+        System.out.println(validMaleIdCode.isQueueNumberCorrect());
+        System.out.println(validMaleIdCode.isControlNumberCorrect());
+        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
     }
 
 }
