@@ -26,7 +26,6 @@ public class WebBrowser {
             int amount = amountOfVisiting.get(homePage);
             amountOfVisiting.replace(homePage, amount + 1);
         }
-        System.out.println(homePage);
     }
 
     /**
@@ -35,11 +34,9 @@ public class WebBrowser {
     public void back() {
         if (webPages.size() > 1) {
             String lastPage = webPages.get(webPages.size() - 2);
-            String currentPage = webPages.getLast();
             history.add(lastPage);
-            int amount = amountOfVisiting.get(lastPage);
-            amountOfVisiting.replace(lastPage, amount + 1);
-            trashHold.add(currentPage);
+            amountOfVisiting.replace(lastPage, amountOfVisiting.get(lastPage) + 1);
+            trashHold.add(webPages.getLast());
             webPages.removeLast();
             }
         }
@@ -51,8 +48,7 @@ public class WebBrowser {
         if (trashHold.size() > 0) {
             String newLastPage = trashHold.getLast();
             history.add(newLastPage);
-            int amount = amountOfVisiting.get(newLastPage);
-            amountOfVisiting.replace(newLastPage, amount + 1);
+            amountOfVisiting.replace(newLastPage, amountOfVisiting.get(newLastPage) + 1);
             webPages.add(newLastPage);
             trashHold.remove(newLastPage);
         }
