@@ -27,8 +27,8 @@ public class WebBrowser {
     public void back() {
         if (webPages.size() > 1) {
             history.add(webPages.get(webPages.size() - 2));
-            trashHold.add(webPages.getLast());
-            webPages.removeLast();
+            trashHold.add(webPages.removeLast());
+
             }
         }
 
@@ -38,8 +38,7 @@ public class WebBrowser {
     public void forward() {
         if (trashHold.size() > 0) {
             history.add(trashHold.getLast());
-            webPages.add(trashHold.getLast());
-            trashHold.remove(trashHold.getLast());
+            webPages.add(trashHold.removeLast());
         }
     }
 
