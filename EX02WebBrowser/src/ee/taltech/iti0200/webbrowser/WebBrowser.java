@@ -8,7 +8,6 @@ import java.util.List;
 public class WebBrowser {
     private String homePage = "google.com";
     private LinkedList<String> history = new LinkedList<>(Collections.singletonList("google.com"));
-    private Map<String, Integer> amountOfVisiting = new HashMap<>(Map.of("google.com", 1));
     private LinkedList<String> webPages = new LinkedList<>(Collections.singletonList("google.com"));
     private LinkedList<String> trashHold = new LinkedList<>();
     private LinkedList<String> bookmarks = new LinkedList<>();
@@ -20,13 +19,7 @@ public class WebBrowser {
         history.add(homePage);
         webPages.add(homePage);
         trashHold.clear();
-        if (!amountOfVisiting.containsKey(homePage)) {
-            amountOfVisiting.put(homePage, 1);
-        } else {
-            int amount = amountOfVisiting.get(homePage);
-            amountOfVisiting.replace(homePage, amount + 1);
         }
-    }
 
     /**
      * Goes back to previous page.
@@ -35,7 +28,6 @@ public class WebBrowser {
         if (webPages.size() > 1) {
             String lastPage = webPages.get(webPages.size() - 2);
             history.add(lastPage);
-            amountOfVisiting.replace(lastPage, amountOfVisiting.get(lastPage) + 1);
             trashHold.add(webPages.getLast());
             webPages.removeLast();
             }
@@ -48,7 +40,6 @@ public class WebBrowser {
         if (trashHold.size() > 0) {
             String newLastPage = trashHold.getLast();
             history.add(newLastPage);
-            amountOfVisiting.replace(newLastPage, amountOfVisiting.get(newLastPage) + 1);
             webPages.add(newLastPage);
             trashHold.remove(newLastPage);
         }
@@ -63,11 +54,6 @@ public class WebBrowser {
         history.add(url);
         webPages.add(url);
         trashHold.clear();
-        if (!amountOfVisiting.containsKey(url)) {
-            amountOfVisiting.put(url, 1);
-        } else {
-            amountOfVisiting.replace(url, amountOfVisiting.get(url) + 1);
-        }
     }
 
     /**
@@ -97,6 +83,17 @@ public class WebBrowser {
         homePage = newHomePage;
     }
 
+    private HashMap <String, Integer> getMapOfVisits() {
+        HashMap<String, Integer> answer = new HashMap<>();
+        for (String webPage : history) {
+            if (!answer.containsKey(webPage)) {
+                answer.put(webPage, 1);
+            } else {
+                answer.replace(webPage, answer.get(webPage) + 1);
+            }
+        }
+        return answer;
+    }
 
     /**
      * Get top 3 visited pages.
@@ -109,16 +106,17 @@ public class WebBrowser {
         int identificationNumber;
         int topVisits = 0;
         int index = webPages.size();
+        HashMap<String, Integer> mapOfVisits = getMapOfVisits();
         String topWebsite = null;
-        if (amountOfVisiting.size() == 1) {
+        if (mapOfVisits.size() == 1) {
             identificationNumber = 1;
-        } else if (amountOfVisiting.size() == 2) {
+        } else if (mapOfVisits.size() == 2) {
             identificationNumber = 2;
         } else {
             identificationNumber = 3;
         }
         for (int i = 0; i < identificationNumber; i++) {
-            for (Map.Entry mapElement : amountOfVisiting.entrySet()) {
+            for (Map.Entry mapElement : mapOfVisits.entrySet()) {
                 int amountOfVisits = ((int) mapElement.getValue());
                 String website = ((String) mapElement.getKey());
                 if (!top3.containsKey(website) && amountOfVisits >= topVisits && webPages.indexOf(website) < index) {
@@ -174,7 +172,6 @@ public class WebBrowser {
         //webBrowserTest.back();
         //webBrowserTest.forward();
         System.out.println(webBrowserTest.webPages);
-        System.out.println(webBrowserTest.amountOfVisiting);
         System.out.println(webBrowserTest.getTop3VisitedPages());
 
     }
