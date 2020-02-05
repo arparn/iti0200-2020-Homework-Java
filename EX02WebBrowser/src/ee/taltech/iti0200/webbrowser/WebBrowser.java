@@ -66,8 +66,7 @@ public class WebBrowser {
         if (!amountOfVisiting.containsKey(url)) {
             amountOfVisiting.put(url, 1);
         } else {
-            int amount = amountOfVisiting.get(url);
-            amountOfVisiting.replace(url, amount + 1);
+            amountOfVisiting.replace(url, amountOfVisiting.get(url) + 1);
         }
     }
 
