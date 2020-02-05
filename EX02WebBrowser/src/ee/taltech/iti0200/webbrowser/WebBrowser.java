@@ -26,8 +26,7 @@ public class WebBrowser {
      */
     public void back() {
         if (webPages.size() > 1) {
-            String lastPage = webPages.get(webPages.size() - 2);
-            history.add(lastPage);
+            history.add(webPages.get(webPages.size() - 2));
             trashHold.add(webPages.getLast());
             webPages.removeLast();
             }
@@ -38,10 +37,9 @@ public class WebBrowser {
      */
     public void forward() {
         if (trashHold.size() > 0) {
-            String newLastPage = trashHold.getLast();
-            history.add(newLastPage);
-            webPages.add(newLastPage);
-            trashHold.remove(newLastPage);
+            history.add(trashHold.getLast());
+            webPages.add(trashHold.getLast());
+            trashHold.remove(trashHold.getLast());
         }
     }
 
