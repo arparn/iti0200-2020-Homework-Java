@@ -80,7 +80,7 @@ public class WebBrowser {
         homePage = newHomePage;
     }
 
-    private HashMap <String, Integer> getMapOfVisits() {
+    private HashMap<String, Integer> getMapOfVisits() {
         HashMap<String, Integer> answer = new HashMap<>();
         for (String webPage : history) {
             if (!answer.containsKey(webPage)) {
