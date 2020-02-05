@@ -112,7 +112,7 @@ public class WebBrowser {
         StringBuilder answer = new StringBuilder();
         int identificationNumber;
         int topVisits = 0;
-        int index = webPages.indexOf(webPages.getLast());
+        int index = webPages.size();
         String topWebsite = null;
         if (amountOfVisiting.size() == 1) {
             identificationNumber = 1;
@@ -125,10 +125,9 @@ public class WebBrowser {
             for (Map.Entry mapElement : amountOfVisiting.entrySet()) {
                 int amountOfVisits = ((int)mapElement.getValue());
                 String website = ((String)mapElement.getKey());
-                if (!top3.containsKey(website) && amountOfVisits > topVisits && webPages.indexOf(website) <= index) {
+                if (!top3.containsKey(website) && amountOfVisits >= topVisits && webPages.indexOf(website) < index) {
                     topVisits = amountOfVisits;
                     topWebsite = website;
-                    index = webPages.indexOf(website);
                 }
             }
             if (topVisits > 1) {
@@ -139,7 +138,6 @@ public class WebBrowser {
             top3.put(topWebsite, topVisits);
             topVisits = 0;
             topWebsite = "";
-            index = webPages.indexOf(webPages.getLast());
         }
         return answer.toString();
     }
