@@ -37,7 +37,6 @@ public class WebBrowser {
             String lastPage = webPages.get(webPages.size() - 2);
             String currentPage = webPages.getLast();
             history.add(lastPage);
-            System.out.println(lastPage);
             int amount = amountOfVisiting.get(lastPage);
             amountOfVisiting.replace(lastPage, amount + 1);
             trashHold.add(currentPage);
@@ -54,7 +53,6 @@ public class WebBrowser {
             history.add(newLastPage);
             int amount = amountOfVisiting.get(newLastPage);
             amountOfVisiting.replace(newLastPage, amount + 1);
-            System.out.println(newLastPage);
             webPages.add(newLastPage);
             trashHold.remove(newLastPage);
         }
@@ -75,7 +73,6 @@ public class WebBrowser {
             int amount = amountOfVisiting.get(url);
             amountOfVisiting.replace(url, amount + 1);
         }
-        //System.out.println(url);
     }
 
     /**
