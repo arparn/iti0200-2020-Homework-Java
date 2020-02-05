@@ -120,15 +120,15 @@ public class WebBrowser {
         String topWebsite = null;
         if (amountOfVisiting.size() == 1) {
             identificationNumber = 1;
-        } else if (amountOfVisiting.size() == 2){
+        } else if (amountOfVisiting.size() == 2) {
             identificationNumber = 2;
         } else {
             identificationNumber = 3;
         }
         for (int i = 0; i < identificationNumber; i++) {
             for (Map.Entry mapElement : amountOfVisiting.entrySet()) {
-                int amountOfVisits = ((int)mapElement.getValue());
-                String website = ((String)mapElement.getKey());
+                int amountOfVisits = ((int) mapElement.getValue());
+                String website = ((String) mapElement.getKey());
                 if (!top3.containsKey(website) && amountOfVisits >= topVisits && webPages.indexOf(website) < index) {
                     topVisits = amountOfVisits;
                     topWebsite = website;
