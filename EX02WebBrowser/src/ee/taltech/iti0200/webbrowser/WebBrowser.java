@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.List;
 
 public class WebBrowser {
-    private String homePage = "google.com";
+    private String currentHomePage = "google.com";
     private LinkedList<String> history = new LinkedList<>(Collections.singletonList("google.com"));
     private LinkedList<String> webPages = new LinkedList<>(Collections.singletonList("google.com"));
     private LinkedList<String> trashHold = new LinkedList<>();
@@ -16,8 +16,8 @@ public class WebBrowser {
      * Goes to homepage.
      */
     public void homePage() {
-        history.add(homePage);
-        webPages.add(homePage);
+        history.add(currentHomePage);
+        webPages.add(currentHomePage);
         trashHold.clear();
         }
 
@@ -28,7 +28,6 @@ public class WebBrowser {
         if (webPages.size() > 1) {
             history.add(webPages.get(webPages.size() - 2));
             trashHold.add(webPages.removeLast());
-
             }
         }
 
@@ -76,8 +75,8 @@ public class WebBrowser {
         return bookmarks;
     }
 
-    public void setHomePage(String newHomePage) {
-        homePage = newHomePage;
+    public void setCurrentHomePage(String newHomePage) {
+        currentHomePage = newHomePage;
     }
 
     private HashMap<String, Integer> getMapOfVisits() {
@@ -155,7 +154,7 @@ public class WebBrowser {
     public String getCurrentUrl() {
         String currentUrl;
         if (history.size() == 0) {
-            currentUrl = homePage;
+            currentUrl = currentHomePage;
         } else {
             currentUrl = history.getLast();
         }
