@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WebBrowserTest {
+class WebBrowserMyTest {
     WebBrowser webBrowser;
 
 
