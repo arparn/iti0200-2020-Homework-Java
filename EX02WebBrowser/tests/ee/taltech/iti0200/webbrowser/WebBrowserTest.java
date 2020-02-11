@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WebBrowserTest {
     WebBrowser webBrowser;
 
+
     @BeforeEach
     void setUp() {
         webBrowser = new WebBrowser();
