@@ -112,9 +112,9 @@ public class WebBrowser {
             identificationNumber = 3;
         }
         for (int i = 0; i < identificationNumber; i++) {
-            for (Map.Entry mapElement : mapOfVisits.entrySet()) {
-                Integer amountOfVisits = ((Integer) mapElement.getValue());
-                String website = ((String) mapElement.getKey());
+            for (Map.Entry<String, Integer> mapElement : mapOfVisits.entrySet()) {
+                Integer amountOfVisits = (mapElement.getValue());
+                String website = (mapElement.getKey());
                 if (!top3.containsKey(website) && amountOfVisits >= topVisits && webPages.indexOf(website) < index) {
                     topVisits = amountOfVisits;
                     topWebsite = website;
