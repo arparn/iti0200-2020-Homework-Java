@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
 
+
 public class DataTypes {
 
     /**
@@ -65,7 +66,8 @@ public class DataTypes {
      * @param currencyToEurRate Map containing the name of currency and its exchange rate to euro
      * @return Sum of money in euros
      */
-    public static BigDecimal currencyConverter(Map<String, List<BigDecimal>> data, Map<String, BigDecimal> currencyToEurRate) {
+    public static BigDecimal currencyConverter(Map<String, List<BigDecimal>> data,
+                                               Map<String, BigDecimal> currencyToEurRate) {
         BigDecimal answer = BigDecimal.ZERO;
         for (Map.Entry<String, BigDecimal> mapElement : currencyToEurRate.entrySet()) {
             String key = mapElement.getKey();
