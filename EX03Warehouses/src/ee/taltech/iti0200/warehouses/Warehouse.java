@@ -41,12 +41,8 @@ public class Warehouse {
     public void addProduct(Map.Entry<Product, Long> productEntry) {
         Product product = productEntry.getKey();
         Long amount = productEntry.getValue();
-        Long value = inventory.getOrDefault(product, (long) 0);
-        if (inventory.containsKey(product)) {
-            inventory.put(product, amount + value);
-        } else {
-            inventory.put(product, value);
-        }
+        Long value = inventory.getOrDefault(product, (long) 0) + amount;
+        inventory.put(product, value);
     }
 
     /**
