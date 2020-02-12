@@ -52,7 +52,6 @@ public class DataTypes {
         for (int x = 2; x <= m; x++) {
             factorialM = factorialM.multiply(BigInteger.valueOf(x));
         }
-
         answer = factorialB.modPow(factorialP, factorialM);
         return answer;
     }
@@ -67,7 +66,21 @@ public class DataTypes {
      * @return Sum of money in euros
      */
     public static BigDecimal currencyConverter(Map<String, List<BigDecimal>> data, Map<String, BigDecimal> currencyToEurRate) {
-        return BigDecimal.ONE;
+        BigDecimal answer = BigDecimal.ZERO;
+        for (Map.Entry<String, BigDecimal> mapElement : currencyToEurRate.entrySet()) {
+            String key = mapElement.getKey();
+            BigDecimal value = mapElement.getValue();
+            for (Map.Entry<String, List<BigDecimal>> mapElement2 : data.entrySet()) {
+                String key1 = mapElement2.getKey();
+                List<BigDecimal> listOfValues = mapElement2.getValue();
+                if (key.equals(key1)) {
+                    for (BigDecimal amountOfMoney : listOfValues) {
+                        answer = answer.add(amountOfMoney.multiply(value));
+                    }
+                }
+            }
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
@@ -76,16 +89,16 @@ public class DataTypes {
         List<List<String>> data = new ArrayList<>(List.of(data1, data2));
         //System.out.println(getUniqueDuplicates(data)); // ["this", "is", "fun"]
 
-        System.out.println(bigMod(3, 5, 8)); // 3!^5! mod 8! = 26496
+        //System.out.println(bigMod(3, 5, 8)); // 3!^5! mod 8! = 26496
 
         Map<String, BigDecimal> currencyToEurRate = new HashMap<>();
-        //currencyToEurRate.put("Yen", BigDecimal.valueOf(0.00828172423484));
-        //currencyToEurRate.put("Pounds", BigDecimal.valueOf(1.17812423423082));
+        currencyToEurRate.put("Yen", BigDecimal.valueOf(0.00828172423484));
+        currencyToEurRate.put("Pounds", BigDecimal.valueOf(1.17812423423082));
 
         Map<String, List<BigDecimal>> exchangeData = new HashMap<>();
-        //exchangeData.put("Yen", List.of(BigDecimal.valueOf(241645), BigDecimal.valueOf(321)));
-        //exchangeData.put("Pounds", List.of(BigDecimal.valueOf(256)));
+        exchangeData.put("Yen", List.of(BigDecimal.valueOf(241645), BigDecimal.valueOf(321)));
+        exchangeData.put("Pounds", List.of(BigDecimal.valueOf(256)));
 
-        //System.out.println(currencyConverter(exchangeData, currencyToEurRate)); //2305.49549017038536
+        System.out.println(currencyConverter(exchangeData, currencyToEurRate)); //2305.49549017038536
     }
 }
