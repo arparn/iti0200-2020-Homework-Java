@@ -15,7 +15,7 @@ public class Worker {
     }
 
     public String getWorkerSummary() {
-        return firstName + " " + lastName + " , " + age + " " + "(" + idCode + ")";
+        return firstName + " " + lastName + ", " + age + " " + "(" + idCode + ")";
     }
 
     public String getFirstName() {
