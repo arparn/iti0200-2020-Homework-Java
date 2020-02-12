@@ -42,7 +42,7 @@ public class Warehouse {
         Product product = productEntry.getKey();
         Long amount = productEntry.getValue();
         Long value = inventory.getOrDefault(product, (long) 0);
-        if (value > 0) {
+        if (inventory.containsKey(product)) {
             inventory.put(product, amount + value);
         } else {
             inventory.put(product, value);
