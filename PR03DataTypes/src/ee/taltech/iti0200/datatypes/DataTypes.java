@@ -39,7 +39,22 @@ public class DataTypes {
      * @return Algorithm value using BigInteger
      */
     public static BigInteger bigMod(int b, int p, int m) {
-        return BigInteger.ZERO;
+        BigInteger factorialB  = BigInteger.ONE;
+        BigInteger factorialP  = BigInteger.ONE;
+        BigInteger factorialM  = BigInteger.ONE;
+        BigInteger answer;
+        for (int x = 2; x <= b; x++) {
+            factorialB = factorialB.multiply(BigInteger.valueOf(x));
+        }
+        for (int x = 2; x <= p; x++) {
+            factorialP = factorialP.multiply(BigInteger.valueOf(x));
+        }
+        for (int x = 2; x <= m; x++) {
+            factorialM = factorialM.multiply(BigInteger.valueOf(x));
+        }
+        int exponent = factorialP.intValue();
+        answer = (factorialB.pow(exponent)).mod(factorialM);
+        return answer;
     }
 
     /**
@@ -59,9 +74,9 @@ public class DataTypes {
         List<String> data1 = new ArrayList<>(List.of("this", "is", "fun", "this", "is", "rad"));
         List<String> data2 = new ArrayList<>(List.of("actually", "it", "is", "not", "fun"));
         List<List<String>> data = new ArrayList<>(List.of(data1, data2));
-        System.out.println(getUniqueDuplicates(data)); // ["this", "is", "fun"]
+        //System.out.println(getUniqueDuplicates(data)); // ["this", "is", "fun"]
 
-        //System.out.println(bigMod(3, 5, 8)); // 3!^5! mod 8! = 26496
+        System.out.println(bigMod(3, 5, 8)); // 3!^5! mod 8! = 26496
 
         Map<String, BigDecimal> currencyToEurRate = new HashMap<>();
         //currencyToEurRate.put("Yen", BigDecimal.valueOf(0.00828172423484));
