@@ -3,7 +3,14 @@ package ee.taltech.iti0200.datatypes;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 
 public class DataTypes {
