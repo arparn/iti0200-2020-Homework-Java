@@ -27,7 +27,6 @@ public class Warehouse {
         } else {
             return (long) 0;
         }
-
     }
 
     public String getAddress() {
@@ -43,10 +42,10 @@ public class Warehouse {
         Product product = productEntry.getKey();
         Long amount = productEntry.getValue();
         Long value = inventory.getOrDefault(product, (long) 0);
-        if (value == 0) {
-            inventory.put(product, value);
-        } else {
+        if (value > 0) {
             inventory.put(product, amount + value);
+        } else {
+            inventory.put(product, value);
         }
     }
 
@@ -69,7 +68,7 @@ public class Warehouse {
      */
     public boolean hasEnoughProduct(Product product, Long amount) {
         Long currentAmount = getAmount(product);
-        return currentAmount == amount;
+        return currentAmount.equals(amount);
     }
 
     public Set<Worker> getWorkers() {
