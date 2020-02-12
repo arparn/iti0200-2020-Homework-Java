@@ -82,11 +82,8 @@ public class WebBrowser {
     private HashMap<String, Integer> getMapOfVisits() {
         HashMap<String, Integer> answer = new HashMap<>();
         for (String webPage : history) {
-            if (!answer.containsKey(webPage)) {
-                answer.put(webPage, 1);
-            } else {
-                answer.replace(webPage, answer.get(webPage) + 1);
-            }
+            int value = answer.getOrDefault(webPage, 0) + 1;
+            answer.put(webPage, value);
         }
         return answer;
     }
@@ -165,9 +162,11 @@ public class WebBrowser {
         WebBrowser webBrowserTest = new WebBrowser();
         //webBrowserTest.homePage();
         webBrowserTest.goTo("twitter.com");
+        webBrowserTest.goTo("twitter.com");
+        webBrowserTest.goTo("twitter.com");
         //webBrowserTest.back();
         //webBrowserTest.forward();
-        System.out.println(webBrowserTest.webPages);
+        System.out.println(webBrowserTest.history);
         System.out.println(webBrowserTest.getTop3VisitedPages());
 
     }
