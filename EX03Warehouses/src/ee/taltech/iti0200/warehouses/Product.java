@@ -59,7 +59,7 @@ public class Product {
      */
     public BigDecimal getProfitabilityPercentage() {
         BigDecimal result;
-        result = (grossPrice.subtract(netPrice)).divide((grossPrice.pow(100)), 4);
+        result = (grossPrice.subtract(netPrice)).divide((grossPrice.pow(100)), 4, RoundingMode.CEILING);
         return result;
     }
 
