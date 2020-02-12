@@ -69,7 +69,7 @@ public class Warehouse {
      */
     public boolean hasEnoughProduct(Product product, Long amount) {
         Long currentAmount = getAmount(product);
-        return currentAmount.equals(amount);
+        return currentAmount == amount;
     }
 
     public Set<Worker> getWorkers() {
