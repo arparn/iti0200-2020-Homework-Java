@@ -68,7 +68,7 @@ public class Warehouse {
      * @return boolean that shows if there is enough product in the warehouse
      */
     public boolean hasEnoughProduct(Product product, Long amount) {
-        Long currentAmount = getAmount(product);
+        Long currentAmount = inventory.get(product);
         return currentAmount.equals(amount);
     }
 
