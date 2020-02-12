@@ -12,6 +12,7 @@ public class Warehouse {
     private Set<Worker> workers = new HashSet<>();
 
     public Warehouse(String address) {
+        this.address = address;
     }
 
     /**
@@ -21,11 +22,16 @@ public class Warehouse {
      * @return the amount
      */
     public Long getAmount(Product product) {
-        return null;
+        if (inventory.containsKey(product)) {
+            return inventory.get(product);
+        } else {
+            return (long) 0;
+        }
+
     }
 
     public String getAddress() {
-        return null;
+        return address;
     }
 
     /**
@@ -34,6 +40,14 @@ public class Warehouse {
      * @param productEntry the product entry
      */
     public void addProduct(Map.Entry<Product, Long> productEntry) {
+        Product product = productEntry.getKey();
+        Long amount = productEntry.getValue();
+        Long value = inventory.getOrDefault(product, (long) 0);
+        if (value == 0) {
+            inventory.put(product, value);
+        } else {
+            inventory.put(product, amount + value);
+        }
     }
 
     /**
@@ -43,7 +57,7 @@ public class Warehouse {
      * @return boolean that shows if the product exists in the warehouse
      */
     public boolean hasProduct(Product product) {
-        return false;
+        return inventory.containsKey(product);
     }
 
     /**
@@ -54,11 +68,12 @@ public class Warehouse {
      * @return boolean that shows if there is enough product in the warehouse
      */
     public boolean hasEnoughProduct(Product product, Long amount) {
-        return false;
+        Long currentAmount = getAmount(product);
+        return currentAmount.equals(amount);
     }
 
     public Set<Worker> getWorkers() {
-        return null;
+        return workers;
     }
 
     /**
@@ -67,6 +82,9 @@ public class Warehouse {
      * @param worker the worker to add
      */
     public void addWorker(Worker worker) {
+        if (!workers.contains(worker)) {
+            workers.add(worker);
+        }
     }
 
     /**
@@ -75,7 +93,19 @@ public class Warehouse {
      * @return the inventory value
      */
     public BigDecimal getInventoryValue() {
-        return null;
+        BigDecimal result = BigDecimal.ZERO;
+        if (inventory.size() > 0) {
+            for (Map.Entry<Product, Long> productEntry : inventory.entrySet()) {
+                Product product = productEntry.getKey();
+                Long value = productEntry.getValue();
+                BigDecimal price = product.getNetPrice();
+                BigDecimal amount = new BigDecimal(value);
+                result = result.add(((amount.multiply(price))));
+            }
+            return result;
+        } else {
+            return BigDecimal.ZERO;
+        }
     }
 
     @Override
