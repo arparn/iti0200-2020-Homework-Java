@@ -52,8 +52,8 @@ public class DataTypes {
         for (int x = 2; x <= m; x++) {
             factorialM = factorialM.multiply(BigInteger.valueOf(x));
         }
-        Integer exponent = factorialP.intValue();
-        answer = (factorialB.pow(exponent)).mod(factorialM);
+
+        answer = factorialB.modPow(factorialP, factorialM);
         return answer;
     }
 
