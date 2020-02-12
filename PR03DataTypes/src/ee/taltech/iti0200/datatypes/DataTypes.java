@@ -52,7 +52,7 @@ public class DataTypes {
         for (int x = 2; x <= m; x++) {
             factorialM = factorialM.multiply(BigInteger.valueOf(x));
         }
-        int exponent = factorialP.intValue();
+        Integer exponent = factorialP.intValue();
         answer = (factorialB.pow(exponent)).mod(factorialM);
         return answer;
     }
