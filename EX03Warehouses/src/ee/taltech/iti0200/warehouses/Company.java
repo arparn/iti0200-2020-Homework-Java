@@ -72,7 +72,7 @@ public class Company {
     }
 
     /**
-     * Reports the current state of products in the warehouses.
+     * Reports the current state of products in the warehouses
      *
      * @return the current state of products in the warehouses
      */
