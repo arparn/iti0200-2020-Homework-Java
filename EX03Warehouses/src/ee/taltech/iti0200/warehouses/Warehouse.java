@@ -22,11 +22,7 @@ public class Warehouse {
      * @return the amount
      */
     public Long getAmount(Product product) {
-        if (inventory.containsKey(product)) {
-            return inventory.get(product);
-        } else {
-            return (long) 0;
-        }
+        return inventory.getOrDefault(product, (long) 0);
     }
 
     public String getAddress() {
