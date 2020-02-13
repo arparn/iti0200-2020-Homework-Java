@@ -67,7 +67,23 @@ public class Company {
      * @return the current state of products in the warehouses
      */
     public Map<Product, Long> reportInventory() {
-        return null;
+        HashMap<Product, Long> inventoryMap = new HashMap<>();
+        Long amount;
+        for (Product product : products) {
+            for (Warehouse warehouse : warehouses) {
+                if (warehouse.hasProduct(product)) {
+                    if (!inventoryMap.containsKey(product)) {
+                        amount = (long) 1;
+                    } else {
+                        amount = inventoryMap.get(product);
+                    }
+                    Long value = inventoryMap.getOrDefault(product, (long) 0) + amount;
+                    Long warehouseAmount = warehouse.getAmount(product);
+                    inventoryMap.put(product, value + warehouseAmount);
+                }
+            }
+        }
+        return inventoryMap;
     }
 
     /**
