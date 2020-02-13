@@ -59,10 +59,10 @@ public class Worker {
             return false;
         }
         Worker worker = (Worker) o;
-        return Objects.equals(firstName, worker.firstName) &&
-                Objects.equals(lastName, worker.lastName) &&
-                Objects.equals(idCode, worker.idCode) &&
-                Objects.equals(age, worker.age);
+        return Objects.equals(firstName, worker.firstName)
+                && Objects.equals(lastName, worker.lastName)
+                && Objects.equals(idCode, worker.idCode)
+                && Objects.equals(age, worker.age);
     }
 
     @Override

@@ -76,10 +76,10 @@ public class Product {
             return false;
         }
         Product product = (Product) o;
-        return Objects.equals(name, product.name) &&
-                Objects.equals(weight, product.weight) &&
-                Objects.equals(netPrice, product.netPrice) &&
-                Objects.equals(grossPrice, product.grossPrice);
+        return Objects.equals(name, product.name)
+                && Objects.equals(weight, product.weight)
+                && Objects.equals(netPrice, product.netPrice)
+                && Objects.equals(grossPrice, product.grossPrice);
     }
 
     @Override

@@ -1,7 +1,12 @@
 package ee.taltech.iti0200.warehouses;
 import java.math.BigDecimal;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Company {
     private String name;
