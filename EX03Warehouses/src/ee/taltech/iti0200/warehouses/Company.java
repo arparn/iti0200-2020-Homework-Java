@@ -73,13 +73,12 @@ public class Company {
             for (Warehouse warehouse : warehouses) {
                 if (warehouse.hasProduct(product)) {
                     if (!inventoryMap.containsKey(product)) {
-                        amount = (long) 1;
+                        amount = (long) 0;
                     } else {
                         amount = inventoryMap.get(product);
                     }
-                    Long value = inventoryMap.getOrDefault(product, (long) 0) + amount;
-                    Long warehouseAmount = warehouse.getAmount(product);
-                    inventoryMap.put(product, value + warehouseAmount);
+                    Long value = warehouse.getAmount(product);
+                    inventoryMap.put(product, value + amount);
                 }
             }
         }
@@ -93,7 +92,13 @@ public class Company {
      * @return list of warehouses where the product is availalble
      */
     public List<Warehouse> getAvailability(Product product) {
-        return null;
+        LinkedList<Warehouse> availabilityList = new LinkedList<>();
+        for (Warehouse warehouse : warehouses) {
+            if (warehouse.hasProduct(product)) {
+                availabilityList.add(warehouse);
+            }
+        }
+        return availabilityList;
     }
 
     /**
