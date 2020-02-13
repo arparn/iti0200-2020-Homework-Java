@@ -26,14 +26,9 @@ public class Company {
         if (products.size() > 0) {
             BigDecimal cheapestPrice = BigDecimal.ZERO;
             Product cheapestProduct = null;
-            for (Product example : products){
-                cheapestPrice = example.getGrossPrice();
-                cheapestProduct = example;
-                break;
-            }
             for (Product product : products) {
                 BigDecimal price = product.getGrossPrice();
-                if (price.compareTo(cheapestPrice) < 0) {
+                if (cheapestProduct == null || price.compareTo(cheapestPrice) < 0) {
                     cheapestPrice = price;
                     cheapestProduct = product;
                 }
@@ -53,14 +48,9 @@ public class Company {
         if (products.size() > 0) {
             BigDecimal expensivePrice = BigDecimal.ZERO;
             Product expensiveProduct = null;
-            for (Product example : products){
-                expensivePrice = example.getGrossPrice();
-                expensiveProduct = example;
-                break;
-            }
             for (Product product : products) {
                 BigDecimal price = product.getGrossPrice();
-                if (price.compareTo(expensivePrice) > 0) {
+                if (expensiveProduct == null || price.compareTo(expensivePrice) > 0) {
                     expensivePrice = price;
                     expensiveProduct = product;
                 }
