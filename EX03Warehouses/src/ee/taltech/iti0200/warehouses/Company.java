@@ -23,7 +23,25 @@ public class Company {
      * @return the cheapest product
      */
     public Optional<Product> getCheapestProductForCustomer() {
-        return null;
+        if (products.size() > 0) {
+            BigDecimal cheapestPrice = BigDecimal.ZERO;
+            Product cheapestProduct = null;
+            for (Product example : products){
+                cheapestPrice = example.getGrossPrice();
+                cheapestProduct = example;
+                break;
+            }
+            for (Product product : products) {
+                BigDecimal price = product.getGrossPrice();
+                if (price.compareTo(cheapestPrice) < 0) {
+                    cheapestPrice = price;
+                    cheapestProduct = product;
+                }
+            }
+            return Optional.of(cheapestProduct);
+        } else {
+            return Optional.empty();
+        }
     }
 
     /**
@@ -32,7 +50,25 @@ public class Company {
      * @return the most expensive product
      */
     public Optional<Product> getMostExpensiveProductForCustomer() {
-        return null;
+        if (products.size() > 0) {
+            BigDecimal expensivePrice = BigDecimal.ZERO;
+            Product expensiveProduct = null;
+            for (Product example : products){
+                expensivePrice = example.getGrossPrice();
+                expensiveProduct = example;
+                break;
+            }
+            for (Product product : products) {
+                BigDecimal price = product.getGrossPrice();
+                if (price.compareTo(expensivePrice) > 0) {
+                    expensivePrice = price;
+                    expensiveProduct = product;
+                }
+            }
+            return Optional.of(expensiveProduct);
+        } else {
+            return Optional.empty();
+        }
     }
 
     /**
