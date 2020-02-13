@@ -120,6 +120,12 @@ public class Company {
      * @param product the product to add
      */
     public void addProduct(Product product) {
+        products.add(product);
+        Long amount = (long) 0;
+        Map.Entry<Product, Long> productEntry = Map.entry(product, amount);
+        for (Warehouse warehouse : warehouses) {
+            warehouse.addProduct(productEntry);
+        }
     }
 
     /**
