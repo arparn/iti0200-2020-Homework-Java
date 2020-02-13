@@ -59,7 +59,7 @@ public class Warehouse {
      * @return boolean that shows if there is enough product in the warehouse
      */
     public boolean hasEnoughProduct(Product product, Long amount) {
-        return (hasProduct(product) && inventory.get(product) >= amount);
+        return (hasProduct(product)) && inventory.get(product) >= amount;
     }
 
     public Set<Worker> getWorkers() {
