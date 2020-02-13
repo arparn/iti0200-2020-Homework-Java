@@ -108,6 +108,10 @@ public class Company {
      * @param amount the amount of product to add
      */
     public void restockProduct(Product product, Long amount) {
+        Map.Entry<Product, Long> productEntry = Map.entry(product, amount);
+        for (Warehouse warehouse : warehouses) {
+            warehouse.addProduct(productEntry);
+        }
     }
 
     /**
