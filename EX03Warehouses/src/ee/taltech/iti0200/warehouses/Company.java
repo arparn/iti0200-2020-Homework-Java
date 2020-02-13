@@ -134,7 +134,12 @@ public class Company {
      * @return all company workers
      */
     public Set<Worker> getCompanyWorkers() {
-        return null;
+        Set<Worker> workers = officeWorkers;
+        for (Warehouse warehouse : warehouses) {
+            Set<Worker> warehouseWorkers = warehouse.getWorkers();
+            workers.addAll(warehouseWorkers);
+        }
+        return workers;
     }
 
     /**
@@ -143,10 +148,13 @@ public class Company {
      * @param worker the worker to add
      */
     public void addOfficeWorker(Worker worker) {
+        if (!officeWorkers.contains(worker)) {
+            officeWorkers.add(worker);
+        }
     }
 
     public Set<Warehouse> getWarehouses() {
-        return null;
+        return warehouses;
     }
 
     /**
@@ -155,6 +163,9 @@ public class Company {
      * @param wareHouse the warehouse to add
      */
     public void addWarehouse(Warehouse wareHouse) {
+        if (!warehouses.contains(wareHouse)) {
+            warehouses.add(wareHouse);
+        }
     }
 
     /**
@@ -163,6 +174,10 @@ public class Company {
      * @return total company goods value
      */
     public BigDecimal getCompanyGoodsValue() {
-        return null;
+        BigDecimal result = BigDecimal.ZERO;
+        for (Warehouse warehouse : warehouses) {
+            result = result.add(warehouse.getInventoryValue());
+        }
+        return result;
     }
 }
