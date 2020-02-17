@@ -6,7 +6,7 @@ public class Main {
         Shape circle = new Circle(Shape.Category.SMALL, 2);
 
         System.out.println(square.draw()); // Drawing square! Category: Big
-        System.out.println(circle.draw()); // Drawing circle! Category: Small
+        System.out.println(circle.draw()); // Drawing circle ! Category: Small
 
         circle.setCategory(Shape.Category.MEDIUM);
         System.out.println(circle.draw()); // Drawing circle! Category: Medium
