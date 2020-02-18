@@ -13,7 +13,7 @@ public abstract class Shape {
         public String getCurrentCategory() {
             return this.category;
         }
-        private Category(String category) {
+        Category(String category) {
             this.category = category;
         }
     }
