@@ -9,8 +9,8 @@ public class Circle extends Shape {
     public String draw() {
         String actualCategory = null;
         for (Category cat : Category.values()) {
-            if (getCurrentCategory().toString().equals(cat.name())) {
-                actualCategory = cat.getCategory();
+            if (getCategory().toString().equals(cat.name())) {
+                actualCategory = cat.getCurrentCategory();
                 break;
             }
         }

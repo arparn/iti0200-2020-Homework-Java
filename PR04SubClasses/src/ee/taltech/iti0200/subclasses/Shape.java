@@ -10,7 +10,7 @@ public abstract class Shape {
     public enum Category {
         BIG("Big"), MEDIUM("Medium"), SMALL("Small");
         private String category;
-        public String getCategory() {
+        public String getCurrentCategory() {
             return this.category;
         }
         private Category(String category) {
@@ -44,7 +44,7 @@ public abstract class Shape {
         number = null;
     }
 
-    public Category getCurrentCategory() {
+    public Category getCategory() {
         return category;
     }
 
