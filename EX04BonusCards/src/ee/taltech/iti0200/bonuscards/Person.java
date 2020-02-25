@@ -1,6 +1,7 @@
 package ee.taltech.iti0200.bonuscards;
 
 import ee.taltech.iti0200.bonuscards.cards.BonusCard;
+import ee.taltech.iti0200.bonuscards.exceptions.PersonException;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -19,7 +20,11 @@ public class Person {
     public Person(String firstName, String lastName, int age, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        if (age < 1) {
+            throw new PersonException();
+        } else {
+            this.age = age;
+        }
         this.gender = gender;
     }
 

@@ -5,8 +5,15 @@ import ee.taltech.iti0200.bonuscards.Store;
 import java.math.BigDecimal;
 
 public final class CoopCard extends BonusCard {
-    CoopCard(Store store, Person person) {
 
+    private Store store;
+    private Person person;
+    private CardType type = CardType.COOP;
+    private BigDecimal balance = BigDecimal.valueOf(10.0);
+
+    CoopCard(Store store, Person person) {
+        this.store = store;
+        this.person = person;
     }
 
     /**
@@ -17,6 +24,33 @@ public final class CoopCard extends BonusCard {
      */
     @Override
     public BigDecimal collectBonus(double paymentAmount) {
-        return null;
+        double bonus = (paymentAmount * 5) / 100;
+        balance = balance.add(BigDecimal.valueOf(bonus));
+        return BigDecimal.valueOf(bonus);
+    }
+
+    @Override
+    public CardType getCardType() {
+        return type;
+    }
+
+    @Override
+    public Store getStoreName() {
+        return store;
+    }
+
+    @Override
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    @Override
+    public Person getPersonName() {
+        return person;
+    }
+
+    @Override
+    public void setBalance(BigDecimal bonusBalance) {
+        balance = bonusBalance;
     }
 }
