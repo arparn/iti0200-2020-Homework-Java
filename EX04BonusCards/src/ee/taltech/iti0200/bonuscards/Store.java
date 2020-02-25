@@ -27,7 +27,7 @@ public class Store {
         customerSet.add(person);
     }
 
-    public void removeCustomer(Person person){
+    public void removeCustomer(Person person) {
         customerSet.remove(person);
     }
 
@@ -44,7 +44,8 @@ public class Store {
             for (Person person : customerSet) {
                 if (person.getBonusCardByType(cardType).isPresent()) {
                     BonusCard card = person.getBonusCardByType(cardType).get();
-                    if (highestBalance.equals(BigDecimal.ZERO) || card.getBonusBalance().compareTo(highestBalance) > 0) {
+                    if (highestBalance.equals(BigDecimal.ZERO)
+                            || card.getBonusBalance().compareTo(highestBalance) > 0) {
                         highestBalance = card.getBonusBalance();
                         bestPerson = person;
                     }
