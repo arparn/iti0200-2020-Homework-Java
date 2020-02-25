@@ -9,7 +9,7 @@ public final class CoopCard extends BonusCard {
     private Store store;
     private Person person;
     private CardType type = CardType.COOP;
-    private BigDecimal balance = BigDecimal.TEN;
+    private BigDecimal balance = BigDecimal.valueOf(10.0);
 
     CoopCard(Store store, Person person) {
         this.store = store;
