@@ -12,14 +12,14 @@ public class BonusCardExample {
         Person kalle = new Person(
                 "Kalle",
                 "Kuusk",
-                35,
+                18,
                 Person.Gender.MALE
         );
 
         Person malle = new Person(
                 "Malle",
                 "Mänd",
-                18,
+                35,
                 Person.Gender.MALE
         );
 
