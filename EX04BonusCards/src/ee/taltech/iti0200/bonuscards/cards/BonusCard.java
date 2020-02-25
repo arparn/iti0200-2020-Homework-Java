@@ -49,7 +49,7 @@ public abstract class BonusCard {
      * @return remaining bonus
      */
     public BigDecimal useBonus(BigDecimal value) {
-        if (value.compareTo(getBonusBalance()) < 0) {
+        if (value.compareTo(getBonusBalance()) <= 0) {
             setBonusBalance(getBonusBalance().subtract(value));
             return getBonusBalance();
         } else {
