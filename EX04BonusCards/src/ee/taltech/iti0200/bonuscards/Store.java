@@ -70,9 +70,11 @@ public class Store {
             for (Person person : customerSet) {
                 if (person.getBonusCardByType(cardType).isPresent()) {
                     BonusCard card = person.getBonusCardByType(cardType).get();
-                    if (person.getAge() < age) {
+                    if (lowestBalance.equals(BigDecimal.ZERO)) {
+                        lowestBalance = card.getBonusBalance();
                         bestPerson = person;
-                        if (person.getAge() < bestPerson.getAge() && (lowestBalance.equals(BigDecimal.ZERO) || card.getBonusBalance().compareTo(lowestBalance) < 0)) {
+                    } else if (person.getAge() < age && person.getAge() < bestPerson.getAge()) {
+                        if ((lowestBalance.equals(BigDecimal.ZERO) || card.getBonusBalance().compareTo(lowestBalance) < 0)) {
                             lowestBalance = card.getBonusBalance();
                             bestPerson = person;
                         }
