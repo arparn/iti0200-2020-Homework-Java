@@ -24,8 +24,8 @@ public final class RimiCard extends BonusCard {
      */
     @Override
     public BigDecimal collectBonus(double paymentAmount) {
-        if (paymentAmount > 10) {
-            double bonus =  (paymentAmount * 2) / 100;
+        if (paymentAmount >= 10) {
+            double bonus = (paymentAmount * 2) / 100;
             balance = balance.add(BigDecimal.valueOf(bonus));
             return BigDecimal.valueOf(bonus);
         } else {
