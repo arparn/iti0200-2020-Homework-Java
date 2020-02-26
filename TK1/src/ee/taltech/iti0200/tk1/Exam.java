@@ -16,7 +16,18 @@ public class Exam {
      * sum67([1, 1, 6, 7, 2]) => 4
      */
     public static int sum67(List<Integer> numbers) {
-        return -1;
+        Boolean start = false;
+        Integer sumOfNumbers = 0;
+        for (Integer number : numbers) {
+            if (start == true && number != 6) {
+                sumOfNumbers += number;
+            } else if (number == 6) {
+                start = true;
+            } else if (start == false && number == 7) {
+                start = false;
+            }
+        }
+        return sumOfNumbers;
     }
 
     /**
