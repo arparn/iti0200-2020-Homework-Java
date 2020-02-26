@@ -58,6 +58,7 @@ public class Exam {
                 c = String.valueOf(str.charAt(i));
             }
         }
+        result.append(b).append(c).append(a);
         return String.valueOf(result);
     }
 
