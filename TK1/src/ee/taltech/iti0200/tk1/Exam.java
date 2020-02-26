@@ -39,7 +39,26 @@ public class Exam {
      * oneTwo("tcagdo") => "catdog"
      */
     public static String oneTwo(String str) {
-        return null;
+        String a = "";
+        String b = "";
+        String c = "";
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (!a.equals("") && !b.equals("") && !c.equals("")) {
+                result.append(a).append(b).append(c);
+                a = "";
+                b = "";
+                c = "";
+            } else if (i == 0 || a == "") {
+                a = String.valueOf(str.charAt(i));
+            } else if (b == "") {
+                b = String.valueOf(str.charAt(i));
+            } else if (c == "") {
+                c = String.valueOf(str.charAt(i));
+            }
+        }
+        return String.valueOf(result);
     }
 
     /**
