@@ -58,7 +58,8 @@ public class Exam {
                 c = String.valueOf(str.charAt(i));
             }
         }
-        result.append(b).append(c).append(a);
+        if (!a.equals("") && !b.equals("") && !c.equals("")) {
+            result.append(b).append(c).append(a);
         return String.valueOf(result);
     }
 
