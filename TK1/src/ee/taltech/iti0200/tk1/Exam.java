@@ -46,7 +46,7 @@ public class Exam {
 
         for (int i = 0; i < str.length(); i++) {
             if (!a.equals("") && !b.equals("") && !c.equals("")) {
-                result.append(a).append(b).append(c);
+                result.append(b).append(c).append(a);
                 a = "";
                 b = "";
                 c = "";
