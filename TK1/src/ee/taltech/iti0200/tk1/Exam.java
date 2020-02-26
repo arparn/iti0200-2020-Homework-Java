@@ -60,6 +60,7 @@ public class Exam {
         }
         if (!a.equals("") && !b.equals("") && !c.equals("")) {
             result.append(b).append(c).append(a);
+        }
         return String.valueOf(result);
     }
 
