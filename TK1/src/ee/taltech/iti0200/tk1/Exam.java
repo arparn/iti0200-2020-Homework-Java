@@ -50,11 +50,11 @@ public class Exam {
                 a = "";
                 b = "";
                 c = "";
-            } else if (i == 0 || a == "") {
+            } else if (i == 0 || a.equals("")) {
                 a = String.valueOf(str.charAt(i));
-            } else if (b == "") {
+            } else if (b.equals("")) {
                 b = String.valueOf(str.charAt(i));
-            } else if (c == "") {
+            } else if (c.equals("")) {
                 c = String.valueOf(str.charAt(i));
             }
         }
