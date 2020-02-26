@@ -17,7 +17,7 @@ public final class CoopCard extends BonusCard {
     }
 
     /**
-     * Collects bonus on the specified payment amount.
+     * Collects bonus on the specified paymen amount.
      *
      * @param paymentAmount the payment amount
      * @return collected bonus
