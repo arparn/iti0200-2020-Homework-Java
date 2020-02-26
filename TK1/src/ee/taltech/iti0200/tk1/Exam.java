@@ -16,14 +16,14 @@ public class Exam {
      * sum67([1, 1, 6, 7, 2]) => 4
      */
     public static int sum67(List<Integer> numbers) {
-        Boolean start = false;
+        boolean start = false;
         Integer sumOfNumbers = 0;
         for (Integer number : numbers) {
-            if (start == false && number != 6) {
+            if (!start && number != 6) {
                 sumOfNumbers += number;
             } else if (number == 6) {
                 start = true;
-            } else if (start == true && number == 7) {
+            } else if (start && number == 7) {
                 start = false;
             }
         }
@@ -31,8 +31,8 @@ public class Exam {
     }
 
     /**
-     * Given a string, compute a new string by moving the first char to come after the next two chars, so "abc" yields "bca".
-     * Repeat this process for each subsequent group of 3 chars, so "abcdef" yields "bcaefd". Ignore any group of fewer than 3 chars at the end.
+     * Given a string, compute a new string by moving the first char to come after the next two chars, so "abc" yields
+     * Repeat this process for each subsequent group of 3 chars, so "abcdef" yields "bcaefd". Ignore any group of fewer
      *
      * oneTwo("abc") => "bca"
      * oneTwo("tca") => "cat"
@@ -66,7 +66,7 @@ public class Exam {
 
     /**
      * Modify and return the given map as follows:
-     * if exactly one of the keys "a" or "b" exists in the map (but not both), set the other to have that same value in the map.
+     * if exactly one of the keys "a" or "b" exists in the map (but not both), set the other to have that same value
      *
      * mapAXorB({"a": "aaa", "c": "cake"}) => {"a": "aaa", "b": "aaa", "c": "cake"}
      * mapAXorB({"b": "bbb", "c": "cake"}) => {"a": "bbb", "b": "bbb", "c": "cake"}
