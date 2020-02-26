@@ -19,11 +19,11 @@ public class Exam {
         Boolean start = false;
         Integer sumOfNumbers = 0;
         for (Integer number : numbers) {
-            if (start == true && number != 6) {
+            if (start == false && number != 6) {
                 sumOfNumbers += number;
             } else if (number == 6) {
                 start = true;
-            } else if (start == false && number == 7) {
+            } else if (start == true && number == 7) {
                 start = false;
             }
         }
