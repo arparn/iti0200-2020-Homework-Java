@@ -1,11 +1,15 @@
 package ee.taltech.iti0200.carwash;
 
 public class CheapWash extends WashStrategy {
+
+    public static final int CAR_DIRTINESS_REDUCE = 40;
+    public static final int WASH_AND_DRY_PRICE = 12;
+
     @Override
     public void wash(Car car, CarOwner owner) {
         setSessionDuration(10);
         setSessionPrice(10);
-        car.setDirtiness(car.getDirtiness() - 40);
+        car.setDirtiness(car.getDirtiness() - CAR_DIRTINESS_REDUCE);
         owner.setBalance(owner.getBalance() - getWashPrice());
     }
 
@@ -18,7 +22,7 @@ public class CheapWash extends WashStrategy {
 
     @Override
     public int getWashAndDryPrice() {
-        return 12;
+        return WASH_AND_DRY_PRICE;
     }
 
     @Override
