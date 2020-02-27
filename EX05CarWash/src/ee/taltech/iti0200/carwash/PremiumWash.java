@@ -11,7 +11,7 @@ public class PremiumWash extends WashStrategy {
 
     @Override
     public void dry(Car car, CarOwner owner) {
-        setSessionDuration(30);
+        setSessionDuration(getSessionDuration() + 10);
         setSessionPrice(getSessionPrice() + 10);
         owner.setBalance(owner.getBalance() - 10);
     }
