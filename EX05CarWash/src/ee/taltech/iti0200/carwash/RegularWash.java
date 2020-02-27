@@ -12,7 +12,7 @@ public class RegularWash extends WashStrategy {
     @Override
     public void dry(Car car, CarOwner owner) {
         setSessionDuration(20);
-        setSessionPrice(5);
+        setSessionPrice(getSessionPrice() + 5);
         owner.setBalance(owner.getBalance() - 5);
     }
 
