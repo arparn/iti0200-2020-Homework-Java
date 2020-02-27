@@ -51,5 +51,4 @@ public abstract class WashStrategy {
     public int getSessionPrice() {
         return sessionPrice;
     }
-
 }

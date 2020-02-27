@@ -43,28 +43,4 @@ public class CarWashService {
             return true;
         }
     }
-
-    public static void main(String[] args) {
-        CarOwner kai = new CarOwner("Kai", 72000);
-        Car audi = new Car(5);
-        CarOwner siim = new CarOwner("Siim", 1500);
-        Car honda = new Car(80);
-        CarOwner martin = new CarOwner("Martin", 0);
-        Car bmw = new Car(100);
-
-        CarWashService carWashService = new CarWashService();
-        PremiumWash premiumWash = new PremiumWash();
-        RegularWash regularWash = new RegularWash();
-        CheapWash cheapWash = new CheapWash();
-
-        System.out.println(carWashService.washAndDry(audi, kai));
-        carWashService.setWashStrategy(premiumWash);
-        System.out.println(carWashService.washAndDry(audi, kai));
-        carWashService.setWashStrategy(regularWash);
-        System.out.println(carWashService.wash(honda, siim));
-        System.out.println(carWashService.washAndDry(honda, siim));
-        carWashService.setWashStrategy(cheapWash);
-        System.out.println(carWashService.washAndDry(bmw, martin));
-    }
-
 }
