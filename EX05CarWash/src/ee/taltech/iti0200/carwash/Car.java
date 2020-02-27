@@ -8,11 +8,7 @@ public class Car {
     }
 
     public void setDirtiness(int newDirtiness) {
-        if (dirtiness - newDirtiness < 0) {
-            dirtiness = 0;
-        } else {
-            dirtiness = newDirtiness;
-        }
+        dirtiness = Math.max(newDirtiness, 0);
     }
 
     public int getDirtiness() {
