@@ -65,9 +65,6 @@ public class DataFileReader implements DataReader {
                 line.append(newChar);
                 i = reader.read();
             }
-            if (i == -1) {
-                return Optional.empty();
-            }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
