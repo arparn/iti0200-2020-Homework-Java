@@ -34,7 +34,7 @@ public class DataBufferedReader implements DataReader {
     }
 
     @Override
-    public Optional<String> readNextLine() throws FileNotFoundException {
+    public Optional<String> readNextLine() {
         String line = "";
         try {
             reader = new BufferedReader(new FileReader(fileToRead));
