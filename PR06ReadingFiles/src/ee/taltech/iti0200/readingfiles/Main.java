@@ -24,11 +24,14 @@ public class Main {
 
         File file = createNewFile();
 
-        //DataReader dataScanner = new DataScanner();
-        //dataScanner.setFileToRead(file);
-        //System.out.println(dataScanner.readFile());  // [This is an example., This is second line of file.]
+        DataReader dataScanner = new DataScanner();
+        dataScanner.setFileToRead(file);
+        System.out.println(dataScanner.readFile());  // [This is an example., This is second line of file.]
+        System.out.println(dataScanner.readNextLine());
+        System.out.println(dataScanner.readNextLine());
+        System.out.println(dataScanner.readNextLine());
 
-        //deleteFile(file);
+        deleteFile(file);
 
         //file = createNewFile();
 
@@ -38,16 +41,12 @@ public class Main {
 
         //deleteFile(file);
 
-        file = createNewFile();
+        //file = createNewFile();
 
-        DataReader dataFileReader = new DataFileReader();
-        dataFileReader.setFileToRead(file);
-        System.out.println(dataFileReader.readFile());  // [This is an example., This is second line of file.]
-        System.out.println(dataFileReader.readNextLine());
-        System.out.println(dataFileReader.readNextLine());
-        System.out.println(dataFileReader.readNextLine());
-
-        deleteFile(file);
+        //DataReader dataFileReader = new DataFileReader();
+        //dataFileReader.setFileToRead(file);
+        //System.out.println(dataFileReader.readFile());  // [This is an example., This is second line of file.]
+        //deleteFile(file);
 
     }
 }
