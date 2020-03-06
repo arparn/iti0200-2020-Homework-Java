@@ -7,7 +7,7 @@ public class Main {
     static File createNewFile() {
         try {
             FileWriter writer = new FileWriter("example.txt");
-            writer.write("This is an example.\nThis is second line of file.\n\n\n\n");
+            writer.write("This is an example.\nThis is second line of file.");
             writer.close();
             return new File("example.txt");
         } catch (IOException e) {
@@ -43,6 +43,9 @@ public class Main {
         DataReader dataFileReader = new DataFileReader();
         dataFileReader.setFileToRead(file);
         System.out.println(dataFileReader.readFile());  // [This is an example., This is second line of file.]
+        System.out.println(dataFileReader.readNextLine());
+        System.out.println(dataFileReader.readNextLine());
+        System.out.println(dataFileReader.readNextLine());
 
         deleteFile(file);
 

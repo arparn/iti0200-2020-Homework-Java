@@ -65,6 +65,9 @@ public class DataFileReader implements DataReader {
                 line.append(newChar);
                 i = reader.read();
             }
+            if (i == -1 && linesReaded.contains(line.toString())) {
+                return Optional.empty();
+            }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,6 +75,7 @@ public class DataFileReader implements DataReader {
         if (line.toString().equals("")) {
             return Optional.empty();
         } else {
+            linesReaded.add(line.toString());
             return Optional.of(line.toString());
         }
     }
