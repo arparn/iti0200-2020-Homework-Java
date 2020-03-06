@@ -14,30 +14,38 @@ public class DataBufferedReader implements DataReader {
     }
 
     @Override
-    public List<String> readFile() throws IOException {
+    public List<String> readFile() {
         List<String> answer = new ArrayList<>();
-        reader = new BufferedReader(new FileReader(fileToRead));
-        String line = reader.readLine();
-        while (line != null) {
-            if (line.equals("")) {
-                continue;
+        try {
+            reader = new BufferedReader(new FileReader(fileToRead));
+            String line = reader.readLine();
+            while (line != null) {
+                if (line.equals("")) {
+                    continue;
+                }
+                answer.add(line);
+                line = reader.readLine();
             }
-            answer.add(line);
-            line = reader.readLine();
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        reader.close();
         return answer;
     }
 
     @Override
-    public Optional<String> readNextLine() throws IOException {
-        reader = new BufferedReader(new FileReader(fileToRead));
-        String line = reader.readLine();
-        if (line == null || line.equals("")) {
+    public Optional<String> readNextLine() throws FileNotFoundException {
+        String line = "";
+        try {
+            reader = new BufferedReader(new FileReader(fileToRead));
+            line = reader.readLine();
             reader.close();
+        }  catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (line == null || line.equals("")) {
             return Optional.empty();
         } else {
-            reader.close();
             return Optional.of(line);
         }
     }
