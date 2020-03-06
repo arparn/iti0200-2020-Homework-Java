@@ -25,7 +25,7 @@ public class DataFileReader implements DataReader {
             int i = reader.read();
             while (i > -1) {
                 char newChar = (char) i;
-                if (Character.toString(newChar).equals("")) {
+                if (Character.toString(newChar).equals("\n")) {
                     i = reader.read();
                     answer.add(line.toString());
                     line = new StringBuilder();
@@ -48,10 +48,10 @@ public class DataFileReader implements DataReader {
             int i = reader.read();
             while (i > -1) {
                 char newChar = (char) i;
-                if (Character.toString(newChar).equals("") && !linesReaded.contains(line.toString())) {
+                if (Character.toString(newChar).equals("\n") && !linesReaded.contains(line.toString())) {
                     linesReaded.add(line.toString());
                     break;
-                } else if (Character.toString(newChar).equals("") && linesReaded.contains(line.toString())) {
+                } else if (Character.toString(newChar).equals("\n") && linesReaded.contains(line.toString())) {
                     i = reader.read();
                     line = new StringBuilder();
                     continue;
