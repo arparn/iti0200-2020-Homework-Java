@@ -22,6 +22,7 @@ public class DataBufferedReader implements DataReader {
             String line = reader.readLine();
             while (line != null) {
                 if (line.equals("")) {
+                    line = reader.readLine();
                     continue;
                 }
                 answer.add(line);
