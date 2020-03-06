@@ -34,7 +34,9 @@ public class DataFileReader implements DataReader {
                 line.append(newChar);
                 i = reader.read();
             }
-            answer.add(line.toString());
+            if (!line.toString().equals("")) {
+                answer.add(line.toString());
+            }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
