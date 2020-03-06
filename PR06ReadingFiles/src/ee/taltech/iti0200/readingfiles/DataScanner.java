@@ -24,7 +24,7 @@ public class DataScanner implements DataReader {
             String line;
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
-                if (line.equals("\n")) {
+                if (line.equals("")) {
                     continue;
                 }
                 answer.add(line);
@@ -54,7 +54,7 @@ public class DataScanner implements DataReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (line.equals("\n") || line.equals("")) {
+        if (line.equals("")) {
             return Optional.empty();
         } else {
             linesReaded.add(line);

@@ -7,7 +7,7 @@ public class Main {
     static File createNewFile() {
         try {
             FileWriter writer = new FileWriter("example.txt");
-            writer.write("This is an example.\nThis is second line of file.");
+            writer.write("This is an example.\nThis is second line of file.\n\n\n");
             writer.close();
             return new File("example.txt");
         } catch (IOException e) {
