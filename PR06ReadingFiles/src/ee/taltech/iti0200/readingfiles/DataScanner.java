@@ -55,6 +55,7 @@ public class DataScanner implements DataReader {
             e.printStackTrace();
         }
         if (line.equals("")) {
+            linesReaded.add(line);
             return Optional.empty();
         } else {
             linesReaded.add(line);
