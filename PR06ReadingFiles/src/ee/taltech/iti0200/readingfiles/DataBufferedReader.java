@@ -34,8 +34,10 @@ public class DataBufferedReader implements DataReader {
         reader = new BufferedReader(new FileReader(fileToRead));
         String line = reader.readLine();
         if (line == null || line.equals("")) {
+            reader.close();
             return Optional.empty();
         } else {
+            reader.close();
             return Optional.of(line);
         }
     }
