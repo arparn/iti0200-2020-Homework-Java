@@ -28,7 +28,7 @@ public class DataFileReader implements DataReader {
                 if (Character.toString(newChar).equals("\n")) {
                     i = reader.read();
                     answer.add(line.toString());
-                    line = new StringBuilder();
+                    line = new StringBuilder("");
                     continue;
                 }
                 line.append(newChar);
@@ -59,7 +59,7 @@ public class DataFileReader implements DataReader {
                     if (i < 0) {
                         return Optional.empty();
                     }
-                    line = new StringBuilder();
+                    line = new StringBuilder("");
                     continue;
                 }
                 line.append(newChar);
