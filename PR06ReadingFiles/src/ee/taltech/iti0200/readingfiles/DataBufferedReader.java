@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class DataBufferedReader implements DataReader {
     private BufferedReader reader;
-    public File fileToRead;
+    private File fileToRead;
     List<String> linesReaded = new ArrayList<>();
 
     @Override
