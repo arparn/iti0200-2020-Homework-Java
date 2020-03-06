@@ -27,7 +27,9 @@ public class DataFileReader implements DataReader {
                 char newChar = (char) i;
                 if (Character.toString(newChar).equals("\n")) {
                     i = reader.read();
-                    answer.add(line.toString());
+                    if (!line.toString().equals("")) {
+                        answer.add(line.toString());
+                    }
                     line = new StringBuilder("");
                     continue;
                 }
