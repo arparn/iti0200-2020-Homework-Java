@@ -34,6 +34,7 @@ public class DataFileReader implements DataReader {
                 line.append(newChar);
                 i = reader.read();
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,6 +66,7 @@ public class DataFileReader implements DataReader {
                 line.append(newChar);
                 i = reader.read();
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
