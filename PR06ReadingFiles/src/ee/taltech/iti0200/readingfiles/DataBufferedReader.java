@@ -42,7 +42,7 @@ public class DataBufferedReader implements DataReader {
             reader = new BufferedReader(new FileReader(fileToRead));
             line = reader.readLine();
             while (!flag) {
-                if (!linesReaded.contains(line)) {
+                if (!linesReaded.contains(line) || line == null) {
                     linesReaded.add(line);
                     flag = true;
                     reader.close();
