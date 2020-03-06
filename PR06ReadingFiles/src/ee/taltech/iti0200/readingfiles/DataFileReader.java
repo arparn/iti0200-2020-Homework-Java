@@ -46,6 +46,9 @@ public class DataFileReader implements DataReader {
         try {
             reader = new FileReader(fileToRead);
             int i = reader.read();
+            if (i == -1) {
+                return Optional.empty();
+            }
             while (i > -1) {
                 char newChar = (char) i;
                 if (Character.toString(newChar).equals("\n") && !linesReaded.contains(line.toString())) {
