@@ -7,6 +7,7 @@ import java.util.Optional;
 public class DataBufferedReader implements DataReader {
     private BufferedReader reader;
     public File fileToRead;
+    List<String> linesReaded = new ArrayList<>();
 
     @Override
     public void setFileToRead(File file) {
@@ -37,9 +38,18 @@ public class DataBufferedReader implements DataReader {
     public Optional<String> readNextLine() {
         String line = "";
         try {
+            boolean flag = false;
             reader = new BufferedReader(new FileReader(fileToRead));
             line = reader.readLine();
-            reader.close();
+            while (!flag) {
+                if (!linesReaded.contains(line)) {
+                    linesReaded.add(line);
+                    flag = true;
+                    reader.close();
+                } else {
+                    line = reader.readLine();
+                }
+            }
         }  catch (IOException e) {
             e.printStackTrace();
         }
