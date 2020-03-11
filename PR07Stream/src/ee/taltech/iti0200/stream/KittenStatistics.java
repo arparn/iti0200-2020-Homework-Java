@@ -50,9 +50,6 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        if (kittens.size() == 0) {
-            return Optional.empty();
-        }
         List<Kitten> name;
         name = kittens.stream()
                 .filter(kitten -> kitten.getName()
@@ -66,11 +63,11 @@ public class KittenStatistics {
     }
 
     public List<Kitten> kittensSortedByAgeYoungerFirst() {
-        return null;
+        return kittens.stream().sorted(Comparator.comparingInt(Kitten::getAge)).collect(Collectors.toList());
     }
 
     public List<Kitten> kittensSortedByAgeOlderFirst() {
-        return null;
+        return kittens.stream().sorted(Comparator.comparingInt(Kitten::getAge).reversed()).collect(Collectors.toList());
     }
 
 }
