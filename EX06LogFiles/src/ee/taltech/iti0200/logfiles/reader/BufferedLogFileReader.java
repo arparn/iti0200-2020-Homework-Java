@@ -1,4 +1,6 @@
 package ee.taltech.iti0200.logfiles.reader;
+import ee.taltech.iti0200.logfiles.exception.LogFileReaderException;
+
 import java.time.LocalDateTime;
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,7 +42,7 @@ public class BufferedLogFileReader implements LogFileReader {
                     answer.append("\n");
                 }
             }
-        } catch (IOException e) {
+        } catch (LogFileReaderException | IOException e) {
             e.printStackTrace();
         }
         return answer.toString();
@@ -68,7 +70,7 @@ public class BufferedLogFileReader implements LogFileReader {
                     answer.append("\n");
                 }
             }
-        } catch (IOException e) {
+        } catch (LogFileReaderException | IOException e) {
             e.printStackTrace();
         }
         return answer.toString();
