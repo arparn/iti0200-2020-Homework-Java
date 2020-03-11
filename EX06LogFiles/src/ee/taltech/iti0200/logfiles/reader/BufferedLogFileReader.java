@@ -4,6 +4,7 @@ import ee.taltech.iti0200.logfiles.exception.LogFileReaderException;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class BufferedLogFileReader implements LogFileReader {
 
@@ -22,6 +23,8 @@ public class BufferedLogFileReader implements LogFileReader {
                 }
                 answer.append(str);
             }
+        }catch (FileNotFoundException x) {
+            throw new LogFileReaderException("File not found");
         } catch (IOException e) {
             throw new LogFileReaderException("Unable to read file");
         }
@@ -43,8 +46,10 @@ public class BufferedLogFileReader implements LogFileReader {
                     answer.append(str);
                 }
             }
-        } catch (LogFileReaderException | IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException x) {
+            throw new LogFileReaderException("File not found");
+        } catch (IOException e) {
+            throw new LogFileReaderException("Unable to read file");
         }
         return answer.toString();
     }
@@ -73,8 +78,12 @@ public class BufferedLogFileReader implements LogFileReader {
                     answer.append(str);
                 }
             }
-        } catch (LogFileReaderException | IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException x) {
+            throw new LogFileReaderException("File not found");
+        } catch (IOException e) {
+            throw new LogFileReaderException("Unable to read file");
+        } catch (DateTimeParseException z) {
+            throw new LogFileReaderException("Unable to parse date");
         }
         return answer.toString();
     }
