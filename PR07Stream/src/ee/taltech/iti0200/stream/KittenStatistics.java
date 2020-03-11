@@ -48,8 +48,15 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        List<Kitten> name = kittens.stream().filter(kitten -> kitten.getName().equals(givenName)).collect(Collectors.toList());
-        return Optional.ofNullable(name.get(0));
+        List<Kitten> name = kittens.stream()
+                .filter(kitten -> kitten.getName()
+                        .equals(givenName))
+                .collect(Collectors.toList());
+        if (name.size() > 0) {
+            return Optional.ofNullable(name.get(0));
+        } else {
+            return Optional.empty();
+        }
     }
 
     public List<Kitten> kittensSortedByAgeYoungerFirst() {
