@@ -1,8 +1,5 @@
 package ee.taltech.iti0200.stream;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,10 +12,15 @@ public class KittenStatistics {
     }
 
     public OptionalDouble findKittensAverageAge() {
-        int sumOfAges = kittens.stream()
+        int sumOfAges = 0;
+        sumOfAges = kittens.stream()
                 .mapToInt(Kitten::getAge)
                 .sum();
-        return OptionalDouble.of((double) sumOfAges / (double) kittens.size());
+        if (sumOfAges > 0 && kittens.size() > 0) {
+            return OptionalDouble.of((double) sumOfAges / (double) kittens.size());
+        } else {
+            return OptionalDouble.empty();
+        }
     }
 
     public Optional<Kitten> findOldestKitten() {
@@ -48,7 +50,8 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        List<Kitten> name = kittens.stream()
+        List<Kitten> name = new ArrayList<>();
+        name = kittens.stream()
                 .filter(kitten -> kitten.getName()
                         .equals(givenName))
                 .collect(Collectors.toList());
