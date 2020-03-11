@@ -42,7 +42,9 @@ public class KittenStatistics {
     }
 
     public List<Kitten> findKittensBetweenAges(int minAge, int maxAge) {
-        return null;
+        return kittens.stream()
+                .filter(kitten -> minAge < kitten.getAge() && kitten.getAge() < maxAge)
+                .collect(Collectors.toList());
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
