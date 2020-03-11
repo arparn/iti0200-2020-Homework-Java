@@ -12,7 +12,7 @@ public class KittenStatistics {
     }
 
     public OptionalDouble findKittensAverageAge() {
-        int sumOfAges = 0;
+        int sumOfAges;
         sumOfAges = kittens.stream()
                 .mapToInt(Kitten::getAge)
                 .sum();
@@ -50,7 +50,10 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        List<Kitten> name = new ArrayList<>();
+        if (kittens.size() == 0) {
+            return Optional.empty();
+        }
+        List<Kitten> name;
         name = kittens.stream()
                 .filter(kitten -> kitten.getName()
                         .equals(givenName))
