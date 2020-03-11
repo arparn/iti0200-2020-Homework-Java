@@ -55,7 +55,7 @@ public class KittenStatistics {
                 .filter(kitten -> kitten.getName()
                         .equals(givenName))
                 .collect(Collectors.toList());
-        if (name.size() > 0) {
+        if (name.size() > 0 && kittens.size() > 0) {
             return Optional.ofNullable(name.get(0));
         } else {
             return Optional.empty();
