@@ -1,11 +1,8 @@
 package ee.taltech.iti0200.logfiles.reader;
 import ee.taltech.iti0200.logfiles.exception.LogFileReaderException;
 
+import java.io.*;
 import java.time.LocalDateTime;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
 public class BufferedLogFileReader implements LogFileReader {
@@ -25,8 +22,8 @@ public class BufferedLogFileReader implements LogFileReader {
                 }
                 answer.append(str);
             }
-        } catch (LogFileReaderException | IOException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new LogFileReaderException("Unable to read file");
         }
         return answer.toString();
     }
