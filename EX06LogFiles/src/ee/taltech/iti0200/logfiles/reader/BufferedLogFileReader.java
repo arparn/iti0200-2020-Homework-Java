@@ -62,7 +62,7 @@ public class BufferedLogFileReader implements LogFileReader {
                     //lastDigit += 1;
                     //dateStr.append(str, 0, 17).append(lastDigit);
                 //}
-                LocalDateTime dateTime = LocalDateTime.parse(str.substring(0, 10) + "T" + str.substring(11, 18));
+                LocalDateTime dateTime = LocalDateTime.of(Integer.parseInt(str.substring(0, 4)), Integer.parseInt(str.substring(5, 7)), Integer.parseInt(str.substring(8, 10)), Integer.parseInt(str.substring(11, 13)), Integer.parseInt(str.substring(14, 16)), Integer.parseInt(str.substring(17, 19)));
                 if (dateTime.isAfter(from) && dateTime.isBefore(to)) {
                     answer.append(str);
                     answer.append("\n");
