@@ -21,9 +21,11 @@ public class BufferedLogFileReader implements LogFileReader {
             String str;
             while ((str = reader.readLine()) != null) {
                 answer.append(str);
-                answer.append("\n");
+                if (reader.readLine() != null) {
+                    answer.append("\n");
+                }
             }
-        } catch (IOException e) {
+        } catch (LogFileReaderException | IOException e) {
             e.printStackTrace();
         }
         return answer.toString();
@@ -39,7 +41,9 @@ public class BufferedLogFileReader implements LogFileReader {
             while ((str = reader.readLine()) != null) {
                 if (str.contains(level)) {
                     answer.append(str);
-                    answer.append("\n");
+                    if (reader.readLine() != null) {
+                        answer.append("\n");
+                    }
                 }
             }
         } catch (LogFileReaderException | IOException e) {
@@ -67,7 +71,9 @@ public class BufferedLogFileReader implements LogFileReader {
                 LocalDateTime dateTime = LocalDateTime.of(Integer.parseInt(str.substring(0, 4)), Integer.parseInt(str.substring(5, 7)), Integer.parseInt(str.substring(8, 10)), Integer.parseInt(str.substring(11, 13)), Integer.parseInt(str.substring(14, 16)), Integer.parseInt(str.substring(17, 19)));
                 if (dateTime.isAfter(from) && dateTime.isBefore(to)) {
                     answer.append(str);
-                    answer.append("\n");
+                    if (reader.readLine() != null) {
+                        answer.append("\n");
+                    }
                 }
             }
         } catch (LogFileReaderException | IOException e) {
