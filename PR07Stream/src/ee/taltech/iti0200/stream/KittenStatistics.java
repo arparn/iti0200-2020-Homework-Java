@@ -18,7 +18,7 @@ public class KittenStatistics {
         int sumOfAges = kittens.stream()
                 .mapToInt(Kitten::getAge)
                 .sum();
-        return OptionalDouble.of(sumOfAges / kittens.size());
+        return OptionalDouble.of((double) sumOfAges / (double) kittens.size());
     }
 
     public Optional<Kitten> findOldestKitten() {
@@ -26,18 +26,19 @@ public class KittenStatistics {
     }
 
     public List<Kitten> findYoungestKittens() {
-        List<Kitten> youngest = kittens.stream()
+        return kittens.stream()
                 .filter(kitten -> kitten.getAge() == kittens
                         .stream()
                         .min(Comparator.comparingInt(Kitten::getAge))
                         .get()
                         .getAge())
                 .collect(Collectors.toList());
-        return youngest;
     }
 
     public List<Kitten> findKittensAccordingToGender(Kitten.Gender gender) {
-        return null;
+        return kittens.stream()
+                .filter(kitten -> kitten.getGender() == gender)
+                .collect(Collectors.toList());
     }
 
     public List<Kitten> findKittensBetweenAges(int minAge, int maxAge) {
