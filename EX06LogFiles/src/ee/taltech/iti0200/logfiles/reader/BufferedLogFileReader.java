@@ -13,7 +13,7 @@ public class BufferedLogFileReader implements LogFileReader {
     private BufferedReader reader;
 
     @Override
-    public String readLogs(String path) {
+    public String readLogs(String path) throws LogFileReaderException {
         File file = new File(path);
         StringBuilder answer = new StringBuilder();
         try {
