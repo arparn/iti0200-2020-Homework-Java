@@ -64,10 +64,7 @@ public class BufferedLogFileReader implements LogFileReader {
             reader = new BufferedReader(new FileReader(file));
             String str;
             while ((str = reader.readLine()) != null) {
-                LocalDateTime dateTime = LocalDateTime.of(Integer.parseInt(str.substring(0, 4)),
-                        Integer.parseInt(str.substring(5, 7)), Integer.parseInt(str.substring(8, 10)),
-                        Integer.parseInt(str.substring(11, 13)), Integer.parseInt(str.substring(14, 16)),
-                        Integer.parseInt(str.substring(17, 19)));
+                LocalDateTime dateTime = LocalDateTime.parse(str.substring(0, 10) + "T" + str.substring(11, 23));
                 if (dateTime.isAfter(from) && dateTime.isBefore(to)) {
                     if (!answer.toString().equals("")) {
                         answer.append("\n");
