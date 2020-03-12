@@ -1,11 +1,19 @@
 package ee.taltech.iti0200.logfiles.reader;
 import ee.taltech.iti0200.logfiles.exception.LogFileReaderException;
 
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
+import java.io.IOException;
 
 public class BufferedLogFileReader implements LogFileReader {
+
+    public static final int DATE_SUBSTRING_START = 11;
+    public static final int DATE_SUBSTRING_END = 23;
 
     private BufferedReader reader;
 
@@ -23,7 +31,7 @@ public class BufferedLogFileReader implements LogFileReader {
                 answer.append(str);
             }
             reader.close();
-        }catch (FileNotFoundException x) {
+        } catch (FileNotFoundException x) {
             throw new LogFileReaderException("File not found");
         } catch (IOException e) {
             throw new LogFileReaderException("Unable to read file");
@@ -63,7 +71,7 @@ public class BufferedLogFileReader implements LogFileReader {
             reader = new BufferedReader(new FileReader(file));
             String str;
             while ((str = reader.readLine()) != null) {
-                LocalDateTime dateTime = LocalDateTime.parse(str.substring(0, 10) + "T" + str.substring(11, 23));
+                LocalDateTime dateTime = LocalDateTime.parse(str.substring(0, 10) + "T" + str.substring(DATE_SUBSTRING_START, DATE_SUBSTRING_END));
                 if (dateTime.isAfter(from) && dateTime.isBefore(to)) {
                     if (!answer.toString().equals("")) {
                         answer.append("\n");

@@ -21,7 +21,7 @@ class LogFileController {
         );
 
         System.out.println(controller.bufferedLogFileReader.readLogsWithLevel("log_file.txt", "INFO"));
-        System.out.println(controller.filesLogFileReader.readLogsBetween("log_file.txt", LocalDateTime.MIN, LocalDateTime.MAX));
+        System.out.println(controller.filesLogFileReader.readLogsBetween("log_file.txt",
+                LocalDateTime.MIN, LocalDateTime.MAX));
     }
-
 }

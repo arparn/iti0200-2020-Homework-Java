@@ -31,16 +31,18 @@ class FilesLogFileReaderTest {
                         "[nio-8080-exec-1] com.Application : This is an info message"
         );
         String str = filesLogFileReader.readLogsWithLevel("log_file.txt", "INFO");
-        assertEquals("2019-01-16 17:48:01.049 INFO 60674 --- [nio-8080-exec-1] com.Application : This is an info message", str);
+        assertEquals("2019-01-16 17:48:01.049 INFO 60674 --- "
+                + "[nio-8080-exec-1] com.Application : This is an info message", str);
     }
 
     @Test
     void readLogsBetween() {
         logFileWriter.writeLogs("log_file.txt",
-                "2019-01-16 17:48:01.049 INFO 60674 --- " +
-                        "[nio-8080-exec-1] com.Application : This is an info message"
+                "2019-01-16 17:48:01.049 INFO 60674 --- "
+                        + "[nio-8080-exec-1] com.Application : This is an info message"
         );
         String str = filesLogFileReader.readLogsWithLevel("log_file.txt", "INFO");
-        assertEquals("2019-01-16 17:48:01.049 INFO 60674 --- [nio-8080-exec-1] com.Application : This is an info message", str);
+        assertEquals("2019-01-16 17:48:01.049 INFO 60674 --- "
+                + "[nio-8080-exec-1] com.Application : This is an info message", str);
     }
 }

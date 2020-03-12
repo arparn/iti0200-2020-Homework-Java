@@ -11,6 +11,9 @@ import java.util.Scanner;
 
 public class FilesLogFileReader implements LogFileReader {
 
+    public static final int DATE_SUBSTRING_START = 11;
+    public static final int DATE_SUBSTRING_END = 23;
+
     private FileReader reader;
 
     @Override
@@ -75,7 +78,7 @@ public class FilesLogFileReader implements LogFileReader {
             String str;
             while (scanner.hasNextLine()) {
                 str = scanner.nextLine();
-                LocalDateTime dateTime = LocalDateTime.parse(str.substring(0, 10) + "T" + str.substring(11, 23));
+                LocalDateTime dateTime = LocalDateTime.parse(str.substring(0, 10) + "T" + str.substring(DATE_SUBSTRING_START, DATE_SUBSTRING_END));
                 if (dateTime.isAfter(from) && dateTime.isBefore(to)) {
                     if (!answer.toString().equals("")) {
                         answer.append("\n");

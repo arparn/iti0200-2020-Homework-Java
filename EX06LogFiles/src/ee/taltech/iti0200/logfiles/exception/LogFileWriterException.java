@@ -1,7 +1,5 @@
 package ee.taltech.iti0200.logfiles.exception;
 
-import ee.taltech.iti0200.logfiles.writer.LogFileWriter;
-
 public class LogFileWriterException extends RuntimeException  {
     String message;
 
