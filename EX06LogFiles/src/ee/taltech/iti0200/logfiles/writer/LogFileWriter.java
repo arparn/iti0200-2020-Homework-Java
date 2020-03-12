@@ -1,5 +1,11 @@
 package ee.taltech.iti0200.logfiles.writer;
 
+import ee.taltech.iti0200.logfiles.exception.LogFileWriterException;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class LogFileWriter {
 
     /**
@@ -8,8 +14,14 @@ public class LogFileWriter {
      * @param path    file saving path
      * @param content the content to write
      */
-    public void writeLogs(String path, String content) {
-
+    public void writeLogs(String path, String content) throws LogFileWriterException, IOException {
+        File file = new File(path);
+        try {
+            FileWriter fw = new FileWriter(file);
+            fw.write(content);
+            fw.close();
+        } catch (IOException e) {
+            throw new LogFileWriterException("Unable to write file");
+        }
     }
-
 }
