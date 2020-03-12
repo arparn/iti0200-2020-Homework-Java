@@ -14,7 +14,7 @@ public class LogFileWriter {
      * @param path    file saving path
      * @param content the content to write
      */
-    public void writeLogs(String path, String content) throws LogFileWriterException, IOException {
+    public void writeLogs(String path, String content) throws LogFileWriterException {
         File file = new File(path);
         try {
             FileWriter fw = new FileWriter(file);
