@@ -3,7 +3,6 @@ import ee.taltech.iti0200.logfiles.exception.LogFileReaderException;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class BufferedLogFileReader implements LogFileReader {
