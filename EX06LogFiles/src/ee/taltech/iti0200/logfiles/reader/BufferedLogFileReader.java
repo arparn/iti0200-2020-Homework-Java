@@ -23,6 +23,7 @@ public class BufferedLogFileReader implements LogFileReader {
                 }
                 answer.append(str);
             }
+            reader.close();
         }catch (FileNotFoundException x) {
             throw new LogFileReaderException("File not found");
         } catch (IOException e) {
@@ -46,6 +47,7 @@ public class BufferedLogFileReader implements LogFileReader {
                     answer.append(str);
                 }
             }
+            reader.close();
         } catch (FileNotFoundException x) {
             throw new LogFileReaderException("File not found");
         } catch (IOException e) {
@@ -62,15 +64,10 @@ public class BufferedLogFileReader implements LogFileReader {
             reader = new BufferedReader(new FileReader(file));
             String str;
             while ((str = reader.readLine()) != null) {
-                StringBuilder dateStr = new StringBuilder();
-                //if (Integer.parseInt(str.substring(18, 19)) < 5) {
-                    //dateStr.append(str, 0, 18);
-                //} else {
-                    //int lastDigit = Integer.parseInt(str.substring(18, 19));
-                    //lastDigit += 1;
-                    //dateStr.append(str, 0, 17).append(lastDigit);
-                //}
-                LocalDateTime dateTime = LocalDateTime.of(Integer.parseInt(str.substring(0, 4)), Integer.parseInt(str.substring(5, 7)), Integer.parseInt(str.substring(8, 10)), Integer.parseInt(str.substring(11, 13)), Integer.parseInt(str.substring(14, 16)), Integer.parseInt(str.substring(17, 19)));
+                LocalDateTime dateTime = LocalDateTime.of(Integer.parseInt(str.substring(0, 4)),
+                        Integer.parseInt(str.substring(5, 7)), Integer.parseInt(str.substring(8, 10)),
+                        Integer.parseInt(str.substring(11, 13)), Integer.parseInt(str.substring(14, 16)),
+                        Integer.parseInt(str.substring(17, 19)));
                 if (dateTime.isAfter(from) && dateTime.isBefore(to)) {
                     if (!answer.toString().equals("")) {
                         answer.append("\n");
@@ -78,6 +75,7 @@ public class BufferedLogFileReader implements LogFileReader {
                     answer.append(str);
                 }
             }
+            reader.close();
         } catch (FileNotFoundException x) {
             throw new LogFileReaderException("File not found");
         } catch (IOException e) {
