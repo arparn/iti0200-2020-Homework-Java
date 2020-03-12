@@ -4,9 +4,8 @@ import ee.taltech.iti0200.logfiles.writer.LogFileWriter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class BufferedLogFileReaderTest {
 
