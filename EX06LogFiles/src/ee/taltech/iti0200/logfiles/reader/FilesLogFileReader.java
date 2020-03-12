@@ -78,7 +78,8 @@ public class FilesLogFileReader implements LogFileReader {
             String str;
             while (scanner.hasNextLine()) {
                 str = scanner.nextLine();
-                LocalDateTime dateTime = LocalDateTime.parse(str.substring(0, 10) + "T" + str.substring(DATE_SUBSTRING_START, DATE_SUBSTRING_END));
+                LocalDateTime dateTime = LocalDateTime.parse(str.substring(0, 10) + "T"
+                        + str.substring(DATE_SUBSTRING_START, DATE_SUBSTRING_END));
                 if (dateTime.isAfter(from) && dateTime.isBefore(to)) {
                     if (!answer.toString().equals("")) {
                         answer.append("\n");
