@@ -4,7 +4,7 @@ public class Kitten {
     private Gender gender;
     private String name;
     private int age;
-    public enum Gender{MALE, FEMALE}
+    public enum Gender { MALE, FEMALE }
 
     public Kitten(String name, Gender gender, int age) {
         this.name = name;

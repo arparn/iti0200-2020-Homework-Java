@@ -1,7 +1,9 @@
 package ee.taltech.iti0200.stream;
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class KittenStatistics {
 
@@ -24,7 +26,7 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findOldestKitten() {
-        return kittens.stream().reduce((kitten1, kitten2) -> kitten1.getAge() > kitten2.getAge() ? kitten1:kitten2);
+        return kittens.stream().reduce((kitten1, kitten2) -> kitten1.getAge() > kitten2.getAge() ? kitten1 : kitten2);
     }
 
     public List<Kitten> findYoungestKittens() {
