@@ -52,8 +52,8 @@ public class KittenStatistics {
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
         if (kittens.size() > 0) {
             Kitten kittenName = kittens.stream()
-                    .filter(kitten -> kitten.getName()
-                            .equals(givenName))
+                    .filter(kitten -> kitten.getName().toUpperCase()
+                            .equals(givenName.toUpperCase()))
                     .findFirst()
                     .get();
             return Optional.of(kittenName);
