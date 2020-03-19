@@ -13,22 +13,22 @@ public class DatabaseImpl  implements Database{
 
     @Override
     public List<String> getStolenVehicles() {
-        return stolenVehicles;
+        return this.stolenVehicles;
     }
 
     @Override
     public List<String> getMissingPersons() {
-        return missingPeople;
+        return this.missingPeople;
     }
 
     @Override
     public List<String> getTerrorists() {
-        return terrorists;
+        return this.terrorists;
     }
 
     @Override
     public List<String> getIllegalGoods() {
-        return illegalGoods;
+        return this.illegalGoods;
     }
 
     @Override
