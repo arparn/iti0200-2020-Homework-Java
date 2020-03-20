@@ -1,6 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
-public class Vehicle extends BorderEntity{
+public class Vehicle extends BorderEntity {
 
     String vin;
 

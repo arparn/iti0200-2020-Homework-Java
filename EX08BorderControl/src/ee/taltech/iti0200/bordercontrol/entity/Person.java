@@ -1,6 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
-public class Person extends BorderEntity{
+public class Person extends BorderEntity {
 
     String name;
     String idCode;
@@ -8,6 +8,10 @@ public class Person extends BorderEntity{
     public Person(String name, String idCode) {
         this.name = name;
         this.idCode = idCode;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getIdCode() {
