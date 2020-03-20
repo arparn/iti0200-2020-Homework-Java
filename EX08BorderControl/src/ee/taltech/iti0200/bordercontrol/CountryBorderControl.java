@@ -36,3 +36,4 @@ public class CountryBorderControl {
                 .collect(Collectors.toList());
     }
 }
+
