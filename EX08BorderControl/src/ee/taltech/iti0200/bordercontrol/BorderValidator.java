@@ -9,4 +9,15 @@ public class BorderValidator implements Validator {
     public BorderValidator(Database database) {
         this.database = database;
     }
+
+
+    @Override
+    public Database getDatabase() {
+        return database;
+    }
+
+    @Override
+    public void setDatabase(Database database) {
+        this.database = database;
+    }
 }

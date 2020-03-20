@@ -4,6 +4,8 @@ import ee.taltech.iti0200.bordercontrol.entity.BorderEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CountryBorderControl {
 
@@ -18,7 +20,10 @@ public class CountryBorderControl {
     }
 
     public List<BorderEntity> processBorderCrossers(List<BorderEntity> crossers) {
-        return new ArrayList<>();
+        return crossers.stream().filter(o -> !validator.getDatabase().getTerrorists().contains(o.getBorderCrossingId().toString())
+                && !validator.getDatabase().getStolenVehicles().contains(o.getBorderCrossingId().toString())
+                && !validator.getDatabase().getMissingPersons().contains(o.getBorderCrossingId().toString())
+                && !validator.getDatabase().getIllegalGoods().contains(o.getBorderCrossingId())).collect(Collectors.toList());
     }
 
     public List<BorderEntity> processBorderCrossersParallel(List<BorderEntity> crossers) {
