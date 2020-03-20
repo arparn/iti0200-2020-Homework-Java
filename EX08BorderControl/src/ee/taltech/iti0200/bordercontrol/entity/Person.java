@@ -10,11 +10,6 @@ public class Person extends BorderEntity{
         this.idCode = idCode;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
     public String getIdCode() {
         return idCode;
     }
