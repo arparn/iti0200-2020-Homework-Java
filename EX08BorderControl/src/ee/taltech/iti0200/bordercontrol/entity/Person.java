@@ -1,6 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
-public class Person extends BorderEntity{
+public class Person implements BorderEntity{
 
     String name;
     String idCode;
@@ -19,12 +19,12 @@ public class Person extends BorderEntity{
     }
 
     @Override
-    Long getBorderCrossingId() {
-        return Long.parseLong(idCode);
+    public Long getBorderCrossingId() {
+        return Long.parseLong(getIdCode());
     }
 
     @Override
-    void setBorderCrossingId(Long newBorderCrossingId) {
+    public void setBorderCrossingId(Long newBorderCrossingId) {
         idCode = String.valueOf(newBorderCrossingId);
     }
 }

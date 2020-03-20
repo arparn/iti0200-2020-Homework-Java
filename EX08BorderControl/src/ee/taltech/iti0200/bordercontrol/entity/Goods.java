@@ -1,6 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
-public class Goods extends BorderEntity {
+public class Goods implements BorderEntity {
 
     Long productId;
 
@@ -13,12 +13,12 @@ public class Goods extends BorderEntity {
     }
 
     @Override
-    Long getBorderCrossingId() {
-        return productId;
+    public Long getBorderCrossingId() {
+        return getProductId();
     }
 
     @Override
-    void setBorderCrossingId(Long newBorderCrossingId) {
+    public void setBorderCrossingId(Long newBorderCrossingId) {
         productId = newBorderCrossingId;
     }
 }

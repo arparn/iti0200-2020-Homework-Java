@@ -1,6 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
-public class Vehicle extends BorderEntity{
+public class Vehicle implements BorderEntity{
 
     String vin;
 
@@ -12,13 +12,14 @@ public class Vehicle extends BorderEntity{
         return (long) Integer.parseInt(vin);
     }
 
+
     @Override
-    Long getBorderCrossingId() {
-        return Long.parseLong(vin);
+    public Long getBorderCrossingId() {
+        return getVin();
     }
 
     @Override
-    void setBorderCrossingId(Long newBorderCrossingId) {
+    public void setBorderCrossingId(Long newBorderCrossingId) {
         vin = String.valueOf(newBorderCrossingId);
     }
 }
