@@ -1,6 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
-public class Person implements BorderEntity{
+public class Person extends BorderEntity{
 
     String name;
     String idCode;

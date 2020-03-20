@@ -1,6 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
-public class Vehicle implements BorderEntity{
+public class Vehicle extends BorderEntity{
 
     String vin;
 
@@ -20,7 +20,7 @@ public class Vehicle implements BorderEntity{
 
     @Override
     public String getName() {
-        return vin.toString();
+        return null;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
-public class Goods implements BorderEntity {
+public class Goods extends BorderEntity {
 
     Long productId;
 
@@ -19,7 +19,7 @@ public class Goods implements BorderEntity {
 
     @Override
     public String getName() {
-        return productId.toString();
+        return null;
     }
 
     @Override

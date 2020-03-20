@@ -1,11 +1,11 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
 
-public interface BorderEntity {
+public abstract class BorderEntity {
 
-    Long getBorderCrossingId();
+    public abstract Long getBorderCrossingId();
 
-    String getName();
+    public abstract String getName();
 
-    void setBorderCrossingId(Long newBorderCrossingId);
+    public abstract void setBorderCrossingId(Long newBorderCrossingId);
 }
