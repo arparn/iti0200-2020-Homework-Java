@@ -5,5 +5,7 @@ public interface BorderEntity {
 
     Long getBorderCrossingId();
 
+    String getName();
+
     void setBorderCrossingId(Long newBorderCrossingId);
 }

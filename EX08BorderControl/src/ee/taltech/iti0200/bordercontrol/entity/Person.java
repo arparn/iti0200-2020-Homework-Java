@@ -10,6 +10,7 @@ public class Person implements BorderEntity{
         this.idCode = idCode;
     }
 
+    @Override
     public String getName() {
         return name;
     }

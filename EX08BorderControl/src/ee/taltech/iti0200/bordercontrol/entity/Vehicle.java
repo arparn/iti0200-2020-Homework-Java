@@ -19,6 +19,11 @@ public class Vehicle implements BorderEntity{
     }
 
     @Override
+    public String getName() {
+        return vin.toString();
+    }
+
+    @Override
     public void setBorderCrossingId(Long newBorderCrossingId) {
         vin = String.valueOf(newBorderCrossingId);
     }

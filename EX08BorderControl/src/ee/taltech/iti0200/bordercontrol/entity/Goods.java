@@ -18,6 +18,11 @@ public class Goods implements BorderEntity {
     }
 
     @Override
+    public String getName() {
+        return productId.toString();
+    }
+
+    @Override
     public void setBorderCrossingId(Long newBorderCrossingId) {
         productId = newBorderCrossingId;
     }
