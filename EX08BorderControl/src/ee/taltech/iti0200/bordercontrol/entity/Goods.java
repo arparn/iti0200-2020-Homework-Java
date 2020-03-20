@@ -2,7 +2,7 @@ package ee.taltech.iti0200.bordercontrol.entity;
 
 public class Goods extends BorderEntity {
 
-    long productId;
+    Long productId;
 
     public Goods(Long productId) {
         this.productId = productId;

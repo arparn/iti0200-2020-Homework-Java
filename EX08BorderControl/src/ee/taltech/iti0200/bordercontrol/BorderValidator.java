@@ -9,9 +9,4 @@ public class BorderValidator implements Validator {
     public BorderValidator(Database database) {
         this.database = database;
     }
-
-    @Override
-    public void accept(BorderCrosserVisitor visitor) {
-        visitor.visit(database);
-    }
 }

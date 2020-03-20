@@ -4,31 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class DatabaseImpl  implements Database{
+public class DatabaseImpl implements Database {
 
     List<String> stolenVehicles = new ArrayList<>();
     List<String> missingPeople = new ArrayList<>();
     List<String> terrorists = new ArrayList<>();
-    List<String> illegalGoods = new ArrayList<>();
+    List<Long> illegalGoods = new ArrayList<>();
 
     @Override
     public List<String> getStolenVehicles() {
-        return this.stolenVehicles;
+        return stolenVehicles;
     }
 
     @Override
     public List<String> getMissingPersons() {
-        return this.missingPeople;
+        return missingPeople;
     }
 
     @Override
     public List<String> getTerrorists() {
-        return this.terrorists;
+        return terrorists;
     }
 
     @Override
-    public List<String> getIllegalGoods() {
-        return this.illegalGoods;
+    public List<Long> getIllegalGoods() {
+        return illegalGoods;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class DatabaseImpl  implements Database{
 
     @Override
     public void setIllegalGoods(List<Long> newIllegalGoods) {
-        illegalGoods = (List<String>) Stream.of(newIllegalGoods).map(good -> String.valueOf(good));
+        illegalGoods = newIllegalGoods;
     }
 }
