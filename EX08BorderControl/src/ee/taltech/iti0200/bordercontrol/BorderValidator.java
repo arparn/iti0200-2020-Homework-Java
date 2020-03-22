@@ -16,20 +16,20 @@ public class BorderValidator implements Validator {
 
     @Override
     public boolean visit(Person person) {
-        return (database.getMissingPersons().contains(person.getIdCode())
+        return !(database.getMissingPersons().contains(person.getIdCode())
                 && database.getMissingPersons().contains(person.getName()))
-                || (database.getTerrorists().contains(person.getIdCode())
+                || !(database.getTerrorists().contains(person.getIdCode())
                 && database.getTerrorists().contains(person.getName()));
     }
 
     @Override
     public boolean visit(Vehicle vehicle) {
-        return database.getStolenVehicles().contains(vehicle.getBorderCrossingId().toString());
+        return !database.getStolenVehicles().contains(vehicle.getBorderCrossingId().toString());
     }
 
     @Override
     public boolean visit(Goods goods) {
-        return database.getIllegalGoods().contains(goods.getBorderCrossingId());
+        return !database.getIllegalGoods().contains(goods.getBorderCrossingId());
     }
 
     @Override
