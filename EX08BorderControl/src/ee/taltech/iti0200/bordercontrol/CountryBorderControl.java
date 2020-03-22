@@ -30,13 +30,13 @@ public class CountryBorderControl {
 
     public List<BorderEntity> processBorderCrossersParallel(List<BorderEntity> crossers) {
         return crossers.stream()
+                .parallel()
                 .filter(o -> !validator.getDatabase().getTerrorists().contains(o.accept(validator))
                         && !validator.getDatabase().getTerrorists().contains(o.getName())
                         && !validator.getDatabase().getMissingPersons().contains(o.getName())
                         && !validator.getDatabase().getStolenVehicles().contains(o.accept(validator))
                         && !validator.getDatabase().getMissingPersons().contains(o.accept(validator))
                         && !validator.getDatabase().getIllegalGoods().contains(Long.parseLong(o.accept(validator))))
-                .parallel()
                 .collect(Collectors.toList());
     }
 }
