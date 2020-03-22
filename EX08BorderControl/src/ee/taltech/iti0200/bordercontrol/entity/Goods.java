@@ -1,5 +1,7 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
+import ee.taltech.iti0200.bordercontrol.Validator;
+
 public class Goods extends BorderEntity {
 
     Long productId;
@@ -10,6 +12,11 @@ public class Goods extends BorderEntity {
 
     public Long getProductId() {
         return productId;
+    }
+
+    @Override
+    public String accept(Validator visitor) {
+        return visitor.visit(this);
     }
 
     @Override

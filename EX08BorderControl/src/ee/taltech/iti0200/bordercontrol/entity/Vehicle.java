@@ -1,5 +1,7 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
+import ee.taltech.iti0200.bordercontrol.Validator;
+
 public class Vehicle extends BorderEntity {
 
     String vin;
@@ -12,6 +14,10 @@ public class Vehicle extends BorderEntity {
         return (long) Integer.parseInt(vin);
     }
 
+    @Override
+    public String  accept(Validator visitor) {
+        return visitor.visit(this);
+    }
 
     @Override
     public Long getBorderCrossingId() {

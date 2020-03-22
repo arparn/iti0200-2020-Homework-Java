@@ -1,5 +1,7 @@
 package ee.taltech.iti0200.bordercontrol.entity;
 
+import ee.taltech.iti0200.bordercontrol.Validator;
+
 public class Person extends BorderEntity {
 
     String name;
@@ -16,6 +18,11 @@ public class Person extends BorderEntity {
 
     public String getIdCode() {
         return idCode;
+    }
+
+    @Override
+    public String accept(Validator visitor) {
+        return visitor.visit(this);
     }
 
     @Override

@@ -19,19 +19,19 @@ public class CountryBorderControl {
 
     public List<BorderEntity> processBorderCrossers(List<BorderEntity> crossers) {
         return crossers.stream()
-                .filter(o -> !validator.getDatabase().getTerrorists().contains(o.getBorderCrossingId().toString())
-                        && !validator.getDatabase().getStolenVehicles().contains(o.getBorderCrossingId().toString())
-                        && !validator.getDatabase().getMissingPersons().contains(o.getBorderCrossingId().toString())
-                        && !validator.getDatabase().getIllegalGoods().contains(o.getBorderCrossingId()))
+                .filter(o -> !validator.getDatabase().getTerrorists().contains(o.accept(validator))
+                        && !validator.getDatabase().getStolenVehicles().contains(o.accept(validator))
+                        && !validator.getDatabase().getMissingPersons().contains(o.accept(validator))
+                        && !validator.getDatabase().getIllegalGoods().contains(Long.parseLong(o.accept(validator))))
                 .collect(Collectors.toList());
     }
 
     public List<BorderEntity> processBorderCrossersParallel(List<BorderEntity> crossers) {
         return crossers.stream()
-                .filter(o -> !validator.getDatabase().getTerrorists().contains(o.getBorderCrossingId().toString())
-                        && !validator.getDatabase().getStolenVehicles().contains(o.getBorderCrossingId().toString())
-                        && !validator.getDatabase().getMissingPersons().contains(o.getBorderCrossingId().toString())
-                        && !validator.getDatabase().getIllegalGoods().contains(o.getBorderCrossingId()))
+                .filter(o -> !validator.getDatabase().getTerrorists().contains(o.accept(validator))
+                        && !validator.getDatabase().getStolenVehicles().contains(o.accept(validator))
+                        && !validator.getDatabase().getMissingPersons().contains(o.accept(validator))
+                        && !validator.getDatabase().getIllegalGoods().contains(Long.parseLong(o.accept(validator))))
                 .parallel()
                 .collect(Collectors.toList());
     }
