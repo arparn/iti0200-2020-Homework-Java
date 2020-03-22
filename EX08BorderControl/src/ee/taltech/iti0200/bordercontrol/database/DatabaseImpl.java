@@ -1,7 +1,6 @@
 package ee.taltech.iti0200.bordercontrol.database;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class DatabaseImpl implements Database {
