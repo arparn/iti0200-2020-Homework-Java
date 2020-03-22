@@ -7,8 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class BorderEntityTest {
 
-    Goods goods = new Goods((long) 123434566);
-    Long goodsId = (long) 123434566;
+    public static final long NUMBER = 123434566;
+    public static final long NUMBER2 = 1234578986;
+
+    Goods goods = new Goods(NUMBER);
+    Long goodsId = NUMBER;
 
     @Test
     void getName() {
@@ -22,7 +25,7 @@ class BorderEntityTest {
 
     @Test
     void setBorderCrossingId() {
-        goods.setBorderCrossingId((long) 1234578986);
-        assertEquals((long) 1234578986, goods.getBorderCrossingId());
+        goods.setBorderCrossingId(NUMBER2);
+        assertEquals(NUMBER2, goods.getBorderCrossingId());
     }
 }

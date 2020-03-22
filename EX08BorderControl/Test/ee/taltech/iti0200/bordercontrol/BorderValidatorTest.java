@@ -7,9 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BorderValidatorTest {
+
+    public static final long NUMBER = 122345678;
 
     BorderValidator borderValidator;
     DatabaseImpl database;
@@ -24,7 +26,7 @@ class BorderValidatorTest {
         stolenVehicles.add("123456778");
         missingPersons.add("123456789");
         terrorists.add("5468604335");
-        illegalGoods.add((long) 122345678);
+        illegalGoods.add(NUMBER);
         this.borderValidator = new BorderValidator(database);
     }
 

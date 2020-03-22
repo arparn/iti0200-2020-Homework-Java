@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PersonTest {
 
+    public static final long NUMBER = 543254826;
+    public static final long NUMBER2 = 657544658;
+
     Person person;
     String name;
     String idCode;
@@ -30,13 +33,13 @@ class PersonTest {
 
     @Test
     void getBorderCrossingId() {
-        person.setBorderCrossingId((long) 543254826);
-        assertEquals((long) 543254826, person.getBorderCrossingId());
+        person.setBorderCrossingId(NUMBER);
+        assertEquals(NUMBER, person.getBorderCrossingId());
     }
 
     @Test
     void setBorderCrossingId() {
-        person.setBorderCrossingId((long) 657544658);
-        assertEquals((long) 657544658, person.getBorderCrossingId());
+        person.setBorderCrossingId(NUMBER2);
+        assertEquals(NUMBER2, person.getBorderCrossingId());
     }
 }

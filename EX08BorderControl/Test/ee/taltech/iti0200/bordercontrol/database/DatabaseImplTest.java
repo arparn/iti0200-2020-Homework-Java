@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DatabaseImplTest {
 
+    public static final long NUMBER = 2345678;
+    public static final long NUMBER2 = 123445679;
+
     DatabaseImpl database;
     List<String> stolenVehicles = new ArrayList<>();
     List<String> missingPersons = new ArrayList<>();
@@ -24,7 +27,7 @@ class DatabaseImplTest {
         missingPersons.add("5000345637");
         missingPersons.add("3456789007");
         terrorists.add("234567878");
-        illegalGoods.add((long) 2345678);
+        illegalGoods.add(NUMBER);
     }
 
     @Test
@@ -74,7 +77,7 @@ class DatabaseImplTest {
 
     @Test
     void setIllegalGoods() {
-        illegalGoods.add((long) 123445679);
+        illegalGoods.add(NUMBER2);
         database.setIllegalGoods(illegalGoods);
         assertEquals(illegalGoods, database.getIllegalGoods());
     }

@@ -8,14 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 class GoodsTest {
+    public static final long NUMBER = 1002394;
+    public static final long NUMBER2 = 123457;
 
     Goods item;
     Long productId;
 
     @BeforeEach
     void setUp() {
-        this.item = new Goods((long) 1002394);
-        this.productId = (long) 1002394;
+        this.item = new Goods(NUMBER);
+        this.productId = NUMBER;
     }
 
     @Test
@@ -35,7 +37,7 @@ class GoodsTest {
 
     @Test
     void setBorderCrossingId() {
-        productId = (long) 123457;
+        productId = NUMBER2;
         item.setBorderCrossingId(productId);
         assertEquals(productId, item.getBorderCrossingId());
     }

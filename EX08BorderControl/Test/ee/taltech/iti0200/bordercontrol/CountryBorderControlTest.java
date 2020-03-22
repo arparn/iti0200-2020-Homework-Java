@@ -15,6 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CountryBorderControlTest {
 
+    public static final long NUMBER = 12234578;
+    public static final long NUMBER2 = 122345678;
+
     CountryBorderControl borderControl;
     Validator validator;
     DatabaseImpl database;
@@ -33,7 +36,7 @@ class CountryBorderControlTest {
         stolenVehicles.add("123456778");
         missingPersons.add("123456789");
         terrorists.add("5468604335");
-        illegalGoods.add((long) 12234578);
+        illegalGoods.add(NUMBER);
         database.setIllegalGoods(illegalGoods);
         database.setTerrorists(terrorists);
         database.setMissingPersons(missingPersons);
@@ -42,7 +45,7 @@ class CountryBorderControlTest {
         this.borderControl = new CountryBorderControl("Estonia", "Narva", validator);
         this.vehicle = new Vehicle("12345677");
         this.person = new Person("Martin", "5468202648");
-        this.item = new Goods((long) 122345678);
+        this.item = new Goods((long) NUMBER2);
     }
 
     @Test
