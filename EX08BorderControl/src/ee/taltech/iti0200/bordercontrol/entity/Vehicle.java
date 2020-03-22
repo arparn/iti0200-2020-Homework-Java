@@ -15,6 +15,11 @@ public class Vehicle extends BorderEntity {
     }
 
     @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
     public String  accept(Validator visitor) {
         return visitor.visit(this);
     }
