@@ -29,7 +29,7 @@ public class BorderValidator implements Validator {
 
     @Override
     public boolean visit(Goods goods) {
-        return !database.getIllegalGoods().contains(goods.getBorderCrossingId().toString());
+        return !database.getIllegalGoods().contains(goods.getBorderCrossingId());
     }
 
     @Override
