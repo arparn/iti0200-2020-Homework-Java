@@ -10,7 +10,7 @@ public interface Database {
 
     List<String> getTerrorists();
 
-    List<Long> getIllegalGoods();
+    List<String> getIllegalGoods();
 
     void setStolenVehicles(List<String> stolenVehicles);
 

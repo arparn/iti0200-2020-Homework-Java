@@ -2,13 +2,14 @@ package ee.taltech.iti0200.bordercontrol.database;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DatabaseImpl implements Database {
 
     List<String> stolenVehicles = new ArrayList<>();
     List<String> missingPersons = new ArrayList<>();
     List<String> terrorists = new ArrayList<>();
-    List<Long> illegalGoods = new ArrayList<>();
+    List<String> illegalGoods = new ArrayList<>();
 
     @Override
     public List<String> getStolenVehicles() {
@@ -26,7 +27,7 @@ public class DatabaseImpl implements Database {
     }
 
     @Override
-    public List<Long> getIllegalGoods() {
+    public List<String> getIllegalGoods() {
         return illegalGoods;
     }
 
@@ -47,6 +48,6 @@ public class DatabaseImpl implements Database {
 
     @Override
     public void setIllegalGoods(List<Long> illegalGoods) {
-        this.illegalGoods = illegalGoods;
+        this.illegalGoods = illegalGoods.stream().map(Object::toString).collect(Collectors.toList());
     }
 }
