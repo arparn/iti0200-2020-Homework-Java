@@ -7,7 +7,7 @@ public abstract class BorderEntity {
 
     public abstract String getName();
 
-    public abstract String accept(Validator visitor);
+    public abstract boolean accept(Validator visitor);
 
     public abstract Long getBorderCrossingId();
 

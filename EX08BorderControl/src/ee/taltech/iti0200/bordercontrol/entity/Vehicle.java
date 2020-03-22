@@ -20,7 +20,7 @@ public class Vehicle extends BorderEntity {
     }
 
     @Override
-    public String  accept(Validator visitor) {
+    public boolean accept(Validator visitor) {
         return visitor.visit(this);
     }
 

@@ -19,23 +19,13 @@ public class CountryBorderControl {
 
     public List<BorderEntity> processBorderCrossers(List<BorderEntity> crossers) {
         return crossers.stream()
-                .filter(o -> !validator.getDatabase().getTerrorists().contains(o.accept(validator))
-                        && !validator.getDatabase().getTerrorists().contains(o.getName())
-                        && !validator.getDatabase().getMissingPersons().contains(o.getName())
-                        && !validator.getDatabase().getStolenVehicles().contains(o.accept(validator))
-                        && !validator.getDatabase().getMissingPersons().contains(o.accept(validator))
-                        && !validator.getDatabase().getIllegalGoods().contains(Long.parseLong(o.accept(validator))))
+                .filter(o -> o.accept(validator))
                 .collect(Collectors.toList());
     }
 
     public List<BorderEntity> processBorderCrossersParallel(List<BorderEntity> crossers) {
         return crossers.parallelStream()
-                .filter(o -> !validator.getDatabase().getTerrorists().contains(o.accept(validator))
-                        && !validator.getDatabase().getTerrorists().contains(o.getName())
-                        && !validator.getDatabase().getMissingPersons().contains(o.getName())
-                        && !validator.getDatabase().getStolenVehicles().contains(o.accept(validator))
-                        && !validator.getDatabase().getMissingPersons().contains(o.accept(validator))
-                        && !validator.getDatabase().getIllegalGoods().contains(Long.parseLong(o.accept(validator))))
+                .filter(o -> o.accept(validator))
                 .collect(Collectors.toList());
     }
 }

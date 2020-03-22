@@ -7,9 +7,9 @@ import ee.taltech.iti0200.bordercontrol.entity.Vehicle;
 
 public interface Validator {
 
-    String visit(Person person);
-    String visit(Vehicle vehicle);
-    String visit(Goods goods);
+    boolean visit(Person person);
+    boolean visit(Vehicle vehicle);
+    boolean visit(Goods goods);
 
     Database getDatabase();
 

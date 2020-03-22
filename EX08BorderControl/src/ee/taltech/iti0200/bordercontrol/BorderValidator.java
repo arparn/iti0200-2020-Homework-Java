@@ -15,18 +15,21 @@ public class BorderValidator implements Validator {
 
 
     @Override
-    public String visit(Person person) {
-        return person.getBorderCrossingId().toString();
+    public boolean visit(Person person) {
+        return database.getMissingPersons().contains(person.getIdCode())
+                && database.getMissingPersons().contains(person.getName())
+                && database.getTerrorists().contains(person.getIdCode())
+                && database.getTerrorists().contains(person.getName());
     }
 
     @Override
-    public String visit(Vehicle vehicle) {
-        return vehicle.getBorderCrossingId().toString();
+    public boolean visit(Vehicle vehicle) {
+        return database.getStolenVehicles().contains(vehicle.getBorderCrossingId().toString());
     }
 
     @Override
-    public String visit(Goods goods) {
-        return goods.getBorderCrossingId().toString();
+    public boolean visit(Goods goods) {
+        return database.getIllegalGoods().contains(goods.getBorderCrossingId());
     }
 
     @Override
