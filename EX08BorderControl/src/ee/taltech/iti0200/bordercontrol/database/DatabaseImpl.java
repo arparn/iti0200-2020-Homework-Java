@@ -1,14 +1,15 @@
 package ee.taltech.iti0200.bordercontrol.database;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class DatabaseImpl implements Database {
 
-    List<String> stolenVehicles = new LinkedList<>();
-    List<String> missingPersons = new LinkedList<>();
-    List<String> terrorists = new LinkedList<>();
-    List<Long> illegalGoods = new LinkedList<>();
+    List<String> stolenVehicles = new ArrayList<>();
+    List<String> missingPersons = new ArrayList<>();
+    List<String> terrorists = new ArrayList<>();
+    List<Long> illegalGoods = new ArrayList<>();
 
     @Override
     public List<String> getStolenVehicles() {
