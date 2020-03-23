@@ -45,4 +45,3 @@ public class PlantInTurns implements PlantingStrategy {
         return greenhouse;
     }
 }
-
