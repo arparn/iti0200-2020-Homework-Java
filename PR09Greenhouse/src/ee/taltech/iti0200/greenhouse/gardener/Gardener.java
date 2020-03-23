@@ -15,6 +15,6 @@ public class Gardener {
     }
 
     public String[][] plantPlants(int length, int width, Map<String, Integer> plants) {
-        return new String[0][];
+        return strategy.plantPlants(length, width, plants);
     }
 }
