@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class Greenhouse {
 
     public static void main(String[] args) {
-        PlantingStrategy strategy1 = new PlantInTurns();
-        PlantingStrategy strategy2 = new PlantInRows();
+        PlantingStrategy strategy2 = new PlantInTurns();
+        PlantingStrategy strategy1 = new PlantInRows();
         PlantingStrategy strategy3 = new PlantInColumns();
 
         Gardener gardener = new Gardener("Clara", strategy1);
@@ -24,7 +24,7 @@ public class Greenhouse {
         plants.put("dill", 3);
         plants.put("rosemary", 2);
 
-        String[][] plantedPlants = gardener.plantPlants(3, 4, plants);
+        String[][] plantedPlants = strategy1.plantPlants(3, 4, plants);
 
         System.out.println(Arrays.stream(plantedPlants).
                 map(x -> String.join(",", x))

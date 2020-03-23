@@ -1,10 +1,6 @@
 package ee.taltech.iti0200.greenhouse.plantingstrategy;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 
 public class PlantInRows implements PlantingStrategy {
@@ -13,7 +9,7 @@ public class PlantInRows implements PlantingStrategy {
         HashMap<String, Integer> answer = new LinkedHashMap<>();
         List<Map.Entry<String, Integer> > listOfPlants =
                 new LinkedList<>(plants.entrySet());
-        listOfPlants.sort(Map.Entry.comparingByValue());
+        listOfPlants.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
         for (Map.Entry<String, Integer> x : listOfPlants) {
             answer.put(x.getKey(), x.getValue());
         }
