@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 
 public class Greenhouse {
 
+    public static final int NUMBER7 = 7;
+
     public static void main(String[] args) {
         PlantingStrategy strategy1 = new PlantInTurns();
         PlantingStrategy strategy2 = new PlantInRows();
@@ -20,7 +22,7 @@ public class Greenhouse {
         Gardener gardener = new Gardener("Clara", strategy1);
 
         Map<String, Integer> plants = new HashMap<>();
-        plants.put("tomato", 7);
+        plants.put("tomato", NUMBER7);
         plants.put("dill", 4);
         plants.put("rosemary", 2);
 
