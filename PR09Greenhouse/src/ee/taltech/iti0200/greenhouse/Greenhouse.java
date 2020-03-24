@@ -21,7 +21,7 @@ public class Greenhouse {
 
         Map<String, Integer> plants = new HashMap<>();
         plants.put("tomato", 7);
-        plants.put("dill", 3);
+        plants.put("dill", 4);
         plants.put("rosemary", 2);
 
         String[][] plantedPlants = gardener.plantPlants(3, 4, plants);
