@@ -31,6 +31,6 @@ public class Goods extends BorderEntity {
 
     @Override
     public void setBorderCrossingId(Long newBorderCrossingId) {
-        productId = newBorderCrossingId;
+        this.productId = productId;
     }
 }
