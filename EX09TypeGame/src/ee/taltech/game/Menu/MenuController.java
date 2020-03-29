@@ -1,21 +1,19 @@
 package ee.taltech.game.Menu;
 
+import javafx.animation.*;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
+import javafx.util.Duration;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -28,39 +26,127 @@ public class MenuController {
     @FXML
     private AnchorPane menuPane;
 
-    private Label character = new Label();
+    private List<String> charList = new LinkedList<>();
+    private List<Double> coordinateListX = new LinkedList<>();
+    private List<Double> coordinateListY = new LinkedList<>();
 
-    public String getCharacter() {
+    private Label character1 = new Label();
+    private Label character2 = new Label();
+    private Label character3 = new Label();
+
+    private Label scoreLabel = new Label();
+    private int score = 0;
+    private boolean addScore;
+    private boolean startNew = true;
+
+    public String getCharacter(Label character) {
         return character.getText();
     }
 
-    public void destroyLabel() {
-        character.setText("");
+    public void destroyLabelChar(Label character) {
+        RotateTransition rt = new RotateTransition(Duration.millis(500), character);
+        rt.setFromAngle(0);
+        rt.setToAngle(360);
+        rt.play();
+        rt.setOnFinished(finish -> {
+                    charList.remove(character.getText());
+                    coordinateListX.remove(character.getLayoutX());
+                    coordinateListY.remove(character.getLayoutY());
+                    createCharacter(character);
+                    startNew = true;
+                }
+        );
     }
 
-    public void createCharacter() {
+    public void createCharacter(Label character) {
+        addScore = true;
         Random random = new Random();
-        char str = CHARS.charAt(random.nextInt(CHARS.length()));
+        char str;
+        double x;
+        double y;
+        while (true) {
+            str = CHARS.charAt(random.nextInt(CHARS.length()));
+            if (!charList.contains(Character.toString(str))) {
+                charList.add(Character.toString(str));
+                break;
+            }
+        }
+        int xStart = 80;
+        int xEnd = 520;
+        int yStart = 30;
+        int yEnd = 320;
         character.setText(Character.toString(str));
-        character.setLayoutX(300);
-        character.setLayoutY(300);
+        character.setFont(Font.font("Arial Black", 30));
+        character.setTextFill(Color.RED);
+        while (true) {
+            x = random.nextInt(xEnd - xStart) + xStart;
+            if (!coordinateListX.contains(x)) {
+                coordinateListX.add(x);
+                break;
+            }
+        }
+        character.setLayoutX(x);
+        while (true) {
+            y = random.nextInt(yEnd - yStart) + yStart;
+            if (!coordinateListY.contains(y)) {
+                coordinateListY.add(y);
+                break;
+            }
+        }
+        character.setLayoutY(y);
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        pause.setOnFinished(pauseFinEve -> addScore = false
+        );
+        pause.play();
     }
 
     public void startGame(javafx.event.ActionEvent event) {
-        StackPane layout2 = new StackPane();
-        createCharacter();
-        layout2.getChildren().add(character);
-        Scene newGameScreen = new Scene(layout2, 800, 600);
+        scoreLabel.setLayoutX(25);
+        scoreLabel.setLayoutY(10);
+        scoreLabel.setText("Your score: " + score);
+        AnchorPane layout2 = new AnchorPane();
+        createCharacter(character1);
+        createCharacter(character2);
+        createCharacter(character3);
+        layout2.getChildren().add(character1);
+        layout2.getChildren().add(character2);
+        layout2.getChildren().add(character3);
+        layout2.getChildren().add(scoreLabel);
+        Scene newGameScreen = new Scene(layout2, 600, 400);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(newGameScreen);
-        window.setTitle("play");
         window.show();
 
         newGameScreen.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
-            String characterPressed = keyEvent.getText();
-            if (characterPressed.toUpperCase().equals(getCharacter().toUpperCase())) {
-                destroyLabel();
-                createCharacter();
+            if (startNew) {
+                startNew = false;
+                String characterPressed = keyEvent.getText();
+                if (characterPressed.toUpperCase().equals(getCharacter(character1).toUpperCase())) {
+                    destroyLabelChar(character1);
+                    if (addScore) {
+                        score += 1;
+                    }
+                    scoreLabel.setText("Your score: " + score);
+                } else if (characterPressed.toUpperCase().equals(getCharacter(character2).toUpperCase())) {
+                    destroyLabelChar(character2);
+                    if (addScore) {
+                        score += 1;
+                    }
+                    scoreLabel.setText("Your score: " + score);
+                } else if (characterPressed.toUpperCase().equals(getCharacter(character3).toUpperCase())) {
+                    destroyLabelChar(character3);
+                    if (addScore) {
+                        score += 1;
+                    }
+                    scoreLabel.setText("Your score: " + score);
+                } else if (!charList.contains(characterPressed)) {
+                    startNew = true;
+                    score -= 1;
+                    scoreLabel.setText("Your score: " + score);
+                } else if (!addScore) {
+                    startNew = true;
+                    scoreLabel.setText("Your score: " + score);
+                }
             }
         });
     }

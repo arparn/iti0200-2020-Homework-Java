@@ -5,11 +5,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.beans.XMLEncoder;
 
 
 public class Main extends Application {
@@ -21,7 +18,7 @@ public class Main extends Application {
         MenuController menuController = loader.getController();
         Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene); //  объект scene - это окно в котором будет выполняться код
-        stage.setTitle("Demo");
+        stage.setTitle("TypeGame");
         stage.show();
     }
 
