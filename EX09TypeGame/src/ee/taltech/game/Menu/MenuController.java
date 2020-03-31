@@ -31,7 +31,7 @@ public class MenuController {
 
     public void destroyLabelChar(Label character) {
         LocalTime timeNow = LocalTime.now();
-        long seconds = ChronoUnit.MILLIS.between(timeNow, localTime);
+        long seconds = ChronoUnit.MILLIS.between(timeNow, localTime);// aeg kontrollitakse siin
         if (seconds < 1000) {
             score++;
         }
