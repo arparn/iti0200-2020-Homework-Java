@@ -23,28 +23,25 @@ public class MenuController {
     public static final String CHARS = "ASD";
 
     private List<Label> charList = new LinkedList<>();
-    private List<LocalTime> timeList = new LinkedList<>();
+    private List<String> stringList = new LinkedList<>();
+    private LocalTime localTime;
 
     private Label scoreLabel = new Label();
     private int score = 0;
 
     public void destroyLabelChar(Label character) {
-        int index = charList.indexOf(character);
-        LocalTime t1 = LocalTime.now();
-        System.out.println("List" + timeList);
-        System.out.println(index);
-        LocalTime t2 = timeList.get(index);
-        long seconds = ChronoUnit.MILLIS.between(t1, t2);
-        if (seconds < 0) {
+        LocalTime timeNow = LocalTime.now();
+        long seconds = ChronoUnit.MILLIS.between(timeNow, localTime);
+        if (seconds < 1000) {
             score++;
         }
-        timeList.remove(index);
         RotateTransition rt = new RotateTransition(Duration.millis(500), character);
         rt.setFromAngle(0);
         rt.setToAngle(360);
         rt.play();
         rt.setOnFinished(finish -> {
                     charList.remove(character);
+                    stringList.remove(character.getText());
                     createCharacter(character);
                 }
         );
@@ -61,11 +58,12 @@ public class MenuController {
         int yEnd = 320;
         while (true) {
             str = CHARS.charAt(random.nextInt(CHARS.length()));
-            character.setText(Character.toString(str));
-            if (!charList.contains(character)) {
+            if (!stringList.contains(Character.toString(str))) {
+                stringList.add(Character.toString(str));
                 break;
             }
         }
+        character.setText(Character.toString(str));
         character.setFont(Font.font("Arial Black", 30));
         character.setTextFill(Color.RED);
         x = random.nextInt(xEnd - xStart) + xStart;
@@ -73,8 +71,7 @@ public class MenuController {
         y = random.nextInt(yEnd - yStart) + yStart;
         character.setLayoutY(y);
         charList.add(character);
-        LocalTime time = LocalTime.now();
-        timeList.add(time);
+        localTime = LocalTime.now();
         //PauseTransition pause = new PauseTransition(Duration.seconds(1));
         //pause.setOnFinished(pauseFinEve -> addScore = false);
         //pause.play();
