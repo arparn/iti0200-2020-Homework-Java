@@ -1,17 +1,18 @@
 package ee.taltech.game.Menu;
 
 import javafx.animation.*;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -19,98 +20,80 @@ import java.util.Random;
 
 public class MenuController {
 
-    public static final String CHARS = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    public static final String CHARS = "ASD";
 
-    @FXML
-    private Button helloBtn;
-    @FXML
-    private AnchorPane menuPane;
-
-    private List<String> charList = new LinkedList<>();
-    private List<Double> coordinateListX = new LinkedList<>();
-    private List<Double> coordinateListY = new LinkedList<>();
-
-    private Label character1 = new Label();
-    private Label character2 = new Label();
-    private Label character3 = new Label();
+    private List<Label> charList = new LinkedList<>();
+    private List<LocalTime> timeList = new LinkedList<>();
 
     private Label scoreLabel = new Label();
     private int score = 0;
-    private boolean addScore;
-    private boolean startNew = true;
-
-    public String getCharacter(Label character) {
-        return character.getText();
-    }
 
     public void destroyLabelChar(Label character) {
+        int index = charList.indexOf(character);
+        LocalTime t1 = LocalTime.now();
+        System.out.println("List" + timeList);
+        System.out.println(index);
+        LocalTime t2 = timeList.get(index);
+        long seconds = ChronoUnit.MILLIS.between(t1, t2);
+        if (seconds < 0) {
+            score++;
+        }
+        timeList.remove(index);
         RotateTransition rt = new RotateTransition(Duration.millis(500), character);
         rt.setFromAngle(0);
         rt.setToAngle(360);
         rt.play();
         rt.setOnFinished(finish -> {
-                    charList.remove(character.getText());
-                    coordinateListX.remove(character.getLayoutX());
-                    coordinateListY.remove(character.getLayoutY());
+                    charList.remove(character);
                     createCharacter(character);
-                    startNew = true;
                 }
         );
     }
 
     public void createCharacter(Label character) {
-        addScore = true;
         Random random = new Random();
         char str;
         double x;
         double y;
-        while (true) {
-            str = CHARS.charAt(random.nextInt(CHARS.length()));
-            if (!charList.contains(Character.toString(str))) {
-                charList.add(Character.toString(str));
-                break;
-            }
-        }
         int xStart = 80;
         int xEnd = 520;
         int yStart = 30;
         int yEnd = 320;
-        character.setText(Character.toString(str));
+        while (true) {
+            str = CHARS.charAt(random.nextInt(CHARS.length()));
+            character.setText(Character.toString(str));
+            if (!charList.contains(character)) {
+                break;
+            }
+        }
         character.setFont(Font.font("Arial Black", 30));
         character.setTextFill(Color.RED);
-        while (true) {
-            x = random.nextInt(xEnd - xStart) + xStart;
-            if (!coordinateListX.contains(x)) {
-                coordinateListX.add(x);
-                break;
-            }
-        }
+        x = random.nextInt(xEnd - xStart) + xStart;
         character.setLayoutX(x);
-        while (true) {
-            y = random.nextInt(yEnd - yStart) + yStart;
-            if (!coordinateListY.contains(y)) {
-                coordinateListY.add(y);
-                break;
-            }
-        }
+        y = random.nextInt(yEnd - yStart) + yStart;
         character.setLayoutY(y);
-        PauseTransition pause = new PauseTransition(Duration.seconds(1));
-        pause.setOnFinished(pauseFinEve -> addScore = false
-        );
-        pause.play();
+        charList.add(character);
+        LocalTime time = LocalTime.now();
+        timeList.add(time);
+        //PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        //pause.setOnFinished(pauseFinEve -> addScore = false);
+        //pause.play();
     }
 
     public void startGame(javafx.event.ActionEvent event) {
+        Label character3 = new Label();
+        Label character1 = new Label();
+        Label character2 = new Label();
         scoreLabel.setLayoutX(25);
         scoreLabel.setLayoutY(10);
         scoreLabel.setText("Your score: " + score);
         AnchorPane layout2 = new AnchorPane();
+        createCharacter(character3);
         createCharacter(character1);
         createCharacter(character2);
-        createCharacter(character3);
-        layout2.getChildren().add(character1);
-        layout2.getChildren().add(character2);
-        layout2.getChildren().add(character3);
+        for (Label character : charList) {
+            layout2.getChildren().add(character);
+        }
         layout2.getChildren().add(scoreLabel);
         Scene newGameScreen = new Scene(layout2, 600, 400);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -118,36 +101,21 @@ public class MenuController {
         window.show();
 
         newGameScreen.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
-            if (startNew) {
-                startNew = false;
-                String characterPressed = keyEvent.getText();
-                if (characterPressed.toUpperCase().equals(getCharacter(character1).toUpperCase())) {
-                    destroyLabelChar(character1);
-                    if (addScore) {
-                        score += 1;
-                    }
-                    scoreLabel.setText("Your score: " + score);
-                } else if (characterPressed.toUpperCase().equals(getCharacter(character2).toUpperCase())) {
-                    destroyLabelChar(character2);
-                    if (addScore) {
-                        score += 1;
-                    }
-                    scoreLabel.setText("Your score: " + score);
-                } else if (characterPressed.toUpperCase().equals(getCharacter(character3).toUpperCase())) {
-                    destroyLabelChar(character3);
-                    if (addScore) {
-                        score += 1;
-                    }
-                    scoreLabel.setText("Your score: " + score);
-                } else if (!charList.contains(characterPressed)) {
-                    startNew = true;
-                    score -= 1;
-                    scoreLabel.setText("Your score: " + score);
-                } else if (!addScore) {
-                    startNew = true;
-                    scoreLabel.setText("Your score: " + score);
+            String characterPressed = keyEvent.getText();
+            int check = 0;
+            for (Label character : charList) {
+                if (character.getText().toUpperCase().equals(characterPressed.toUpperCase())) {
+                    destroyLabelChar(character);
+                    break;
+                }
+                if (!character.getText().toUpperCase().equals(characterPressed.toUpperCase())) {
+                    check++;
                 }
             }
+            if (check >= 3) {
+                score--;
+            }
+            scoreLabel.setText("Your score: " + score);
         });
     }
 }
