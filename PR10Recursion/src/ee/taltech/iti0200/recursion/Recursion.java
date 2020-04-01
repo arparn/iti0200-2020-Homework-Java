@@ -15,14 +15,11 @@ public class Recursion {
             return ponyNames;
         } else {
             MyLittlePony pony = ponies.get(listIndex);
-            if (pony.getPonyType() == ponies.get(listIndex + 1).getPonyType()) {
-                listIndex++;
-                return eliminatePonies(ponies, ponyNames, listIndex);
-            } else {
-                listIndex++;
+            if (pony.getPonyType() != ponies.get(listIndex + 1).getPonyType()) {
                 ponyNames.add(pony.getName());
-                return eliminatePonies(ponies, ponyNames, listIndex);
             }
+            listIndex++;
+            return eliminatePonies(ponies, ponyNames, listIndex);
         }
     }
 
@@ -37,6 +34,15 @@ public class Recursion {
     }
 
     public static int getPonyNamesLengthProductExceptType(List<MyLittlePony> ponies, int product, MyLittlePony.PonyType type) {
-        return 0;
+        if (ponies.size() == 0) {
+            return product;
+        } else {
+            MyLittlePony pony = ponies.get(0);
+            if (pony.getPonyType() != type) {
+                product += pony.getName().length();
+            }
+            ponies.remove(0);
+            return getPonyNamesLengthProductExceptType(ponies, product, type);
+        }
     }
 }
