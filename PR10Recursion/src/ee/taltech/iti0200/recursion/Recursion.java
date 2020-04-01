@@ -33,7 +33,8 @@ public class Recursion {
         }
     }
 
-    public static int getPonyNamesLengthProductExceptType(List<MyLittlePony> ponies, int product, MyLittlePony.PonyType type) {
+    public static int getPonyNamesLengthProductExceptType(List<MyLittlePony> ponies, int product,
+                                                          MyLittlePony.PonyType type) {
         if (ponies.size() == 0) {
             return product;
         } else {
