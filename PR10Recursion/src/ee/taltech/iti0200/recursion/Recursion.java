@@ -7,6 +7,9 @@ import java.util.List;
 public class Recursion {
 
     public static List<String> eliminatePonies(List<MyLittlePony> ponies, List<String> ponyNames, Integer listIndex) {
+        if (ponies.size() == 0) {
+            return ponyNames;
+        }
         if (ponies.size() - 1 == listIndex) {
             ponyNames.add(ponies.get(listIndex).getName());
             return ponyNames;
