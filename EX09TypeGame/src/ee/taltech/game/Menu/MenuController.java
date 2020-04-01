@@ -34,7 +34,7 @@ public class MenuController {
     public static final int CHECK = 3;
 
 
-    public static final String CHARS = "ASD";
+    public static final String CHARS = "QWERTYUIOPASDFGHJKLZXCVBNM";
 
     private List<Label> charList = new LinkedList<>();
     private List<String> stringList = new LinkedList<>();
