@@ -27,7 +27,13 @@ public class Recursion {
     }
 
     public static int getPonyNamesLengthProduct(List<MyLittlePony> ponies, int product) {
-        return 0;
+        if (ponies.size() == 0) {
+            return product;
+        } else {
+            product += ponies.get(0).getName().length();
+            ponies.remove(0);
+            return getPonyNamesLengthProduct(ponies, product);
+        }
     }
 
     public static int getPonyNamesLengthProductExceptType(List<MyLittlePony> ponies, int product, MyLittlePony.PonyType type) {
