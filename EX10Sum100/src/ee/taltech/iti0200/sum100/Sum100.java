@@ -1,10 +1,11 @@
 package ee.taltech.iti0200.sum100;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Sum100 {
 
-    public static List<String> calcSums(List<MagicNumber> input, List<String> variants) {
+    public static List<String> calcSums(List<MagicNumber> input, List<String> variants)  {
 
         if (input.size() == 0) {
             List<String> answer = new LinkedList<>();
@@ -108,5 +109,9 @@ public class Sum100 {
             input.remove(0);
             return calcSums(input, answerList);
         }
+    }
+
+    public static List<String> calcSums(List<MagicNumber> input) {
+        return calcSums(input, new LinkedList<>());
     }
 }
