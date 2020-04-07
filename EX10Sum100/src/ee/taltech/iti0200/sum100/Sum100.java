@@ -34,6 +34,11 @@ public class Sum100 {
                     sign = "+";
                 }
             }
+            if (sign.equals("+")) {
+                sum += Integer.parseInt(num.toString());
+            } else {
+                sum -= Integer.parseInt(num.toString());
+            }
             if (sum == 100) {
                 answer.add(var);
             }
