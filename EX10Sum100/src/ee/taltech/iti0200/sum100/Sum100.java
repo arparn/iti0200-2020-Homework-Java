@@ -116,4 +116,5 @@ public class Sum100 {
     public static List<String> calcSums(List<MagicNumber> input) {
         return calcSums(input, new LinkedList<>());
     }
+
 }
