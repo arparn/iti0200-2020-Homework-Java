@@ -10,13 +10,15 @@ public class Sum100 {
             int sum = 0;
             String sign = "+";
             StringBuilder num = new StringBuilder();
-            num.append("0");
             for (int i = 0; i < var.length(); i++) {
                 String symbol = Character.toString(var.charAt(i));
                 if (!symbol.equals("-") && !symbol.equals("+")) {
                     num.append(symbol);
                 } else if (symbol.equals("-")) {
-                    if (sign.equals("+")) {
+                    if (i == 0) {
+                        sign = "-";
+                        continue;
+                    } else if (sign.equals("+")) {
                         sum += Integer.parseInt(num.toString());
                     } else {
                         sum -= Integer.parseInt(num.toString());
@@ -79,7 +81,7 @@ public class Sum100 {
                     answerList.add((variant2.append(variant).append("-").append(number)).toString());
                 }
             } else {
-                //answerList.add(Integer.toString(number));
+                answerList.add(Integer.toString(number));
                 answerList.add("-" + Integer.toString(number));
             }
             input.remove(0);
