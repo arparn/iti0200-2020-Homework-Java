@@ -5,47 +5,51 @@ import java.util.List;
 
 public class Sum100 {
 
+    public static List<String> removeVariants(List<String> variants) {
+        List<String> answer = new LinkedList<>();
+        for (String var : variants) {
+            int sum = 0;
+            String sign = "+";
+            StringBuilder num = new StringBuilder();
+            num.append("0");
+            for (int i = 0; i < var.length(); i++) {
+                String symbol = Character.toString(var.charAt(i));
+                if (!symbol.equals("-") && !symbol.equals("+")) {
+                    num.append(symbol);
+                } else if (symbol.equals("-")) {
+                    if (sign.equals("+")) {
+                        sum += Integer.parseInt(num.toString());
+                    } else {
+                        sum -= Integer.parseInt(num.toString());
+                    }
+                    num = new StringBuilder();
+                    sign = "-";
+                } else {
+                    if (sign.equals("+")) {
+                        sum += Integer.parseInt(num.toString());
+                    } else {
+                        sum -= Integer.parseInt(num.toString());
+                    }
+                    num = new StringBuilder();
+                    sign = "+";
+                }
+            }
+            if (sign.equals("+")) {
+                sum += Integer.parseInt(num.toString());
+            } else {
+                sum -= Integer.parseInt(num.toString());
+            }
+            if (sum == 100) {
+                answer.add(var);
+            }
+        }
+        return answer;
+    }
+
     public static List<String> calcSums(List<MagicNumber> input, List<String> variants)  {
 
         if (input.size() == 0) {
-            List<String> answer = new LinkedList<>();
-            for (String var : variants) {
-                int sum = 0;
-                String sign = "+";
-                StringBuilder num = new StringBuilder();
-                num.append("0");
-                for (int i = 0; i < var.length(); i++) {
-                    String symbol = Character.toString(var.charAt(i));
-                    if (!symbol.equals("-") && !symbol.equals("+")) {
-                        num.append(symbol);
-                    } else if (symbol.equals("-")) {
-                        if (sign.equals("+")) {
-                            sum += Integer.parseInt(num.toString());
-                        } else {
-                            sum -= Integer.parseInt(num.toString());
-                        }
-                        num = new StringBuilder();
-                        sign = "-";
-                    } else {
-                        if (sign.equals("+")) {
-                            sum += Integer.parseInt(num.toString());
-                        } else {
-                            sum -= Integer.parseInt(num.toString());
-                        }
-                        num = new StringBuilder();
-                        sign = "+";
-                    }
-                }
-                if (sign.equals("+")) {
-                    sum += Integer.parseInt(num.toString());
-                } else {
-                    sum -= Integer.parseInt(num.toString());
-                }
-                if (sum == 100) {
-                    answer.add(var);
-                }
-            }
-            return answer;
+            return removeVariants(variants);
         }
 
         short number = input.get(0).getNumber();
@@ -86,7 +90,7 @@ public class Sum100 {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
                     StringBuilder variant2 = new StringBuilder();
-                    answerList.add((variant1.append(variant).append("+").append(number)).toString());
+                    //answerList.add((variant1.append(variant).append("+").append(number)).toString());
                     answerList.add((variant2.append(variant).append(number)).toString());
                 }
             } else {
