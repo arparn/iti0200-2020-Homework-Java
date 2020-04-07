@@ -4,12 +4,14 @@ import java.util.List;
 
 public class Sum100 {
 
+
     public static List<String> removeVariants(List<String> variants) {
         List<String> answer = new LinkedList<>();
         for (String var : variants) {
             int sum = 0;
             String sign = "+";
             StringBuilder num = new StringBuilder();
+            num.append("0");
             for (int i = 0; i < var.length(); i++) {
                 String symbol = Character.toString(var.charAt(i));
                 if (!symbol.equals("-") && !symbol.equals("+")) {
@@ -57,7 +59,7 @@ public class Sum100 {
         boolean placeNext = input.get(0).canBePlacedNextToOther();
 
          if (!subtract && placeNext) {
-            if (variants.size() > 1) {
+            if (variants.size() >= 1) {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
                     StringBuilder variant2 = new StringBuilder();
@@ -69,13 +71,15 @@ public class Sum100 {
             }
             input.remove(0);
             return calcSums(input, answerList);
-        } else if (subtract && !placeNext) {
-            if (variants.size() > 1) {
+         } else if (subtract && !placeNext) {
+            if (variants.size() >= 1) {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
                     StringBuilder variant2 = new StringBuilder();
-                    answerList.add((variant1.append(variant).append("+").append(number)).toString());
-                    answerList.add((variant2.append(variant).append("-").append(number)).toString());
+                    variant1.append(variant);
+                    variant2.append(variant);
+                    answerList.add((variant1.append("+").append(number)).toString());
+                    answerList.add((variant2.append("-").append(number)).toString());
                 }
             } else {
                 answerList.add(Integer.toString(number));
@@ -83,8 +87,8 @@ public class Sum100 {
             }
             input.remove(0);
             return calcSums(input, answerList);
-        } else if (subtract) {
-            if (variants.size() > 1) {
+         } else if (subtract) {
+            if (variants.size() >= 1) {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
                     StringBuilder variant2 = new StringBuilder();
@@ -99,8 +103,8 @@ public class Sum100 {
             }
             input.remove(0);
             return calcSums(input, answerList);
-        } else {
-            if (variants.size() > 1) {
+         } else {
+            if (variants.size() >= 1) {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
                     answerList.add((variant1.append(variant).append("+").append(number)).toString());
@@ -110,11 +114,10 @@ public class Sum100 {
             }
             input.remove(0);
             return calcSums(input, answerList);
-        }
+         }
     }
 
     public static List<String> calcSums(List<MagicNumber> input) {
         return calcSums(input, new LinkedList<>());
     }
-
 }
