@@ -113,6 +113,7 @@ public class Sum100 {
             input.remove(0);
             return calcSums(input, answerList);
         }
+        return null;
     }
 
     public static List<String> calcSums(List<MagicNumber> input) {
