@@ -1,5 +1,4 @@
 package ee.taltech.iti0200.sum100;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -80,7 +79,7 @@ public class Sum100 {
                     answerList.add((variant2.append(variant).append("-").append(number)).toString());
                 }
             } else {
-                answerList.add(Integer.toString(number));
+                //answerList.add(Integer.toString(number));
                 answerList.add("-" + Integer.toString(number));
             }
             input.remove(0);
