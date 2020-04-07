@@ -34,11 +34,6 @@ public class Sum100 {
                     sign = "+";
                 }
             }
-            if (sign.equals("+")) {
-                sum += Integer.parseInt(num.toString());
-            } else {
-                sum -= Integer.parseInt(num.toString());
-            }
             if (sum == 100) {
                 answer.add(var);
             }
@@ -85,7 +80,7 @@ public class Sum100 {
             }
             input.remove(0);
             return calcSums(input, answerList);
-        } else if (subtract && placeNext) {
+        } else if (subtract) {
             if (variants.size() > 1) {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
