@@ -85,7 +85,7 @@ public class Sum100 {
             }
             input.remove(0);
             return calcSums(input, answerList);
-        } else if (!subtract) {
+        } else if (!subtract && placeNext) {
             if (variants.size() > 1) {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
@@ -98,7 +98,7 @@ public class Sum100 {
             }
             input.remove(0);
             return calcSums(input, answerList);
-        } else {
+        } else if (subtract && !placeNext) {
             if (variants.size() > 1) {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
