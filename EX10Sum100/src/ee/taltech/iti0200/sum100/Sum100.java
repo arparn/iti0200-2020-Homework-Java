@@ -72,7 +72,7 @@ public class Sum100 {
                             answerList.add((variant2.append(variant).append("+").append(number).append(input.get(1).getNumber())).toString());
                         }
                     }
-                    if (!answerList.contains(variant)) {
+                    if (!answerList.contains(variant) && variant.contains(Integer.toString(number))) {
                         answerList.add(variant);
                     }
                     System.out.println("Answer: " + answerList);
@@ -119,7 +119,7 @@ public class Sum100 {
                             answerList.add((variant3.append(variant).append("-").append(number).append(input.get(1).getNumber())).toString());
                         }
                     }
-                    if (!answerList.contains(variant)) {
+                    if (!answerList.contains(variant) && variant.contains(Integer.toString(number))) {
                         answerList.add(variant);
                     }
                     System.out.println("Answer: " + answerList);
