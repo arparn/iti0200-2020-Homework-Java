@@ -58,34 +58,7 @@ public class Sum100 {
         boolean subtract = input.get(0).canBeSubtracted();
         boolean placeNext = input.get(0).canBePlacedNextToOther();
 
-        if (!subtract && !placeNext) {
-            if (variants.size() > 1) {
-                for (String variant : variants) {
-                    StringBuilder variant1 = new StringBuilder();
-                    answerList.add((variant1.append(variant).append("+").append(number)).toString());
-                }
-            } else {
-                answerList.add(Integer.toString(number));
-            }
-            input.remove(0);
-            return calcSums(input, answerList);
-        } else if (subtract && placeNext) {
-            if (variants.size() > 1) {
-                for (String variant : variants) {
-                    StringBuilder variant1 = new StringBuilder();
-                    StringBuilder variant2 = new StringBuilder();
-                    StringBuilder variant3 = new StringBuilder();
-                    answerList.add((variant1.append(variant).append("+").append(number)).toString());
-                    answerList.add((variant2.append(variant).append("-").append(number)).toString());
-                    answerList.add((variant3.append(variant).append(number)).toString());
-                }
-            } else {
-                answerList.add(Integer.toString(number));
-                answerList.add("-" + Integer.toString(number));
-            }
-            input.remove(0);
-            return calcSums(input, answerList);
-        } else if (!subtract && placeNext) {
+         if (!subtract && placeNext) {
             if (variants.size() > 1) {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
@@ -112,8 +85,34 @@ public class Sum100 {
             }
             input.remove(0);
             return calcSums(input, answerList);
+        } else if (subtract && placeNext) {
+            if (variants.size() > 1) {
+                for (String variant : variants) {
+                    StringBuilder variant1 = new StringBuilder();
+                    StringBuilder variant2 = new StringBuilder();
+                    StringBuilder variant3 = new StringBuilder();
+                    answerList.add((variant1.append(variant).append("+").append(number)).toString());
+                    answerList.add((variant2.append(variant).append("-").append(number)).toString());
+                    answerList.add((variant3.append(variant).append(number)).toString());
+                }
+            } else {
+                answerList.add(Integer.toString(number));
+                answerList.add("-" + Integer.toString(number));
+            }
+            input.remove(0);
+            return calcSums(input, answerList);
+        } else {
+            if (variants.size() > 1) {
+                for (String variant : variants) {
+                    StringBuilder variant1 = new StringBuilder();
+                    answerList.add((variant1.append(variant).append("+").append(number)).toString());
+                }
+            } else {
+                answerList.add(Integer.toString(number));
+            }
+            input.remove(0);
+            return calcSums(input, answerList);
         }
-        return null;
     }
 
     public static List<String> calcSums(List<MagicNumber> input) {
