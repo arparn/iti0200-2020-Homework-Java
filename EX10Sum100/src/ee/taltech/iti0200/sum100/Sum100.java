@@ -61,8 +61,8 @@ public class Sum100 {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
                     StringBuilder variant2 = new StringBuilder();
-                    answerList.add((variant2.append(variant).append(number)).toString());
                     answerList.add((variant1.append(variant).append("+").append(number)).toString());
+                    answerList.add((variant2.append(variant).append(number)).toString());
                 }
             } else {
                 answerList.add(Integer.toString(number));
@@ -89,9 +89,9 @@ public class Sum100 {
                     StringBuilder variant1 = new StringBuilder();
                     StringBuilder variant2 = new StringBuilder();
                     StringBuilder variant3 = new StringBuilder();
-                    answerList.add((variant3.append(variant).append(number)).toString());
                     answerList.add((variant1.append(variant).append("+").append(number)).toString());
                     answerList.add((variant2.append(variant).append("-").append(number)).toString());
+                    answerList.add((variant3.append(variant).append(number)).toString());
                 }
             } else {
                 answerList.add(Integer.toString(number));
