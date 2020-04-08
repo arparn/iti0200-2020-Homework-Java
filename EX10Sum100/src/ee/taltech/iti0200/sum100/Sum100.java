@@ -48,10 +48,9 @@ public class Sum100 {
     public static List<String> calcSums(List<MagicNumber> input, List<String> variants)  {
 
         if (input.size() == 0) {
-            System.out.println("Final variants: " + variants);
             return removeVariants(variants);
         }
-        System.out.println(input.get(0).getNumber());
+
         short number = input.get(0).getNumber();
         List<String> answerList = new LinkedList<>();
 
@@ -63,26 +62,11 @@ public class Sum100 {
                 for (String variant : variants) {
                     StringBuilder variant1 = new StringBuilder();
                     StringBuilder variant2 = new StringBuilder();
-                    System.out.println("All Variants: " + variants);
-                    System.out.println("var: " + variant);
-                    System.out.println("num: " + number);
-                    if (!variant.contains(Integer.toString(number))) {
-                        answerList.add((variant1.append(variant).append("+").append(number)).toString());
-                        if (input.size() > 1 && input.get(1).canBePlacedNextToOther()) {
-                            answerList.add((variant2.append(variant).append("+").append(number).append(input.get(1).getNumber())).toString());
-                        }
-                    }
-                    if (!answerList.contains(variant) && variant.contains(Integer.toString(number))) {
-                        answerList.add(variant);
-                    }
-                    System.out.println("Answer: " + answerList);
+                    answerList.add((variant1.append(variant).append("+").append(number)).toString());
+                    answerList.add((variant2.append(variant).append(number)).toString());
                 }
             } else {
-                if (input.get(1).canBePlacedNextToOther()) {
-                    answerList.add(Integer.toString(number) + input.get(1).getNumber());
-                }
                 answerList.add(Integer.toString(number));
-                System.out.println("1st AnswerList = " + answerList);
             }
             input.remove(0);
             return calcSums(input, answerList);
@@ -108,29 +92,13 @@ public class Sum100 {
                     StringBuilder variant1 = new StringBuilder();
                     StringBuilder variant2 = new StringBuilder();
                     StringBuilder variant3 = new StringBuilder();
-                    System.out.println("All Variants: " + variants);
-                    System.out.println("var: " + variant);
-                    System.out.println("num: " + number);
-                    if (!variant.contains(Integer.toString(number))) {
-                        answerList.add((variant1.append(variant).append("+").append(number)).toString());
-                        answerList.add((variant2.append(variant).append("-").append(number)).toString());
-                        if (input.size() > 1 && input.get(1).canBePlacedNextToOther()) {
-                            answerList.add((variant3.append(variant).append("+").append(number).append(input.get(1).getNumber())).toString());
-                            answerList.add((variant3.append(variant).append("-").append(number).append(input.get(1).getNumber())).toString());
-                        }
-                    }
-                    if (!answerList.contains(variant) && variant.contains(Integer.toString(number))) {
-                        answerList.add(variant);
-                    }
-                    System.out.println("Answer: " + answerList);
+                    answerList.add((variant1.append(variant).append("+").append(number)).toString());
+                    answerList.add((variant2.append(variant).append("-").append(number)).toString());
+                    answerList.add((variant3.append(variant).append(number)).toString());
                 }
             } else {
-                if (input.get(1).canBePlacedNextToOther()) {
-                    answerList.add(Integer.toString(number) + input.get(1).getNumber());
-                }
                 answerList.add(Integer.toString(number));
                 answerList.add("-" + Integer.toString(number));
-                System.out.println("1st AnswerList = " + answerList);
             }
             input.remove(0);
             return calcSums(input, answerList);
