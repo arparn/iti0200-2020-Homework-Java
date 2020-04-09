@@ -26,7 +26,7 @@ public class Main {
                 "  ]\n" +
                 "}";
 
-        CakeOrderProcessor processor = new CakeOrderProcessor(CakeOrderProcessor.CakeOrderProcessorType.COUNT_TOTAL_SUM);
+        CakeOrderProcessor processor = new CakeOrderProcessor(COUNT_TOTAL_SUM);
         System.out.println(processor.process(jsonInput));
 
     }
