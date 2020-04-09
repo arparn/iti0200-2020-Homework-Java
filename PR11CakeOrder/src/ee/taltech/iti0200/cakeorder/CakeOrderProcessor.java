@@ -57,7 +57,9 @@ public class CakeOrderProcessor {
             }
         } else if (this.type.equals(CakeOrderProcessorType.COUNT_TOTAL_SUM)) {
             OrderTotal orderTotal = gson.fromJson(jsonInput, OrderTotal.class);
-            for (Cake cake : cakes) {
+            orderTotal.setOrder_id(orderNumber);
+            List<Cake> cakes1 = orderTotal.getCakes();
+            for (Cake cake : cakes1) {
                 cake.setCake_id();
                 totalPrice += cake.getPrice() * cake.getKg();
             }
