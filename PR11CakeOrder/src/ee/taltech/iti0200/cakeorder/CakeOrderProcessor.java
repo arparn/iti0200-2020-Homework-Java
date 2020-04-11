@@ -1,5 +1,6 @@
 package ee.taltech.iti0200.cakeorder;
 public class CakeOrderProcessor {
+
     public enum CakeOrderProcessorType {
 
         MAKE_DAIRY_FREE,
