@@ -43,7 +43,8 @@ public class CakeOrderProcessor {
                 int flag = 0;
                 List<String> ingredients = cake.getIngredients();
                 for (String ingredient : ingredients) {
-                    if (ingredient.equals("milk") || ingredient.equals("cream-cheese") || ingredient.equals("yoghurt")) {
+                    if (ingredient.equals("milk") || ingredient.equals("cream-cheese")
+                            || ingredient.equals("yoghurt")) {
                         flag++;
                         int index = ingredients.indexOf(ingredient);
                         ingredients.set(index, "plant-" + ingredient);
