@@ -14,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class KittenShelterTest {
 
+    public static final int NUM6 = 6;
+
     Human human;
     Kitten kitten;
     Kitten kitten2;
@@ -25,7 +27,7 @@ class KittenShelterTest {
         this.human = new Human(100, "calm");
         this.kitten = new Kitten("Karl", "calm", "Black", 3, Kitten.Gender.MALE);
         this.kitten2 = new Kitten("Marta", "playful", "red", 5, Kitten.Gender.FEMALE);
-        this.kitten3 = new Kitten("Tom", "angry", "grey", 6, Kitten.Gender.MALE);
+        this.kitten3 = new Kitten("Tom", "angry", "grey", NUM6, Kitten.Gender.MALE);
         this.shelter = new KittenShelter(2);
     }
 
