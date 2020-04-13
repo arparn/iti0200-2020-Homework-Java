@@ -39,4 +39,3 @@ public class Human {
         return this.kittenCharacter;
     }
 }
-
