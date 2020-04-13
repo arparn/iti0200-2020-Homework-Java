@@ -22,11 +22,6 @@ public class Company {
         return name;
     }
 
-    /**
-     * Gets the cheapest product for customer.
-     *
-     * @return the cheapest product
-     */
     public Optional<Product> getCheapestProductForCustomer() {
         if (products.size() > 0) {
             BigDecimal cheapestPrice = BigDecimal.ZERO;
@@ -44,11 +39,6 @@ public class Company {
         }
     }
 
-    /**
-     * Gets the most expensive product for customer.
-     *
-     * @return the most expensive product
-     */
     public Optional<Product> getMostExpensiveProductForCustomer() {
         if (products.size() > 0) {
             BigDecimal expensivePrice = BigDecimal.ZERO;
@@ -66,11 +56,6 @@ public class Company {
         }
     }
 
-    /**
-     * Reports the current state of products in the warehouses
-     *
-     * @return the current state of products in the warehouses
-     */
     public Map<Product, Long> reportInventory() {
         HashMap<Product, Long> inventoryMap = new HashMap<>();
         Long amount;
@@ -90,12 +75,6 @@ public class Company {
         return inventoryMap;
     }
 
-    /**
-     * Finds all warehouses where the product is available.
-     *
-     * @param product the product to check
-     * @return list of warehouses where the product is availalble
-     */
     public List<Warehouse> getAvailability(Product product) {
         LinkedList<Warehouse> availabilityList = new LinkedList<>();
         for (Warehouse warehouse : warehouses) {
@@ -106,12 +85,6 @@ public class Company {
         return availabilityList;
     }
 
-    /**
-     * Adds specified amount of specified product to all warehouses.
-     *
-     * @param product the product to add
-     * @param amount the amount of product to add
-     */
     public void restockProduct(Product product, Long amount) {
         Map.Entry<Product, Long> productEntry = Map.entry(product, amount);
         for (Warehouse warehouse : warehouses) {
@@ -119,11 +92,6 @@ public class Company {
         }
     }
 
-    /**
-     * Add a new product to companies products list and all the warehouses of that company.
-     *
-     * @param product the product to add
-     */
     public void addProduct(Product product) {
         products.add(product);
         Long amount = (long) 0;
@@ -133,11 +101,6 @@ public class Company {
         }
     }
 
-    /**
-     * Gets all company workers.
-     *
-     * @return all company workers
-     */
     public Set<Worker> getCompanyWorkers() {
         Set<Worker> workers = officeWorkers;
         for (Warehouse warehouse : warehouses) {
@@ -147,11 +110,6 @@ public class Company {
         return workers;
     }
 
-    /**
-     * Add an office worker.
-     *
-     * @param worker the worker to add
-     */
     public void addOfficeWorker(Worker worker) {
         if (!officeWorkers.contains(worker)) {
             officeWorkers.add(worker);
@@ -162,22 +120,12 @@ public class Company {
         return warehouses;
     }
 
-    /**
-     * Add a warehouse.
-     *
-     * @param wareHouse the warehouse to add
-     */
     public void addWarehouse(Warehouse wareHouse) {
         if (!warehouses.contains(wareHouse)) {
             warehouses.add(wareHouse);
         }
     }
 
-    /**
-     * Gets total company goods value.
-     *
-     * @return total company goods value
-     */
     public BigDecimal getCompanyGoodsValue() {
         BigDecimal result = BigDecimal.ZERO;
         for (Warehouse warehouse : warehouses) {
