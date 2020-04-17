@@ -2,6 +2,7 @@ package ee.taltech.iti0200.generics;
 
 import ee.taltech.iti0200.generics.cats.PersianCat;
 import ee.taltech.iti0200.generics.dogs.DobermanDog;
+import ee.taltech.iti0200.generics.foods.Food;
 import ee.taltech.iti0200.generics.foods.Meat;
 
 import java.util.Optional;
