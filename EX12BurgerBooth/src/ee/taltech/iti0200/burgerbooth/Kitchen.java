@@ -1,10 +1,17 @@
 package ee.taltech.iti0200.burgerbooth;
 
+import java.text.DecimalFormat;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class Kitchen {
+
+    public List<Bill> restoranHistory = new LinkedList<>();
 
     public Map<Food, Integer> fridge = new HashMap<>();
 
@@ -20,25 +27,74 @@ public class Kitchen {
         return this.fridge;
     }
 
-    public Float calcPrice(OrderingMethodStrategy orderingMethodStrategy) {
-        Map<Food, Integer> orderedFood = orderingMethodStrategy.getOrder().getOrderedFood();
-        int products = orderedFood.keySet().size();
-        return (float) products / orderingMethodStrategy.getName().length();
+    public String getRestoHistory() {
+        StringBuilder answer = new StringBuilder();
+        int flag = 0;
+        for (Bill bill: restoranHistory) {
+            answer.append("Ordered food:\n").append(bill.orderRewrite(bill.getOrderedFood())).append("\nPrice: ").append(bill.getPrice())
+                    .append("\nOrdered in: ").append(bill.getOrderingMethod())
+                    .append("\nOrder receiving time: "). append(bill.getTime());
+            flag ++;
+            if (flag < restoranHistory.size()) {
+                answer.append("\n-----------------------------------");
+                answer.append("\n");
+            }
+        }
+        return answer.toString();
     }
 
-    public int calcTime(OrderingMethodStrategy orderingMethodStrategy) {
-        Map<Food, Integer> orderedFood = orderingMethodStrategy.getOrder().getOrderedFood();
-        int products = orderedFood.keySet().size();
-        return products * orderingMethodStrategy.getName().length();
+    public String getFoodReview() {
+        StringBuilder answer = new StringBuilder();
+        int flag = 0;
+        for (Food food : getFoodInFridge().keySet()) {
+            answer.append(food.getName()).append(", amount: ").append(getFoodInFridge().get(food));
+            flag ++;
+            if (flag < getFoodInFridge().size()) {
+                answer.append("\n");
+            }
+        }
+        return answer.toString();
     }
 
-    public Bill cookOrder(OrderingMethodStrategy orderingMethod) {
-        String name = orderingMethod.getName();
+    public String calcPrice(OrderingMethod orderingMethod) {
         Map<Food, Integer> orderedFood = orderingMethod.getOrder().getOrderedFood();
-        float price = calcPrice(orderingMethod);
+        int products = 0;
+        for (Food food : orderedFood.keySet()) {
+            products += orderedFood.get(food) + (food.getName().length() / 2);
+        }
+        DecimalFormat df = new DecimalFormat("###.###");
+        if (orderingMethod.getName().equals(OrderingMethod.Name.SELF_SERVICE_CASH_DESK)) {
+            return df.format((products * 1.2) - ((products * 1.2) * 0.15));
+        } else {
+            return df.format(products * 1.2);
+        }
+    }
+
+    public int calcTime(OrderingMethod orderingMethod) {
+        Map<Food, Integer> orderedFood = orderingMethod.getOrder().getOrderedFood();
+        int products = 0;
+        for (Food food : orderedFood.keySet()) {
+            products += orderedFood.get(food);
+        }
+        if (orderingMethod.getName().equals(OrderingMethod.Name.DRIVE_IN)) {
+            return (products * 3) / 2;
+        } else {
+            return products * 3;
+        }
+    }
+
+    public Bill cookOrder(OrderingMethod orderingMethod) {
+        OrderingMethod.Name name = orderingMethod.getName();
+        Map<Food, Integer> orderedFood = orderingMethod.getOrder().getOrderedFood();
+        String price = calcPrice(orderingMethod);
         LocalTime time = LocalTime.now();
         int minutes = calcTime(orderingMethod);
         time = time.plusMinutes(minutes);
-        return new Bill(name, price, time, orderedFood);
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+        String timeFormatted = time.format(formatter);
+        orderingMethod.clearOrder();
+        Bill bill = new Bill(name, price, timeFormatted, orderedFood);
+        restoranHistory.add(bill);
+        return bill;
     }
 }

@@ -3,26 +3,53 @@ package ee.taltech.iti0200.burgerbooth;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OrderingMethodStrategy {
+public class OrderingMethod {
 
     protected Kitchen kitchen;
-    protected String name;
+
+    public enum Name {
+        CASH_DESK, SELF_SERVICE_CASH_DESK, DRIVE_IN
+    }
+
+    protected Name name;
 
     protected Order order = new Order();
 
     protected Map<Food, Integer> menu = new HashMap<>();
 
-    public OrderingMethodStrategy(Kitchen kitchen, String name) {
+    public OrderingMethod(Kitchen kitchen, Name name) {
         this.kitchen = kitchen;
         this.name = name;
     }
 
-    public Map<Food, Integer> getMenu() {
-        return kitchen.getFoodInFridge();
+    public String getMenu() {
+        StringBuilder answer = new StringBuilder();
+        int flag = 0;
+        for (Food food : kitchen.fridge.keySet()) {
+            answer.append(food.getName()).append(", amount: ").append(kitchen.fridge.get(food));
+            flag ++;
+            if (flag < kitchen.fridge.size()) {
+                answer.append("\n");
+            }
+        }
+        return answer.toString();
     }
 
     public Order getOrder() {
         return this.order;
+    }
+
+    public String getOrderReview() {
+        StringBuilder answer = new StringBuilder();
+        int flag = 0;
+        for (Food food : order.getOrderedFood().keySet()) {
+            answer.append(food.getName()).append(", amount: ").append(order.getOrderedFood().get(food));
+            flag ++;
+            if (flag < order.getOrderedFood().size()) {
+                answer.append("\n");
+            }
+        }
+        return answer.toString();
     }
 
     public void makeOrder(Food food, int amount) {
@@ -52,7 +79,11 @@ public class OrderingMethodStrategy {
         }
     }
 
-    public String getName() {
+    public Name getName() {
         return this.name;
+    }
+
+    public void clearOrder() {
+        this.order = new Order();
     }
 }
