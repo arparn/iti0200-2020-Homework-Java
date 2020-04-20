@@ -1,7 +1,6 @@
 package ee.taltech.iti0200.generics;
 
 import ee.taltech.iti0200.generics.foods.Food;
-
 import java.util.Optional;
 
 public class AnimalBox<T extends Animal> {
