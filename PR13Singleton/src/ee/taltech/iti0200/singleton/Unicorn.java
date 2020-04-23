@@ -5,7 +5,7 @@ public class Unicorn {
     private String location;
     private Size size;
 
-    enum Size {TINY, SMALL, MEDIUM, LARGE}
+    enum Size { TINY, SMALL, MEDIUM, LARGE }
 
     public Unicorn(double hornLength, String color, String location, Size size) {
         this.hornLength = hornLength;

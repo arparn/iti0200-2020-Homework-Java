@@ -3,6 +3,9 @@ package ee.taltech.iti0200.singleton;
 import java.util.Set;
 
 public class UnicornObserver {
+
+    public static final int NUM16 = 16;
+
     private String name;
     private int skill;
 
@@ -20,7 +23,7 @@ public class UnicornObserver {
     }
 
     void observe(Unicorn unicorn) {
-        if (getSkill() >= 16) {
+        if (getSkill() >= NUM16) {
             UnicornRegistry.getInstance().registerUnicorn(unicorn, UnicornObserver.this);
         } else if (getSkill() >= 10 && (unicorn.getSize().equals(Unicorn.Size.SMALL)
                 || unicorn.getSize().equals(Unicorn.Size.MEDIUM) || unicorn.getSize().equals(Unicorn.Size.LARGE))) {
@@ -49,6 +52,7 @@ public class UnicornObserver {
             unicorn = unicorn1;
             break;
         }
-        return "I discovered a " + unicorn.getColor() + " " + unicorn.getSize() + " unicorn at " + unicorn.getLocation() + ".";
+        return "I discovered a " + unicorn.getColor() + " " + unicorn.getSize()
+                + " unicorn at " + unicorn.getLocation() + ".";
     }
 }

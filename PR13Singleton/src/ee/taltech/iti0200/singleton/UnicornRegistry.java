@@ -27,11 +27,11 @@ public final class UnicornRegistry {
         }
     }
 
-    public Set<Unicorn> getAllDiscoveredUnicorns(){
+    public Set<Unicorn> getAllDiscoveredUnicorns() {
         return unicornRegistry.keySet();
     }
 
-    public int getUnicornRarityIndex(Unicorn unicorn){
+    public int getUnicornRarityIndex(Unicorn unicorn) {
         Map<Unicorn.Size, Integer> size = new HashMap<>();
         size.put(Unicorn.Size.TINY, 1);
         size.put(Unicorn.Size.SMALL, 2);
@@ -70,7 +70,7 @@ public final class UnicornRegistry {
         return unicornList.size() + 1;
     }
 
-    public Set<Unicorn> getUnicornsDiscoveredBy(UnicornObserver observer){
+    public Set<Unicorn> getUnicornsDiscoveredBy(UnicornObserver observer) {
         HashSet<Unicorn> uniSet = new HashSet<>();
         for (Unicorn unicorn : unicornRegistry.keySet()) {
             if (unicornRegistry.get(unicorn).equals(observer)) {
@@ -80,7 +80,7 @@ public final class UnicornRegistry {
         return uniSet;
     }
 
-    public void forgetAllUnicorns(){
+    public void forgetAllUnicorns() {
         unicornRegistry.clear();
     }
 }
