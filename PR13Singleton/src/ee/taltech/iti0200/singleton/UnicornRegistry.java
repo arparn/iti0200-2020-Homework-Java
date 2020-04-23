@@ -49,7 +49,7 @@ public class UnicornRegistry {
                                     break;
                                 }
                             }
-                        } else if (size.get(unicorn.getSize()) > size.get(uni.getSize())) {
+                        } else if (size.get(unicorn.getSize()) < size.get(uni.getSize())) {
                             unicornList.add(uni);
                         }
                     } else if (unicorn.getHornLength() < uni.getHornLength()) {
