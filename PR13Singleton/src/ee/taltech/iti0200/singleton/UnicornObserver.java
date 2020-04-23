@@ -28,7 +28,7 @@ public class UnicornObserver {
         } else if (getSkill() >= 4 && (unicorn.getSize().equals(Unicorn.Size.MEDIUM)
                 || unicorn.getSize().equals(Unicorn.Size.LARGE))) {
             UnicornRegistry.getInstance().registerUnicorn(unicorn, UnicornObserver.this);
-        } else if (getSkill() >= 0 && unicorn.getSize().equals(Unicorn.Size.LARGE)) {
+        } else if (getSkill() >= 1 && unicorn.getSize().equals(Unicorn.Size.LARGE)) {
             UnicornRegistry.getInstance().registerUnicorn(unicorn, UnicornObserver.this);
         }
     }
