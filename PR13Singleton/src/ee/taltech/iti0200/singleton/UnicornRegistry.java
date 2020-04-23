@@ -1,13 +1,18 @@
 package ee.taltech.iti0200.singleton;
-import java.util.*;
 
-public class UnicornRegistry {
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+
+public final class UnicornRegistry {
 
     Map<Unicorn, UnicornObserver> unicornRegistry = new HashMap<>();
 
     private static UnicornRegistry instance = null;
 
-    private UnicornRegistry() {}
+    private UnicornRegistry() { }
 
     public static UnicornRegistry getInstance() {
         if (instance == null) {
@@ -49,7 +54,7 @@ public class UnicornRegistry {
                                     break;
                                 }
                             }
-                        } else if (size.get(unicorn.getSize()) < size.get(uni.getSize())) {
+                        } else if (size.get(unicorn.getSize()) > size.get(uni.getSize())) {
                             unicornList.add(uni);
                         }
                     } else if (unicorn.getHornLength() < uni.getHornLength()) {
