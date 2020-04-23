@@ -33,6 +33,9 @@ public class UnicornRegistry {
         size.put(Unicorn.Size.MEDIUM, 3);
         size.put(Unicorn.Size.LARGE, 4);
         LinkedList<Unicorn> unicornList = new LinkedList<>();
+        if (!unicornRegistry.containsKey(unicorn)) {
+            return 0;
+        }
         for (Unicorn uni : unicornRegistry.keySet()) {
             if (unicorn.getLocation().compareTo(uni.getLocation()) == 0) {
                 if (unicorn.getColor().compareTo(uni.getColor()) == 0) {
