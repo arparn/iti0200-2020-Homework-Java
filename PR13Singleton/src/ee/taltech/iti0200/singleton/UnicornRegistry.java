@@ -52,7 +52,7 @@ public class UnicornRegistry {
                     } else if (unicorn.getHornLength() < uni.getHornLength()) {
                         unicornList.add(uni);
                     }
-                } else if (unicorn.getColor().compareTo(uni.getColor()) < 0) {
+                } else if (unicorn.getColor().compareTo(uni.getColor()) > 0) {
                     unicornList.add(uni);
                 }
             } else if (unicorn.getLocation().compareTo(uni.getLocation()) > 0) {
