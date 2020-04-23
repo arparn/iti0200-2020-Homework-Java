@@ -1,7 +1,5 @@
 package ee.taltech.iti0200.singleton;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 public class UnicornObserver {
@@ -30,7 +28,7 @@ public class UnicornObserver {
         } else if (getSkill() >= 4 && (unicorn.getSize().equals(Unicorn.Size.MEDIUM)
                 || unicorn.getSize().equals(Unicorn.Size.LARGE))) {
             UnicornRegistry.getInstance().registerUnicorn(unicorn, UnicornObserver.this);
-        } else if (getSkill() <= 3 && unicorn.getSize().equals(Unicorn.Size.LARGE)) {
+        } else if (getSkill() >= 0 && unicorn.getSize().equals(Unicorn.Size.LARGE)) {
             UnicornRegistry.getInstance().registerUnicorn(unicorn, UnicornObserver.this);
         }
     }
