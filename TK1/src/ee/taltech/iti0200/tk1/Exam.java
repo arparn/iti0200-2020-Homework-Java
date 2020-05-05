@@ -30,6 +30,7 @@ public class Exam {
         return sumOfNumbers;
     }
 
+
     /**
      * Given a string, compute a new string by moving the first char to come after the next two chars, so "abc" yields
      * Repeat this process for each subsequent group of 3 chars, so "abcdef" yields "bcaefd". Ignore any group of fewer
@@ -82,4 +83,5 @@ public class Exam {
         }
         return map;
     }
+
 }

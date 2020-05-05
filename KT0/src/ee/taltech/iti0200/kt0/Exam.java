@@ -1,4 +1,5 @@
 package ee.taltech.iti0200.kt0;
+import java.util.Collections;
 import java.util.List;
 
 public class Exam {
@@ -16,12 +17,13 @@ public class Exam {
     public static int matchUp(List<Integer> a, List<Integer> b) {
         int count = 0;
         for (int i = 0; i < a.size(); i++) {
-            if ((Math.abs(a.get(0) - b.get(0))) <= 2 && 0 < Math.abs(a.get(0) - b.get(0))) {
+            if ((Math.abs(a.get(i) - b.get(i))) <= 2 && 0 < Math.abs(a.get(i) - b.get(i))) {
                 count++;
             }
         }
         return count;
     }
+
 
     /**
      * Given two strings, word and a separator sep,
