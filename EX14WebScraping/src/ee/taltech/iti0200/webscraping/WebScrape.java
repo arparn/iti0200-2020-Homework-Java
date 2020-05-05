@@ -14,7 +14,9 @@ import java.util.List;
 
 public class WebScrape {
 
-    public WebScrape(){}
+    public static final int NUM6 = 6;
+
+    public WebScrape() { }
 
     public void getData() {
         GsonBuilder builder = new GsonBuilder();
@@ -41,7 +43,7 @@ public class WebScrape {
                         String href = "";
                         for (String str : findHref.split(" ")) {
                             if (str.contains("href")) {
-                                href = str.substring(6, str.length() - 1);
+                                href = str.substring(NUM6, str.length() - 1);
                                 break;
                             }
                         }
@@ -52,7 +54,7 @@ public class WebScrape {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            if (pageNum == 7) { //size == dataList.size()
+            if (size == dataList.size()) { // pageNum == 7
                 break;
             }
             System.out.println(pageNum);

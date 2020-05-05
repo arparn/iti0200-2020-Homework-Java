@@ -2,25 +2,25 @@ package ee.taltech.iti0200.webscraping;
 
 public class Data {
 
-    private String Title;
-    private String Price;
-    private String Picture_href;
+    private String title;
+    private String price;
+    private String pictureHref;
 
     public Data(String title, String price, String href) {
-        this.Title = title;
-        this.Price = price;
-        this.Picture_href = href;
+        this.title = title;
+        this.price = price;
+        this.pictureHref = href;
     }
 
     public String getPicture_href() {
-        return Picture_href;
+        return pictureHref;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public String getPrice() {
-        return Price;
+        return price;
     }
 }
