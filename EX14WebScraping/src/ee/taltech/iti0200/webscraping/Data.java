@@ -12,7 +12,7 @@ public class Data {
         this.pictureHref = href;
     }
 
-    public String getPicture_href() {
+    public String getPictureHref() {
         return pictureHref;
     }
 
