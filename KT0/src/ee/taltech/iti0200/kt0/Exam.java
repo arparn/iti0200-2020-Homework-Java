@@ -14,7 +14,13 @@ public class Exam {
      * matchUp([1, 2, 3], [2, 3, 3]) => 2
      */
     public static int matchUp(List<Integer> a, List<Integer> b) {
-        return -1;
+        int count = 0;
+        for (int i = 0; i < a.size(); i++) {
+            if ((Math.abs(a.get(0) - b.get(0))) <= 2 && 0 < Math.abs(a.get(0) - b.get(0))) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
