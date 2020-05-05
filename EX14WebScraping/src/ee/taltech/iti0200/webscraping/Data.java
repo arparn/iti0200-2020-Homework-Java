@@ -11,16 +11,4 @@ public class Data {
         this.price = price;
         this.pictureHref = href;
     }
-
-    public String getPictureHref() {
-        return pictureHref;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getPrice() {
-        return price;
-    }
 }
