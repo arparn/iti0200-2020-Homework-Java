@@ -1,5 +1,7 @@
 package ee.taltech.iti0200.tk1;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 public class Exam {

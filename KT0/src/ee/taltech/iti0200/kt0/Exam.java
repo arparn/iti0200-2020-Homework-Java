@@ -1,5 +1,4 @@
 package ee.taltech.iti0200.kt0;
-import java.util.Collections;
 import java.util.List;
 
 public class Exam {
@@ -35,7 +34,15 @@ public class Exam {
      * repeatSeparator("This", "And", 1) => "This"
      */
     public static String repeatSeparator(String word, String sep, int count) {
-        return "wat";
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            if(i < count - 1) {
+                answer.append(word).append(sep);
+            } else {
+                answer.append(word);
+            }
+        }
+        return answer.toString();
     }
 
 }
