@@ -33,7 +33,7 @@ public class University {
     }
 
     public Optional<Course> createCourse(String name, int eap) {
-        if (eap >= 1 || !name.equals("")) {
+        if (eap >= 1 && !name.equals("")) {
             boolean check = true;
             for (Course course : courses) {
                 if (course.getName().equals(name)) {
