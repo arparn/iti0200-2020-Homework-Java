@@ -27,15 +27,15 @@ public class ChocolateFactory {
         int choc2 = 0;
         ChocolateType[][] chocolateBox = new ChocolateType[length][width];
         if (preferedChocolate1Count == 0) {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < length; j++) {
+            for (int i = 0; i < length; i++) {
+                for (int j = 0; j < width; j++) {
                     chocolateBox[i][j] = chocolate2;
                     choc2++;
                 }
             }
         } else if (preferedChocolate1Count == 4) {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < length; j++) {
+            for (int i = 0; i < length; i++) {
+                for (int j = 0; j < width; j++) {
                     if ((i == 0 && j == 0) || (i == length - 1 && j == width - 1)
                             || (i == 0 && j == width - 1) || (i == length - 1 && j == 0)) {
                         chocolateBox[i][j] = chocolate1;
@@ -47,8 +47,8 @@ public class ChocolateFactory {
                 }
             }
         } else if (preferedChocolate1Count == (length - 1 + width) * 2) {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < length; j++) {
+            for (int i = 0; i < length; i++) {
+                for (int j = 0; j < width; j++) {
                     if ((i == 0) || (i == length - 1) || (j == 0) || (j == width - 1)) {
                         chocolateBox[i][j] = chocolate1;
                         choc1++;
@@ -59,8 +59,8 @@ public class ChocolateFactory {
                 }
             }
         } else {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < length; j++) {
+            for (int i = 0; i < length; i++) {
+                for (int j = 0; j < width; j++) {
                     if (i % 2 == 1 && j % 2 == 1) {
                         chocolateBox[i][j] = chocolate1;
                         choc1++;
@@ -95,7 +95,7 @@ public class ChocolateFactory {
     public static void main(String[] args) {
         ChocolateFactory factory = new ChocolateFactory();
         ChocolateType[][] a = factory.makeChocolateBox(new ChocolateType(7, "0"),
-                new ChocolateType(9, "o"), 4, BoxType.SQUARE1);
+                new ChocolateType(9, "o"), 4, BoxType.RECTANGLE2);
         System.out.println(factory.getCostSoFar());
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
