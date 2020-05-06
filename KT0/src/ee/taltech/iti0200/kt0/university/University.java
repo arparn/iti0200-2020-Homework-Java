@@ -68,10 +68,12 @@ public class University {
         List<Student> bestStudents = new LinkedList<>();
         Student bestStudent = students.get(0);
         for (int i = 0; i < students.size(); i++) {
+            int bestEap = 0;
             for (Student student : students) {
-                if (!bestStudents.contains(student) && student.getEap() > bestStudent.getEap()) {
+                if (!bestStudents.contains(student) && student.getEap() > bestEap) {
+                    bestEap = student.getEap();
                     bestStudent = student;
-                } else if (!bestStudents.contains(student) && student.getEap() == bestStudent.getEap()) {
+                } else if (!bestStudents.contains(student) && student.getEap() == bestEap) {
                     int studentsEap = student.getEap();
                     int bestStudentsEap = bestStudent.getEap();
                     for (Course course : courses) {
