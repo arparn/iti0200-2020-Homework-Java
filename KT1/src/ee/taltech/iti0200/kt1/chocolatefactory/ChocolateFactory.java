@@ -46,7 +46,7 @@ public class ChocolateFactory {
                     }
                 }
             }
-        } else if (preferedChocolate1Count == (length - 1 + width) * 2) {
+        } else if (preferedChocolate1Count == (length - 1 + width - 1) * 2) {
             for (int i = 0; i < length; i++) {
                 for (int j = 0; j < width; j++) {
                     if ((i == 0) || (i == length - 1) || (j == 0) || (j == width - 1)) {
@@ -95,7 +95,7 @@ public class ChocolateFactory {
     public static void main(String[] args) {
         ChocolateFactory factory = new ChocolateFactory();
         ChocolateType[][] a = factory.makeChocolateBox(new ChocolateType(7, "0"),
-                new ChocolateType(9, "o"), 4, BoxType.RECTANGLE2);
+                new ChocolateType(9, "o"), 12, BoxType.SQUARE1);
         System.out.println(factory.getCostSoFar());
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
