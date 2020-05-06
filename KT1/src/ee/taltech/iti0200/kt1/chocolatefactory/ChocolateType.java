@@ -1,7 +1,5 @@
 package ee.taltech.iti0200.kt1.chocolatefactory;
 
-import javax.swing.*;
-
 public class ChocolateType {
 
     private int price;

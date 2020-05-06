@@ -1,12 +1,13 @@
 package ee.taltech.iti0200.kt1.chocolatefactory;
 
 public class ChocolateFactory {
+
     private int chocolateBoxesMade;
     private int costSoFar;
 
     public enum BoxType {
 
-        SQUARE1(4,4),
+        SQUARE1(4, 4),
         SQUARE2(5, 5),
         RECTANGLE1(3, 6),
         RECTANGLE2(4, 8);
@@ -20,7 +21,8 @@ public class ChocolateFactory {
         }
     }
 
-    public ChocolateType[][] makeChocolateBox(ChocolateType chocolate1, ChocolateType chocolate2, Integer preferedChocolate1Count, BoxType boxType) {
+    public ChocolateType[][] makeChocolateBox(ChocolateType chocolate1, ChocolateType chocolate2,
+                                              Integer preferedChocolate1Count, BoxType boxType) {
         int width = boxType.width;
         int length = boxType.length;
         int choc1 = 0;
@@ -86,18 +88,5 @@ public class ChocolateFactory {
 
     public int getCostSoFar() {
         return costSoFar;
-    }
-
-    public static void main(String[] args) {
-        ChocolateFactory factory = new ChocolateFactory();
-        ChocolateType[][] a = factory.makeChocolateBox(new ChocolateType(7, "0"),
-                new ChocolateType(9, "o"), 5, BoxType.SQUARE1);
-        System.out.println(factory.getCostSoFar());
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[i].length; j++) {
-                System.out.print(a[i][j].getStringForm());
-            }
-            System.out.println();
-        }
     }
 }
