@@ -85,6 +85,9 @@ public class University {
             }
             bestStudents.add(bestStudent);
         }
+        if (!bestStudents.contains(bestStudent)) {
+            bestStudents.add(bestStudent);
+        }
         return bestStudents;
     }
 }
