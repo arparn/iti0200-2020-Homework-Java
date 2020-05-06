@@ -21,8 +21,8 @@ public class ChocolateFactory {
     }
 
     public ChocolateType[][] makeChocolateBox(ChocolateType chocolate1, ChocolateType chocolate2, Integer preferedChocolate1Count, BoxType boxType) {
-        int width = boxType.width;
-        int length = boxType.length;
+        int width = boxType.length;
+        int length = boxType.width;
         int choc1 = 0;
         int choc2 = 0;
         ChocolateType[][] chocolateBox = new ChocolateType[length][width];
