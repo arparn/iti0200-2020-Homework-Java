@@ -1,13 +1,19 @@
 package ee.taltech.iti0200.kt1.hotel;
 
 public class Main {
+
+    public static final int NUM25 = 25;
+    public static final int NUM12 = 12;
+    public static final int NUM15 = 15;
+
     public static void main(String[] args) {
+
         Hotel hotel = new Hotel("Viru");
         Room room1 = new Room(1, 10, Room.Type.Regular);
-        Room room2 = new Room(1, 12, Room.Type.Regular);
-        Room room3 = new Room(2, 15, Room.Type.Regular);
+        Room room2 = new Room(1, NUM12, Room.Type.Regular);
+        Room room3 = new Room(2, NUM15, Room.Type.Regular);
         Room room4 = new Room(3, 10, Room.Type.Regular);
-        Room room5 = new Room(4, 25, Room.Type.Suite);
+        Room room5 = new Room(4, NUM25, Room.Type.Suite);
 
         hotel.addRoom(room1);
         System.out.println(hotel.addRoom(room2)); // false
@@ -55,7 +61,7 @@ public class Main {
         System.out.println("Cancel booking:");
         System.out.println(hotel.cancelBooking(room5)); // false
         System.out.println("Find room:");
-        for (Room room : hotel.findRoomBySize(12)) {
+        for (Room room : hotel.findRoomBySize(NUM12)) {
             System.out.println(room.getNumber()); // 2
         }
     }
