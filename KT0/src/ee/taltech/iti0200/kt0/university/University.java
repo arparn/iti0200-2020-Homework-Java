@@ -67,18 +67,23 @@ public class University {
     public List<Student> getStudentsOrderedByResults() {
         List<Student> bestStudents = new LinkedList<>();
         Student bestStudent = students.get(0);
+        System.out.println(students);
         for (int i = 0; i < students.size(); i++) {
-            int bestEap = 0;
+            for (Student student1 : students) {
+                if (!bestStudents.contains(student1)) {
+                    bestStudent = student1;
+                    break;
+                }
+            }
             for (Student student : students) {
-                if (!bestStudents.contains(student) && student.getEap() > bestEap) {
-                    bestEap = student.getEap();
+                if (!bestStudents.contains(student) && student.getEap() > bestStudent.getEap()) {
                     bestStudent = student;
-                } else if (!bestStudents.contains(student) && student.getEap() == bestEap) {
-                    int studentsEap = student.getEap();
+                } else if (!bestStudents.contains(student) && student.getEap() == bestStudent.getEap()) {
                     int bestStudentsEap = bestStudent.getEap();
+                    int studentsEap = student.getEap();
                     for (Course course : courses) {
-                        studentsEap += course.getEapIfStudentRegistred(student);
                         bestStudentsEap += course.getEapIfStudentRegistred(bestStudent);
+                        studentsEap += course.getEapIfStudentRegistred(student);
                     }
                     if (studentsEap > bestStudentsEap) {
                         bestStudent = student;
