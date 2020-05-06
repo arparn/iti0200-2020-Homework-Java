@@ -25,7 +25,7 @@ public class ChocolateFactory {
         int length = boxType.length;
         int choc1 = 0;
         int choc2 = 0;
-        ChocolateType[][] chocolateBox = new ChocolateType[length][width];
+        ChocolateType[][] chocolateBox = new ChocolateType[width][length];
         if (preferedChocolate1Count == 0) {
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < length; j++) {
