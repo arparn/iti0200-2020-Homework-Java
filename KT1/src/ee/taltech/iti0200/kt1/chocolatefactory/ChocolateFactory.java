@@ -64,11 +64,7 @@ public class ChocolateFactory {
                     if (i % 2 == 1 && j % 2 == 1) {
                         chocolateBox[i][j] = chocolate1;
                         choc1++;
-                    } else {
-                        chocolateBox[i][j] = chocolate2;
-                        choc2++;
-                    }
-                    if (i % 2 == 0 && j % 2 == 0) {
+                    } else if (i % 2 == 0 && j % 2 == 0) {
                         chocolateBox[i][j] = chocolate1;
                         choc1++;
                     } else {
@@ -95,7 +91,7 @@ public class ChocolateFactory {
     public static void main(String[] args) {
         ChocolateFactory factory = new ChocolateFactory();
         ChocolateType[][] a = factory.makeChocolateBox(new ChocolateType(7, "0"),
-                new ChocolateType(9, "o"), 12, BoxType.SQUARE1);
+                new ChocolateType(9, "o"), 5, BoxType.SQUARE1);
         System.out.println(factory.getCostSoFar());
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
