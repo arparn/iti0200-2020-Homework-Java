@@ -21,14 +21,14 @@ public class ChocolateFactory {
     }
 
     public ChocolateType[][] makeChocolateBox(ChocolateType chocolate1, ChocolateType chocolate2, Integer preferedChocolate1Count, BoxType boxType) {
-        int width = boxType.length;
-        int length = boxType.width;
+        int width = boxType.width;
+        int length = boxType.length;
         int choc1 = 0;
         int choc2 = 0;
         ChocolateType[][] chocolateBox = new ChocolateType[length][width];
         if (preferedChocolate1Count == 0) {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < length; j++) {
+            for (int i = 0; i < length; i++) {
+                for (int j = 0; j < width; j++) {
                     chocolateBox[i][j] = chocolate2;
                     choc2++;
                 }
@@ -47,8 +47,8 @@ public class ChocolateFactory {
                 }
             }
         } else if (preferedChocolate1Count == (length - 1 + width) * 2) {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < length; j++) {
+            for (int i = 0; i < length; i++) {
+                for (int j = 0; j < width; j++) {
                     if ((i == 0) || (i == length - 1) || (j == 0) || (j == width - 1)) {
                         chocolateBox[i][j] = chocolate1;
                         choc1++;
@@ -59,8 +59,8 @@ public class ChocolateFactory {
                 }
             }
         } else {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < length; j++) {
+            for (int i = 0; i < length; i++) {
+                for (int j = 0; j < width; j++) {
                     if (i % 2 == 1 && j % 2 == 1) {
                         chocolateBox[i][j] = chocolate1;
                         choc1++;
