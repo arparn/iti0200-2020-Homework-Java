@@ -83,9 +83,7 @@ public class University {
                     }
                 }
             }
-            if (!bestStudents.contains(bestStudent)) {
-                bestStudents.add(bestStudent);
-            }
+            bestStudents.add(bestStudent);
         }
         return bestStudents;
     }
