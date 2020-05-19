@@ -1,5 +1,4 @@
 package ee.taltech.iti0200.exam2;
-import java.util.List;
 
 public class Exam {
 

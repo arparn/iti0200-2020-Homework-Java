@@ -1,12 +1,11 @@
 package ee.taltech.iti0200.exam2.documents;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
 public class Archive {
+
 
     private List<Document> documents = new LinkedList<>();
 

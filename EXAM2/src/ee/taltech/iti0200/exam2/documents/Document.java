@@ -1,9 +1,10 @@
 package ee.taltech.iti0200.exam2.documents;
 
 import java.util.Optional;
-import java.util.PrimitiveIterator;
 
 public class Document {
+
+    public static final int NUM18 = 18;
 
     private int id;
     private Person owner;
@@ -32,7 +33,7 @@ public class Document {
 
     public boolean sign(Person signer) {
         if (!signer.equals(owner)) {
-            if (signer.getAge() >= 18 && signer.isLicenceActive() && !signed) {
+            if (signer.getAge() >= NUM18 && signer.isLicenceActive() && !signed) {
                 signed = true;
                 this.signer = signer;
                 return true;
