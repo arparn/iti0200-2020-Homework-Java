@@ -18,47 +18,8 @@ public class Exam {
      * "" => 0
      */
     public static int recCount(String s) {
-        if (s.length() == 1) {
-            return Integer.parseInt(s);
-        }
-        boolean check = true;
-        try {
-            int num = Integer.parseInt(String.valueOf(s.charAt(s.length() - 1)));
-        } catch (NumberFormatException x) {
-            check = false;
-        }
-        if (!check) {
-            int sum = 0;
-            char ch = s.charAt(0);
-            if (s.charAt(1) == ch) {
-                sum += 1;
-                s = s.substring(1);
-            }
-            if (s.charAt(1) == ch) {
-                sum += 1;
-                s = s.substring(2);
-            }
-            if (sum != 0) {
-                s += sum;
-            }
-            return recCount(s);
-        }
-        if (check) {
-            int sum = Integer.parseInt(String.valueOf(s.charAt(s.length() - 1)));
-            s = s.substring(s.length() - 1);
-            char ch = s.charAt(0);
-            if (s.charAt(1) == ch) {
-                sum += 1;
-                s = s.substring(1);
-            }
-            if (s.charAt(1) == ch) {
-                sum += 1;
-                s = s.substring(1);
-            }
-            s += sum;
-            return recCount(s);
-        }
         return 0;
     }
+
 }
 
