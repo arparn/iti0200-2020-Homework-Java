@@ -59,6 +59,5 @@ public class Exam {
         }
         return 0;
     }
-
 }
 
