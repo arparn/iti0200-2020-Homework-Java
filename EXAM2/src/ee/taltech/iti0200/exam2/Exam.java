@@ -38,7 +38,9 @@ public class Exam {
                 sum += 1;
                 s = s.substring(2);
             }
-            s += sum;
+            if (sum != 0) {
+                s += sum;
+            }
             return recCount(s);
         }
         if (check) {
