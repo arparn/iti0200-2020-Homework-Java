@@ -9,20 +9,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CourseTest {
 
+    public static final int NUM40 = 40;
+    public static final int NUM50 = 50;
+    public static final int NUM80 = 80;
+    public static final int NUM65 = 65;
+    public static final int NUM20 = 20;
+    public static final int NUM19 = 19;
+    public static final int NUM24 = 24;
+    public static final int NUM18 = 18;
+
+
     University talTech = new University("TalTech");
     University tartuUlikool = new University("Tartu Ülikool");
 
-    Course proge = new Course("Programming", true, 40, talTech, Course.Type.ERIALA);
-    Course math = new Course("Math", true, 50, talTech, Course.Type.VABA6PE);
-    Course arvutivorgud = new Course("Arvutivõrgud", false, 80, talTech, Course.Type.ULD6PE);
+    Course proge = new Course("Programming", true, NUM40, talTech, Course.Type.ERIALA);
+    Course math = new Course("Math", true, NUM50, talTech, Course.Type.VABA6PE);
+    Course arvutivorgud = new Course("Arvutivõrgud", false, NUM80, talTech, Course.Type.ULD6PE);
 
-    Course inzineeria = new Course("Inzineeria", true, 50, tartuUlikool, Course.Type.ERIALA);
-    Course economy = new Course("Econoomika", false, 65, tartuUlikool, Course.Type.VABA6PE);
+    Course inzineeria = new Course("Inzineeria", true, NUM50, tartuUlikool, Course.Type.ERIALA);
+    Course economy = new Course("Econoomika", false, NUM65, tartuUlikool, Course.Type.VABA6PE);
 
-    Student artur = new Student(20, "Artur");
-    Student mati = new Student( 19, "Mati");
-    Student juri = new Student(24, "Juri");
-    Student katrin = new Student(18, "Katrin");
+    Student artur = new Student(NUM20, "Artur");
+    Student mati = new Student(NUM19, "Mati");
+    Student juri = new Student(NUM24, "Juri");
+    Student katrin = new Student(NUM18, "Katrin");
 
     Teacher ago = new Teacher("Ago");
     Teacher elerin = new Teacher("Elerin");
@@ -59,7 +69,7 @@ class CourseTest {
 
     @Test
     void getEAP() {
-        assertEquals(50, inzineeria.getEAP());
+        assertEquals(NUM50, inzineeria.getEap());
     }
 
     @Test

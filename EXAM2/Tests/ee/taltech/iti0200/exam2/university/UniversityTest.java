@@ -1,29 +1,37 @@
 package ee.taltech.iti0200.exam2.university;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UniversityTest {
 
+    public static final int NUM40 = 40;
+    public static final int NUM50 = 50;
+    public static final int NUM80 = 80;
+    public static final int NUM65 = 65;
+    public static final int NUM20 = 20;
+    public static final int NUM19 = 19;
+    public static final int NUM18 = 18;
+    public static final int NUM70 = 70;
+    public static final int NUM16 = 16;
+
     University talTech = new University("TalTech");
     University tartuUlikool = new University("Tartu Ülikool");
 
-    Course proge = new Course("Programming", true, 40, talTech, Course.Type.ERIALA);
-    Course math = new Course("Math", true, 50, talTech, Course.Type.VABA6PE);
-    Course arvutivorgud = new Course("Arvutivõrgud", false, 80, talTech, Course.Type.ULD6PE);
-
-    Course inzineeria = new Course("Inzineeria", true, 50, tartuUlikool, Course.Type.ERIALA);
-    Course economy = new Course("Econoomika", false, 65, tartuUlikool, Course.Type.VABA6PE);
-    Course opSusteemid = new Course("OP süsteemid", true, 70, tartuUlikool, Course.Type.ULD6PE);
+    Course proge = new Course("Programming", true, NUM40, talTech, Course.Type.ERIALA);
+    Course math = new Course("Math", true, NUM50, talTech, Course.Type.VABA6PE);
+    Course arvutivorgud = new Course("Arvutivõrgud", false, NUM80, talTech, Course.Type.ULD6PE);
+    Course inzineeria = new Course("Inzineeria", true, NUM50, tartuUlikool, Course.Type.ERIALA);
+    Course economy = new Course("Econoomika", false, NUM65, tartuUlikool, Course.Type.VABA6PE);
+    Course opSusteemid = new Course("OP süsteemid", true, NUM70, tartuUlikool, Course.Type.ULD6PE);
 
     Course wrongCourse = new Course("Wrong", true, 0, talTech, Course.Type.VABA6PE);
 
-    Student mati = new Student( 19, "Mati");
-    Student max = new Student(21, "Max");
-    Student katrin = new Student(18, "Katrin");
-    Student marika = new Student( 16, "Maarika");
+    Student mati = new Student(NUM19, "Mati");
+    Student max = new Student(NUM20, "Max");
+    Student katrin = new Student(NUM18, "Katrin");
+    Student marika = new Student(NUM16, "Maarika");
 
     Teacher ago = new Teacher("Ago");
     Teacher elerin = new Teacher("Elerin");

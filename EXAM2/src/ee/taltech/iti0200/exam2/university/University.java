@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class University {
+    public static final int NUM18 = 18;
+    public static final int NUM120 = 120;
 
     private List<Student> students = new LinkedList<>();
     private List<Course> courses = new LinkedList<>();
@@ -39,7 +41,8 @@ public class University {
     }
 
     public boolean addStudent(Student student, StudyProgramme studyProgramme) {
-        if (student.getAge() >= 18 && !students.contains(student) && student.getUniversity().isEmpty() && studyProgrammes.contains(studyProgramme) && student.getStudyProgramme().isEmpty()) {
+        if (student.getAge() >= NUM18 && !students.contains(student) && student.getUniversity().isEmpty()
+                && studyProgrammes.contains(studyProgramme) && student.getStudyProgramme().isEmpty()) {
             students.add(student);
             student.setStudyProgramme(studyProgramme);
             student.setUniversity(University.this);
@@ -49,7 +52,7 @@ public class University {
     }
 
     public boolean addCourse(Course course) {
-        if (!courses.contains(course) && course.getUniversity().equals(University.this) && course.getEAP() > 0) {
+        if (!courses.contains(course) && course.getUniversity().equals(University.this) && course.getEap() > 0) {
             courses.add(course);
             return true;
         } else {
@@ -62,7 +65,7 @@ public class University {
     }
 
     public void setStudyProgramme(StudyProgramme studyProgramme) {
-        if (studyProgramme.calculateEapTotal() >= 120 && !studyProgrammes.contains(studyProgramme)) {
+        if (studyProgramme.calculateEapTotal() >= NUM120 && !studyProgrammes.contains(studyProgramme)) {
             studyProgrammes.add(studyProgramme);
         }
     }

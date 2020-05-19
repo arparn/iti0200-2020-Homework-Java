@@ -5,17 +5,22 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentTest {
+    public static final int NUM40 = 40;
+    public static final int NUM50 = 50;
+    public static final int NUM80 = 80;
+    public static final int NUM20 = 20;
+    public static final int NUM19 = 19;
 
-    Student artur = new Student(20, "Artur");
-    Student mati = new Student( 19, "Mati");
-    Student juri = new Student(24, "Juri");
+    Student artur = new Student(NUM20, "Artur");
+    Student mati = new Student(NUM19, "Mati");
+    Student juri = new Student(NUM20, "Juri");
 
     University talTech = new University("TalTech");
     University tartuUlikool = new University("Tartu Ülikool");
 
-    Course proge = new Course("Programming", true, 40, talTech, Course.Type.ERIALA);
-    Course math = new Course("Math", true, 50, talTech, Course.Type.VABA6PE);
-    Course arvutivorgud = new Course("Arvutivõrgud", false, 80, talTech, Course.Type.ULD6PE);
+    Course proge = new Course("Programming", true, NUM40, talTech, Course.Type.ERIALA);
+    Course math = new Course("Math", true, NUM50, talTech, Course.Type.VABA6PE);
+    Course arvutivorgud = new Course("Arvutivõrgud", false, NUM80, talTech, Course.Type.ULD6PE);
 
     StudyProgramme iaib = new StudyProgramme("IAIB", talTech);
 
@@ -47,8 +52,8 @@ class StudentTest {
 
     @Test
     void getAge() {
-        assertEquals(24, juri.getAge());
-        assertEquals(20, artur.getAge());
+        assertEquals(NUM20, juri.getAge());
+        assertEquals(NUM20, artur.getAge());
     }
 
     @Test

@@ -5,9 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TeacherTest {
+    public static final int NUM50 = 50;
     University talTech = new University("TalTech");
 
-    Course math = new Course("Math", true, 50, talTech, Course.Type.VABA6PE);
+    Course math = new Course("Math", true, NUM50, talTech, Course.Type.VABA6PE);
 
     Teacher ago = new Teacher("Ago");
 

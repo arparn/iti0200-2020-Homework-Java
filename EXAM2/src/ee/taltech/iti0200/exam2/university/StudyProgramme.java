@@ -29,13 +29,13 @@ public class StudyProgramme {
     public int calculateEapTotal() {
         int sum = 0;
         for (Course course : courses) {
-            sum += course.getEAP();
+            sum += course.getEap();
         }
         return sum;
     }
 
     public void addCourse(Course course) {
-        if (course.getUniversity().equals(university) && course.getEAP() > 0) {
+        if (course.getUniversity().equals(university) && course.getEap() > 0) {
             courses.add(course);
         }
     }

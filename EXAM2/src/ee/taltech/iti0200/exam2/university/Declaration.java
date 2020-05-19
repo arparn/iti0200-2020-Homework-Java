@@ -19,10 +19,10 @@ public class Declaration {
         return coursesToTake;
     }
 
-    public int calculateTotalEap () {
+    public int calculateTotalEap() {
         int sum = 0;
         for (Course course : coursesToTake) {
-            sum += course.getEAP();
+            sum += course.getEap();
         }
         return sum;
     }

@@ -10,7 +10,7 @@ public class Course {
 
     private String name;
     private boolean forAGrade;
-    private int EAP;
+    private int eap;
     private University university;
     private Type type;
 
@@ -20,10 +20,10 @@ public class Course {
 
     private Map<Student, Object> studentsAndGrades = new HashMap<>();
 
-    public Course(String name, boolean forAGrade, int EAP, University university, Type type) {
+    public Course(String name, boolean forAGrade, int eap, University university, Type type) {
         this.name = name;
         this.forAGrade = forAGrade;
-        this.EAP = EAP;
+        this.eap = eap;
         this.university = university;
         this.type = type;
     }
@@ -51,8 +51,8 @@ public class Course {
         return forAGrade;
     }
 
-    public int getEAP() {
-        return EAP;
+    public int getEap() {
+        return eap;
     }
 
     public Optional<Map<Student, Object>> getStudentsAndGrades() {
@@ -95,7 +95,8 @@ public class Course {
     }
 
     public void addPersonToCourse(Student person) {
-        if (!students.contains(person) && person.getUniversity().isPresent() && person.getUniversity().get().equals(university)) {
+        if (!students.contains(person) && person.getUniversity().isPresent()
+                && person.getUniversity().get().equals(university)) {
             students.add(person);
         }
     }
@@ -107,9 +108,11 @@ public class Course {
     public List<Student> getStudentsWhoPassed() {
         List<Student> studentsWhoPassed = new LinkedList<>();
         for (Student person : studentsAndGrades.keySet()) {
-            if (studentsAndGrades.get(person).getClass().equals(Integer.class) && (Integer) studentsAndGrades.get(person) > 0) {
+            if (studentsAndGrades.get(person).getClass().equals(Integer.class)
+                    && (Integer) studentsAndGrades.get(person) > 0) {
                 studentsWhoPassed.add(person);
-            } else if (studentsAndGrades.get(person).getClass().equals(Boolean.class) && (Boolean) studentsAndGrades.get(person)) {
+            } else if (studentsAndGrades.get(person).getClass().equals(Boolean.class)
+                    && (Boolean) studentsAndGrades.get(person)) {
                 studentsWhoPassed.add(person);
             }
         }
@@ -119,9 +122,11 @@ public class Course {
     public List<Student> getStudentsWhoNotPassed() {
         List<Student> studentsWhoNotPassed = new LinkedList<>();
         for (Student person : studentsAndGrades.keySet()) {
-            if (studentsAndGrades.get(person).getClass().equals(Boolean.class) && !(Boolean) studentsAndGrades.get(person)) {
+            if (studentsAndGrades.get(person).getClass().equals(Boolean.class)
+                    && !(Boolean) studentsAndGrades.get(person)) {
                 studentsWhoNotPassed.add(person);
-            } else if (studentsAndGrades.get(person).getClass().equals(Integer.class) && (Integer) studentsAndGrades.get(person) == 0) {
+            } else if (studentsAndGrades.get(person).getClass().equals(Integer.class)
+                    && (Integer) studentsAndGrades.get(person) == 0) {
                 studentsWhoNotPassed.add(person);
             }
         }

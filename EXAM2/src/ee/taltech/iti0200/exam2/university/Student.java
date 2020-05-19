@@ -6,6 +6,8 @@ import java.util.Optional;
 
 public class Student {
 
+    public static final int NUM30 = 30;
+
     private int age;
     private String name;
     private University university;
@@ -53,7 +55,7 @@ public class Student {
     }
 
     public boolean sendDeclaration() {
-        if (declaration.calculateTotalEap() >= 30 && courses.size() == 0) {
+        if (declaration.calculateTotalEap() >= NUM30 && courses.size() == 0) {
             for (Course course : declaration.getCoursesToTake()) {
                 course.addPersonToCourse(Student.this);
             }
