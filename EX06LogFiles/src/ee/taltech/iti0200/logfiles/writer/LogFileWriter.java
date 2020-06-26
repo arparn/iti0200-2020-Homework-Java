@@ -24,4 +24,9 @@ public class LogFileWriter {
             throw new LogFileWriterException("Unable to write file");
         }
     }
+
+    public static void main(String[] args) {
+        LogFileWriter fileWriter = new LogFileWriter();
+        fileWriter.writeLogs(System.getProperty("user.home") + "/Desktop" + "/file.txt", "zizn voram, hui musoram!!!!");
+    }
 }

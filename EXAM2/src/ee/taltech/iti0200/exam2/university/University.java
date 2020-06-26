@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class University {
-    public static final int NUM18 = 18;
-    public static final int NUM120 = 120;
+    public static final int MINIMAL_AGE = 18;
+    public static final int TOTAL_EAP = 120;
 
     private List<Student> students = new LinkedList<>();
     private List<Course> courses = new LinkedList<>();
@@ -41,7 +41,7 @@ public class University {
     }
 
     public boolean addStudent(Student student, StudyProgramme studyProgramme) {
-        if (student.getAge() >= NUM18 && !students.contains(student) && student.getUniversity().isEmpty()
+        if (student.getAge() >= MINIMAL_AGE && !students.contains(student) && student.getUniversity().isEmpty()
                 && studyProgrammes.contains(studyProgramme) && student.getStudyProgramme().isEmpty()) {
             students.add(student);
             student.setStudyProgramme(studyProgramme);
@@ -65,7 +65,7 @@ public class University {
     }
 
     public void setStudyProgramme(StudyProgramme studyProgramme) {
-        if (studyProgramme.calculateEapTotal() >= NUM120 && !studyProgrammes.contains(studyProgramme)) {
+        if (studyProgramme.calculateEapTotal() >= TOTAL_EAP && !studyProgrammes.contains(studyProgramme)) {
             studyProgrammes.add(studyProgramme);
         }
     }
